@@ -1,6 +1,21 @@
 # fccciRedevelopment
 Code for the coming updated fccci: http://fccci.org.au/au/
 
+Comment 18/10/2017, 3:34 pm:
+
+The "latest news items" on the right side of the page is a success, the basic idea is just 
+simply retrieve the top news from mongoDB by making a XHR call upon the mounting of the news
+ news list container, and create a list of news links that will redirect to each of the news
+ upon clicking by passing the CH/ENG title of the string and the content link. Currently the 
+ list of the news is not created as a list but instead are hard code news 0,1 etc, needs to 
+ be created automatically once the list of news is loaded.
+
+With routing to each of the news, the problem is similar to the problem back when I was re-doing
+the routing to homepage after signup/signin page: the center page is not re-mounted after 
+clicking on the link on the right, which is particularly problematic in this case because we 
+need to update the content of the news when clicking on a different link, and the only way to 
+change the rendering is to re-mount.
+
 Comment 17/10/2017, 4:50 pm:
 
 Currently just experimenting with re-constructing different sections of the original site,

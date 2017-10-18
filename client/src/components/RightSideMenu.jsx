@@ -11,7 +11,7 @@ import LoginPage from '../containers/LoginPage.jsx';
 import SignUpPage from '../containers/SignUpPage.jsx';
 import Auth from '../modules/Auth';
 import LanguageSetting from '../modules/LanguageSetting';
-
+import RightSideMenuItem from './RightSideMenuItem.jsx'; 
 
 
 class RightSideMenu extends React.Component {
@@ -38,6 +38,11 @@ class RightSideMenu extends React.Component {
         this.setState({
         numberOfNews: xhr.response.message
         });
+        this.setState({
+          listOfLatestNews: xhr.response.listOfTitles
+        });
+        // console.log('RightSideMenu, recieved list of news upon Mounting:')
+        // console.log(this.state.listOfLatestNews)
     }
     });
     xhr.send();    
@@ -49,7 +54,25 @@ class RightSideMenu extends React.Component {
 
     return (
           <div className="centerAreaRight">
-            {this.state.numberOfNews}    
+            
+            {this.state.listOfLatestNews.length == 0?(
+              <RightSideMenuItem newsTitle={'loading...'} newsNumber={-1}/>
+            ):
+            (
+              <RightSideMenuItem newsTitle={this.state.listOfLatestNews[0]['titleCh']} newsNumber={0}/>
+
+            ) 
+            }
+
+            {this.state.listOfLatestNews.length == 0?(
+              <RightSideMenuItem newsTitle={'loading...'} newsNumber={-1}/>
+            ):
+            (
+              <RightSideMenuItem newsTitle={this.state.listOfLatestNews[1]['titleCh']} newsNumber={1}/>
+
+            ) 
+            }            
+
             {/* <div className="centerAreaRightItem">  
                 <a href="">母亲节爱心慈善跑</a>           
             </div>

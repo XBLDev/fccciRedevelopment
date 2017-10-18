@@ -24,11 +24,11 @@ const App = () => (
             </div> 
         </div> */}
 
-        <div className="centerArea">
-          <Main />
-          <RightSideMenu/>
+        {/* <div className="centerArea"> */}
+          {<Main />}
+          {/* {<RightSideMenu/>} */}
           {/* centerArea */}
-        </div>
+        {/* </div> */}
     </div>
 
   // </MuiThemeProvider>

@@ -5,12 +5,14 @@ import PropTypes from 'prop-types';
 
 import { Switch, Route } from 'react-router-dom'
 import Home from './Home.jsx'
+import Newsboard from './Newsboard.jsx'
 import Roster from './Roster.jsx'
 import Schedule from './Schedule.jsx'
 import LoginPage from '../containers/LoginPage.jsx';
 import SignUpPage from '../containers/SignUpPage.jsx';
 import Auth from '../modules/Auth';
 import LanguageSetting from '../modules/LanguageSetting';
+import RightSideMenu from './RightSideMenu.jsx'
 
 
 
@@ -38,20 +40,30 @@ class Main extends React.Component {
     // let homeRoute = <Route exact path='/' render={() => <Home cardtitleP={localStorage.getItem('currentLanguage')} cardsubtitleP={localStorage.getItem('currentLanguage')}/>}/>;   
 
     return (
-          // <main>
-          <div className="centerAreaLeft">
+          // <main>        <div className="centerArea">
+
+          <div className="centerArea">
               {/* centerAreaLeft, news area  <br/>     
               centerAreaLeft, news area  <br/>          
       
               centerAreaLeft, news area  <br/>  */}
-            <Switch>
-              <Route exact path='/' render={() => <Home />}/>    
-              <Route path='/login' component={LoginPage}/>
-              <Route path='/signup' component={SignUpPage}/>
-              {/* <Route path='/news' component={SignUpPage}/> */}
+            <div className="centerAreaLeft">  
+              <Switch>
+                {/* <Route exact path='/' component={Home}/>     */}
+                
+                <Route exact path='/' render={() => <Home contentStr="Home" />}/>   
+                {/* <Route path='/login' component={LoginPage}/>
+                <Route path='/signup' component={SignUpPage}/> */}
+                {/* <Route path='/Newboard' render={() => <Newsboard newsNum={this.props.location['pathname']}/>} /> */}
+                {/* <Route path='/Newsboard/' component={Newsboard} /> */}
+                <Route path='/Newsboard/' render={() => <Home contentStr="Newsboard" />} />
 
-            </Switch>
 
+                {/* <Route path='/Newsboard/' component={Home} /> */}
+
+              </Switch>
+            </div>
+            {<RightSideMenu/>    }
           {/* </main> */}
           </div>    
     )

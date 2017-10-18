@@ -21,7 +21,9 @@ import { Card, CardTitle } from 'material-ui/Card';
 import Auth from '../modules/Auth';
 import DashboardPage from '../containers/DashboardPage.jsx';
 import LanguageSetting from '../modules/LanguageSetting';
-
+import { Link } from 'react-router-dom'
+import {Redirect} from 'react-router-dom';
+import Newsboard from './Newsboard.jsx'
 
 class Home extends React.Component {
 
@@ -44,9 +46,13 @@ class Home extends React.Component {
   //     console.log('Component WILL MOUNT!')
   //  }
 
-  //  componentDidMount() {
-  //     console.log('Component DID MOUNT!')
-  //  }
+  componentDidMount() {
+    console.log('Home Did Mount');
+  }
+
+  componentWillUnmount() {
+    console.log('Home will unmount!')
+  }
 
   //  componentWillReceiveProps(newProps) {    
   //     console.log('Component WILL RECIEVE PROPS!')
@@ -75,15 +81,60 @@ class Home extends React.Component {
     // '这里是主页，请登录查看更多内容';
 
     return (
-      <div>
+      // <div>
+      //      <h1>关于我们</h1><br/>
+      //      <h2>堪培拉华联社简介</h2><br/>
+      //      堪培拉华联社(Federation of Chinese Community of Canberra Inc.), 英语简称 FCCCI。 FCCCI成立于1994年，由堪培拉的资深大陆学人发起组成，是目前堪培拉最大的华人社团。<br/><br/>
+      //      堪培拉华联社为非政治、非宗教、非盈利的堪培拉华人社团，宗旨是团结当地华人及其他华人团体，促进华人子弟学习中文，举办华人康乐联谊活动，关心澳大利亚社会发展，发扬优秀的中华文化，维护自身正当权益，促进澳中友好，加强澳中两国间的互惠交流。<br/><br/>
+                   
+      // </div>
+      
+
+        <div>
+        {
+          this.props.contentStr.includes("Newsboard") == false? (
+          <div>
+           
           <h1>关于我们</h1><br/>
           <h2>堪培拉华联社简介</h2><br/>
           堪培拉华联社(Federation of Chinese Community of Canberra Inc.), 英语简称 FCCCI。 FCCCI成立于1994年，由堪培拉的资深大陆学人发起组成，是目前堪培拉最大的华人社团。<br/><br/>
           堪培拉华联社为非政治、非宗教、非盈利的堪培拉华人社团，宗旨是团结当地华人及其他华人团体，促进华人子弟学习中文，举办华人康乐联谊活动，关心澳大利亚社会发展，发扬优秀的中华文化，维护自身正当权益，促进澳中友好，加强澳中两国间的互惠交流。<br/><br/>
+           
+          </div>
+        ):(
+          <div>
+
+            <Newsboard newsNum={this.props.contentStr.concat(Math.random())}/>
+          </div>  
+        )
+        }
+      </div> 
 
 
 
-      </div>  
+      // <div>
+      //   {
+      //     this.props.location['pathname'].startsWith("/Newsboard") == false? (
+      //     <div>
+           
+      //     <h1>关于我们</h1><br/>
+      //     <h2>堪培拉华联社简介</h2><br/>
+      //     堪培拉华联社(Federation of Chinese Community of Canberra Inc.), 英语简称 FCCCI。 FCCCI成立于1994年，由堪培拉的资深大陆学人发起组成，是目前堪培拉最大的华人社团。<br/><br/>
+      //     堪培拉华联社为非政治、非宗教、非盈利的堪培拉华人社团，宗旨是团结当地华人及其他华人团体，促进华人子弟学习中文，举办华人康乐联谊活动，关心澳大利亚社会发展，发扬优秀的中华文化，维护自身正当权益，促进澳中友好，加强澳中两国间的互惠交流。<br/><br/>
+           
+      //     </div>
+      //   ):(
+      //     <div>
+
+      //       <Newsboard newsNum={this.props.location['pathname']}/>
+      //     </div>  
+      //   )
+      //   }
+      // </div> 
+      
+      
+
+
       // <div>
 
       //   {Auth.isUserAuthenticated() == false ? (
@@ -124,13 +175,16 @@ class Home extends React.Component {
 //   </div>
 // );
 
-// Home.propTypes = {
-//   cardtitleP: PropTypes.string.isRequired,
-//   cardsubtitleP: PropTypes.string.isRequired
-//   // errors: PropTypes.object.isRequired,
-//   // user: PropTypes.object.isRequired
-// };
-
+Home.propTypes = {
+  contentStr: PropTypes.string.isRequired,
+  // cardtitleP: PropTypes.string.isRequired,
+  // cardsubtitleP: PropTypes.string.isRequired
+  // errors: PropTypes.object.isRequired,
+  // user: PropTypes.object.isRequired
+};
+Home.defaultProps = {
+  contentStr: 'Home',
+};
 
 
 export default Home;
