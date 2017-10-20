@@ -1,5 +1,6 @@
 # fccciRedevelopment
-Code for the coming updated fccci: http://fccci.org.au/au/
+Code for the coming updated fccci: http://fccci.org.au/au/, code base for user auth and routing: 
+https://github.com/XBLDev/ReactJSNodejsAuthRouterv4
 
 Comment 20/10/2017, 8:48 pm:
 
