@@ -49,14 +49,18 @@ class Main extends React.Component {
               centerAreaLeft, news area  <br/>  */}
             <div className="centerAreaLeft">  
               <Switch>
-                {/* <Route exact path='/' component={Home}/>     */}
+                <Route exact path='/' component={Home}/>
+
+                {/* <Route exact path='/' render={() => <Home contentStr="Home" />}/>    */}
+                 {/* <Route path='/login' component={LoginPage}/> */}
+                {/*<Route path='/signup' component={SignUpPage}/> */}
+                {/* <Route path='/Newboard/number' component={Newsboard} render={(props) => <Newsboard {...props} newsNum={this.props.location['pathname']}/>} /> */}
+                {/* <Route exact path='/Newboard/' component={Home}/> */}
+                <Route path='/Newsboard/' component={Newsboard}/>
                 
-                <Route exact path='/' render={() => <Home contentStr="Home" />}/>   
-                {/* <Route path='/login' component={LoginPage}/>
-                <Route path='/signup' component={SignUpPage}/> */}
-                {/* <Route path='/Newboard' render={() => <Newsboard newsNum={this.props.location['pathname']}/>} /> */}
-                {/* <Route path='/Newsboard/' component={Newsboard} /> */}
-                <Route path='/Newsboard/' render={() => <Home contentStr="Newsboard" />} />
+                {/* {<Route path='/Newsboard/:number' render={() => <Newsboard newsNum={0}/>} />} */}
+
+                {/* <Route path='/Newsboard/' render={() => <Home contentStr="Newsboard" />} /> */}
 
 
                 {/* <Route path='/Newsboard/' component={Home} /> */}

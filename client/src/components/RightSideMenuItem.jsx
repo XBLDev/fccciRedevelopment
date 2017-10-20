@@ -35,10 +35,10 @@ class RightSideMenuItem extends React.Component {
                     {/* <div onClick={this.onLinkClicked}>
                         {this.props.newsTitle}
                     </div> */}
-                    <Link to={"/Newsboard/".concat(this.props.newsNumber.toString())}>
+                    <Link to={"/Newsboard/".concat(this.props.newsTitle.toString())}>
                         {this.props.newsTitle}
                     </Link>
-{/* 
+                {/* 
                    { this.state.redirect == false ? (
 
                         <a onClick={this.onLinkClicked}>  {this.props.newsTitle} </a>

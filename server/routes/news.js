@@ -48,14 +48,14 @@ newsModel.find().count(function(err, count){
             var firstNews = {titleEng: 'Rain and rain unimpeded, we regret', 
                              titleCh: '风雨的无阻, 我们的无悔',
                              date: new Date().toISOString(),
-                             ContentURLCH: "https://s3-us-west-2.amazonaws.com/fccci/LATESTNEWS/Event1/Event01_CH.txt",
-                             ContentURLENG: "https://s3-us-west-2.amazonaws.com/fccci/LATESTNEWS/Event1/Event01_ENG.txt"};
+                             ContentURLCH: "someURL",
+                             ContentURLENG: "someURL"};
 
             var secondNews = {titleEng: 'Hualian Chinese School 2017 Seeking Tour of Heilongjiang Winter Camp Summary Conference', 
                              titleCh: '华联社中文学校2017年寻根之旅黑龙江冬令营总结大会',
                              date: new Date().toISOString(),
-                             ContentURLCH: "https://s3-us-west-2.amazonaws.com/fccci/LATESTNEWS/Event2/Event02_CH.txt",
-                             ContentURLENG: "https://s3-us-west-2.amazonaws.com/fccci/LATESTNEWS/Event2/Event02_ENG.txt"};
+                             ContentURLCH: "someURL",
+                             ContentURLENG: "someURL"};
 
             conn.collection('latestnews').insert(firstNews, function(err, records){
                 // console.log("Record added as "+records[0]._id);
@@ -95,6 +95,72 @@ newsModel.find().count(function(err, count){
     }
 
 })    
+
+router.get('/requestNews', (req, res) => {
+    // console.log(req);
+    // console.log(req.body);
+    // console.log("request method :" + req.method);
+    // console.log("request params 0 :" + req.params[0]);
+    // console.log("request body :" + req.body);
+    // console.log("request query :" + req.query.news);
+    
+    var nameOfTheNews = req.query.news.substring(req.query.news.lastIndexOf("/")+1, req.query.news.length);
+
+    // find each person with a last name matching 'Ghost', selecting the `name` and `occupation` fields
+    newsModel.findOne({ 'titleCh': nameOfTheNews }, 'ContentURLCH', function (err, newsURL) {
+        
+        if(err)
+        {
+            res.status(200).json({
+                message: 'FROM SERVER: request received was: '.concat('ERROR')
+                // listOfTitles: Values
+            });     
+        }
+        else
+        {
+            // console.log(newsURL['ContentURLCH']);
+            console.log('/'+newsURL['ContentURLCH'].substring(newsURL['ContentURLCH'].lastIndexOf('.com/')+5, newsURL['ContentURLCH'].length))
+            var http = require('http');
+            var str = '';
+            var options = {
+                host: 'someURL',
+                path: '/'+newsURL['ContentURLCH'].substring(newsURL['ContentURLCH'].lastIndexOf('.com/')+5, newsURL['ContentURLCH'].length)
+            };
+            http.request(options, function(response) {
+
+                response.on('data', function (chunk) {
+                        console.log(chunk);
+                        str += chunk;
+                });
+        
+                response.on('end', function () {
+                        console.log(str);
+                        res.status(200).json({
+                            message: str
+                            // message: 'FROM SERVER: request received was: '.concat('GOT URL: '.concat(newsURL['ContentURLCH']))
+                            // listOfTitles: Values
+                        });                             
+                });
+        
+                //return str;
+            })
+            // res.status(200).json({
+            //     message: 'FROM SERVER: request received was: '.concat('GOT URL: '.concat(newsURL['ContentURLCH']))
+            //     // listOfTitles: Values
+            // });     
+        }
+    // if (err) return handleError(err);
+    // console.log('%s %s is a %s.', person.name.first, person.name.last, person.occupation) // Space Ghost is a talk show host.
+    })
+
+
+    // res.status(200).json({
+    //     message: 'FROM SERVER: request received was: '.concat(nameOfTheNews)
+    //     // listOfTitles: Values
+    // });           
+})    
+
+
 
 
 router.get('/news', (req, res) => {

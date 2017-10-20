@@ -4892,6 +4892,7 @@ var Home = function (_React$Component) {
     key: 'componentDidMount',
     value: function componentDidMount() {
       console.log('Home Did Mount');
+      console.log(this.props.location['pathname']);
     }
   }, {
     key: 'componentWillUnmount',
@@ -4927,84 +4928,87 @@ var Home = function (_React$Component) {
       // var subtitle = localStorage.getItem('currentLanguage') == 'Eng' ?  'This is the home page. Log in to see the hidden content':
       // '这里是主页，请登录查看更多内容';
 
-      return (
-        // <div>
-        //      <h1>关于我们</h1><br/>
-        //      <h2>堪培拉华联社简介</h2><br/>
-        //      堪培拉华联社(Federation of Chinese Community of Canberra Inc.), 英语简称 FCCCI。 FCCCI成立于1994年，由堪培拉的资深大陆学人发起组成，是目前堪培拉最大的华人社团。<br/><br/>
-        //      堪培拉华联社为非政治、非宗教、非盈利的堪培拉华人社团，宗旨是团结当地华人及其他华人团体，促进华人子弟学习中文，举办华人康乐联谊活动，关心澳大利亚社会发展，发扬优秀的中华文化，维护自身正当权益，促进澳中友好，加强澳中两国间的互惠交流。<br/><br/>
-
-        // </div>
-
-
+      return _react2.default.createElement(
+        'div',
+        null,
         _react2.default.createElement(
-          'div',
+          'h1',
           null,
-          this.props.contentStr.includes("Newsboard") == false ? _react2.default.createElement(
-            'div',
-            null,
-            _react2.default.createElement(
-              'h1',
-              null,
-              '\u5173\u4E8E\u6211\u4EEC'
-            ),
-            _react2.default.createElement('br', null),
-            _react2.default.createElement(
-              'h2',
-              null,
-              '\u582A\u57F9\u62C9\u534E\u8054\u793E\u7B80\u4ECB'
-            ),
-            _react2.default.createElement('br', null),
-            '\u582A\u57F9\u62C9\u534E\u8054\u793E(Federation of Chinese Community of Canberra Inc.), \u82F1\u8BED\u7B80\u79F0 FCCCI\u3002 FCCCI\u6210\u7ACB\u4E8E1994\u5E74\uFF0C\u7531\u582A\u57F9\u62C9\u7684\u8D44\u6DF1\u5927\u9646\u5B66\u4EBA\u53D1\u8D77\u7EC4\u6210\uFF0C\u662F\u76EE\u524D\u582A\u57F9\u62C9\u6700\u5927\u7684\u534E\u4EBA\u793E\u56E2\u3002',
-            _react2.default.createElement('br', null),
-            _react2.default.createElement('br', null),
-            '\u582A\u57F9\u62C9\u534E\u8054\u793E\u4E3A\u975E\u653F\u6CBB\u3001\u975E\u5B97\u6559\u3001\u975E\u76C8\u5229\u7684\u582A\u57F9\u62C9\u534E\u4EBA\u793E\u56E2\uFF0C\u5B97\u65E8\u662F\u56E2\u7ED3\u5F53\u5730\u534E\u4EBA\u53CA\u5176\u4ED6\u534E\u4EBA\u56E2\u4F53\uFF0C\u4FC3\u8FDB\u534E\u4EBA\u5B50\u5F1F\u5B66\u4E60\u4E2D\u6587\uFF0C\u4E3E\u529E\u534E\u4EBA\u5EB7\u4E50\u8054\u8C0A\u6D3B\u52A8\uFF0C\u5173\u5FC3\u6FB3\u5927\u5229\u4E9A\u793E\u4F1A\u53D1\u5C55\uFF0C\u53D1\u626C\u4F18\u79C0\u7684\u4E2D\u534E\u6587\u5316\uFF0C\u7EF4\u62A4\u81EA\u8EAB\u6B63\u5F53\u6743\u76CA\uFF0C\u4FC3\u8FDB\u6FB3\u4E2D\u53CB\u597D\uFF0C\u52A0\u5F3A\u6FB3\u4E2D\u4E24\u56FD\u95F4\u7684\u4E92\u60E0\u4EA4\u6D41\u3002',
-            _react2.default.createElement('br', null),
-            _react2.default.createElement('br', null)
-          ) : _react2.default.createElement(
-            'div',
-            null,
-            _react2.default.createElement(_Newsboard2.default, { newsNum: this.props.contentStr.concat(Math.random()) })
-          )
-        )
+          '\u5173\u4E8E\u6211\u4EEC'
+        ),
+        _react2.default.createElement('br', null),
+        _react2.default.createElement(
+          'h2',
+          null,
+          '\u582A\u57F9\u62C9\u534E\u8054\u793E\u7B80\u4ECB'
+        ),
+        _react2.default.createElement('br', null),
+        '\u582A\u57F9\u62C9\u534E\u8054\u793E(Federation of Chinese Community of Canberra Inc.), \u82F1\u8BED\u7B80\u79F0 FCCCI\u3002 FCCCI\u6210\u7ACB\u4E8E1994\u5E74\uFF0C\u7531\u582A\u57F9\u62C9\u7684\u8D44\u6DF1\u5927\u9646\u5B66\u4EBA\u53D1\u8D77\u7EC4\u6210\uFF0C\u662F\u76EE\u524D\u582A\u57F9\u62C9\u6700\u5927\u7684\u534E\u4EBA\u793E\u56E2\u3002',
+        _react2.default.createElement('br', null),
+        _react2.default.createElement('br', null),
+        '\u582A\u57F9\u62C9\u534E\u8054\u793E\u4E3A\u975E\u653F\u6CBB\u3001\u975E\u5B97\u6559\u3001\u975E\u76C8\u5229\u7684\u582A\u57F9\u62C9\u534E\u4EBA\u793E\u56E2\uFF0C\u5B97\u65E8\u662F\u56E2\u7ED3\u5F53\u5730\u534E\u4EBA\u53CA\u5176\u4ED6\u534E\u4EBA\u56E2\u4F53\uFF0C\u4FC3\u8FDB\u534E\u4EBA\u5B50\u5F1F\u5B66\u4E60\u4E2D\u6587\uFF0C\u4E3E\u529E\u534E\u4EBA\u5EB7\u4E50\u8054\u8C0A\u6D3B\u52A8\uFF0C\u5173\u5FC3\u6FB3\u5927\u5229\u4E9A\u793E\u4F1A\u53D1\u5C55\uFF0C\u53D1\u626C\u4F18\u79C0\u7684\u4E2D\u534E\u6587\u5316\uFF0C\u7EF4\u62A4\u81EA\u8EAB\u6B63\u5F53\u6743\u76CA\uFF0C\u4FC3\u8FDB\u6FB3\u4E2D\u53CB\u597D\uFF0C\u52A0\u5F3A\u6FB3\u4E2D\u4E24\u56FD\u95F4\u7684\u4E92\u60E0\u4EA4\u6D41\u3002',
+        _react2.default.createElement('br', null),
+        _react2.default.createElement('br', null)
+      )
 
-        // <div>
-        //   {
-        //     this.props.location['pathname'].startsWith("/Newsboard") == false? (
-        //     <div>
+      //   <div>
+      //   {
+      //     this.props.contentStr.includes("Newsboard") == false? (
+      //     <div>
 
-        //     <h1>关于我们</h1><br/>
-        //     <h2>堪培拉华联社简介</h2><br/>
-        //     堪培拉华联社(Federation of Chinese Community of Canberra Inc.), 英语简称 FCCCI。 FCCCI成立于1994年，由堪培拉的资深大陆学人发起组成，是目前堪培拉最大的华人社团。<br/><br/>
-        //     堪培拉华联社为非政治、非宗教、非盈利的堪培拉华人社团，宗旨是团结当地华人及其他华人团体，促进华人子弟学习中文，举办华人康乐联谊活动，关心澳大利亚社会发展，发扬优秀的中华文化，维护自身正当权益，促进澳中友好，加强澳中两国间的互惠交流。<br/><br/>
+      //     <h1>关于我们</h1><br/>
+      //     <h2>堪培拉华联社简介</h2><br/>
+      //     堪培拉华联社(Federation of Chinese Community of Canberra Inc.), 英语简称 FCCCI。 FCCCI成立于1994年，由堪培拉的资深大陆学人发起组成，是目前堪培拉最大的华人社团。<br/><br/>
+      //     堪培拉华联社为非政治、非宗教、非盈利的堪培拉华人社团，宗旨是团结当地华人及其他华人团体，促进华人子弟学习中文，举办华人康乐联谊活动，关心澳大利亚社会发展，发扬优秀的中华文化，维护自身正当权益，促进澳中友好，加强澳中两国间的互惠交流。<br/><br/>
 
-        //     </div>
-        //   ):(
-        //     <div>
+      //     </div>
+      //   ):(
+      //     <div>
 
-        //       <Newsboard newsNum={this.props.location['pathname']}/>
-        //     </div>  
-        //   )
-        //   }
-        // </div> 
+      //       <Newsboard newsNum={this.props.contentStr.concat(Math.random())}/>
+      //     </div>  
+      //   )
+      //   }
+      // </div> 
 
 
-        // <div>
+      // <div>
+      //   {
+      //     this.props.location['pathname'].startsWith("/Newsboard") == false? (
+      //     <div>
 
-        //   {Auth.isUserAuthenticated() == false ? (
+      //     <h1>关于我们</h1><br/>
+      //     <h2>堪培拉华联社简介</h2><br/>
+      //     堪培拉华联社(Federation of Chinese Community of Canberra Inc.), 英语简称 FCCCI。 FCCCI成立于1994年，由堪培拉的资深大陆学人发起组成，是目前堪培拉最大的华人社团。<br/><br/>
+      //     堪培拉华联社为非政治、非宗教、非盈利的堪培拉华人社团，宗旨是团结当地华人及其他华人团体，促进华人子弟学习中文，举办华人康乐联谊活动，关心澳大利亚社会发展，发扬优秀的中华文化，维护自身正当权益，促进澳中友好，加强澳中两国间的互惠交流。<br/><br/>
 
-        // <Card className="container">
+      //     </div>
+      //   ):(
+      //     <div>
 
-        //     <CardTitle title={this.props.cardtitleP} subtitle={this.props.cardsubtitleP} />  
+      //       <Newsboard newsNum={this.props.location['pathname']}/>
+      //     </div>  
+      //   )
+      //   }
+      // </div> 
 
 
-        // </Card>):
-        // (
-        //   <DashboardPage/>
-        // )}
-        // </div>    
+      // <div>
 
-      );
+      //   {Auth.isUserAuthenticated() == false ? (
+
+      // <Card className="container">
+
+      //     <CardTitle title={this.props.cardtitleP} subtitle={this.props.cardsubtitleP} />  
+
+
+      // </Card>):
+      // (
+      //   <DashboardPage/>
+      // )}
+      // </div>    
+
+      ;
     }
   }]);
 
@@ -6041,19 +6045,94 @@ var Newsboard = function (_React$Component) {
     function Newsboard(props) {
         _classCallCheck(this, Newsboard);
 
-        return _possibleConstructorReturn(this, (Newsboard.__proto__ || Object.getPrototypeOf(Newsboard)).call(this, props));
+        var _this = _possibleConstructorReturn(this, (Newsboard.__proto__ || Object.getPrototypeOf(Newsboard)).call(this, props));
+
+        _this.state = {
+            currentURL: _this.props.location['pathname'],
+            currentContent: '',
+            loadingContent: false
+        };
+        return _this;
     }
 
     _createClass(Newsboard, [{
         key: 'componentDidMount',
         value: function componentDidMount() {
+            var _this2 = this;
+
             console.log('Newsboard Did Mount');
-            // console.log(this.props.location['pathname'])
+            // console.log('newsNum: ',this.props.newsNum)
+            console.log(this.props.location['pathname']);
+
+            this.setState({
+                currentURL: this.props.location['pathname']
+            });
+            this.setState({
+                loadingContent: true
+            });
+
+            var xhr = new XMLHttpRequest();
+            xhr.open('get', '/news/requestNews?news=' + encodeURI(this.state.currentURL));
+            xhr.setRequestHeader('Content-Type', 'application/json');
+            xhr.responseType = 'json';
+            xhr.addEventListener('load', function () {
+                if (xhr.status === 200) {
+                    console.log(xhr.response.message);
+                    // console.log('Right Side Menu Got GET /NEWS');
+                    _this2.setState({
+                        // numberOfNews: xhr.response.message,
+                        currentContent: xhr.response.message
+
+                    });
+                    _this2.setState({
+                        loadingContent: false
+                    });
+                }
+            });
+            // xhr.send(this.props.location['pathname']);    
+            xhr.send();
         }
     }, {
         key: 'componentWillUnmount',
         value: function componentWillUnmount() {
             console.log('Newsboard WILL UNMOUNT!');
+        }
+    }, {
+        key: 'componentWillReceiveProps',
+        value: function componentWillReceiveProps(nextProps) {
+            var _this3 = this;
+
+            console.log('Newsboard receive props!');
+            //   console.log(this.props.location['pathname'])
+            console.log(nextProps.location['pathname']);
+
+            this.setState({
+                currentURL: nextProps.location['pathname']
+            });
+            this.setState({
+                loadingContent: true
+            });
+
+            var xhr = new XMLHttpRequest();
+            xhr.open('get', '/news/requestNews?news=' + encodeURI(nextProps.location['pathname']));
+            xhr.setRequestHeader('Content-Type', 'application/json');
+            xhr.responseType = 'json';
+            xhr.addEventListener('load', function () {
+                if (xhr.status === 200) {
+                    console.log('GOT MESSAGE BACK FROM SERVER: ', xhr.response.message);
+                    // console.log('Right Side Menu Got GET /NEWS');
+                    _this3.setState({
+                        // numberOfNews: xhr.response.message,
+                        currentContent: xhr.response.message
+
+                    });
+                    _this3.setState({
+                        loadingContent: false
+                    });
+                }
+            });
+            // xhr.send(this.props.location['pathname']);    
+            xhr.send();
         }
 
         // this.props.location
@@ -6064,7 +6143,7 @@ var Newsboard = function (_React$Component) {
             return _react2.default.createElement(
                 'div',
                 null,
-                this.props.newsNum
+                this.state.currentContent
             );
         }
     }]);
@@ -6072,15 +6151,15 @@ var Newsboard = function (_React$Component) {
     return Newsboard;
 }(_react2.default.Component);
 
-Newsboard.propTypes = {
-    newsNum: _propTypes2.default.string.isRequired
-    // newsContentTitle: PropTypes.string.isRequired,
+// Newsboard.propTypes = {
+//     newsNum: PropTypes.string.isRequired,
+//     // newsContentTitle: PropTypes.string.isRequired,
 
-    // newsContentURL: PropTypes.string.isRequired,
-    //   cardsubtitleP: PropTypes.string.isRequired
-    // errors: PropTypes.object.isRequired,
-    // user: PropTypes.object.isRequired
-};
+//     // newsContentURL: PropTypes.string.isRequired,
+//   //   cardsubtitleP: PropTypes.string.isRequired
+//     // errors: PropTypes.object.isRequired,
+//     // user: PropTypes.object.isRequired
+// };
 
 exports.default = Newsboard;
 
@@ -6691,11 +6770,20 @@ var RightSideMenu = function (_React$Component) {
     key: 'render',
     value: function render() {
 
+      var items = [];
+      for (var i = 0; i < this.state.listOfLatestNews.length; i++) {
+        // indents.push(<span className='indent' key={i}></span>);
+        items.push(_react2.default.createElement(_RightSideMenuItem2.default, {
+          key: i,
+          newsTitle: this.state.listOfLatestNews[i]['titleCh'],
+          newsNumber: i
+        }));
+      }
+
       return _react2.default.createElement(
         'div',
         { className: 'centerAreaRight' },
-        this.state.listOfLatestNews.length == 0 ? _react2.default.createElement(_RightSideMenuItem2.default, { newsTitle: 'loading...', newsNumber: -1 }) : _react2.default.createElement(_RightSideMenuItem2.default, { newsTitle: this.state.listOfLatestNews[0]['titleCh'], newsNumber: 0 }),
-        this.state.listOfLatestNews.length == 0 ? _react2.default.createElement(_RightSideMenuItem2.default, { newsTitle: 'loading...', newsNumber: -1 }) : _react2.default.createElement(_RightSideMenuItem2.default, { newsTitle: this.state.listOfLatestNews[1]['titleCh'], newsNumber: 1 })
+        items
       );
     }
   }]);
@@ -35978,7 +36066,7 @@ var App = function App() {
       _react2.default.createElement(_Main2.default, null)
     )
 
-    // </MuiThemeProvider>
+    //  </MuiThemeProvider>
 
   );
 };
@@ -36111,8 +36199,8 @@ var Header = function (_React$Component) {
               'div',
               { className: 'menuItem' },
               _react2.default.createElement(
-                'a',
-                { className: 'linkButton', href: '' },
+                _reactRouterDom.Link,
+                { to: "/" },
                 '\u5173\u4E8E\u6211\u4EEC'
               )
             ),
@@ -36178,8 +36266,8 @@ var Header = function (_React$Component) {
               'div',
               { className: 'menuItem' },
               _react2.default.createElement(
-                'a',
-                { className: 'linkButton', href: '' },
+                _reactRouterDom.Link,
+                { to: "/login" },
                 '\u767B\u5F55'
               )
             )
@@ -36388,12 +36476,8 @@ var Main = function (_React$Component) {
             _react2.default.createElement(
               _reactRouterDom.Switch,
               null,
-              _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', render: function render() {
-                  return _react2.default.createElement(_Home2.default, { contentStr: 'Home' });
-                } }),
-              _react2.default.createElement(_reactRouterDom.Route, { path: '/Newsboard/', render: function render() {
-                  return _react2.default.createElement(_Home2.default, { contentStr: 'Newsboard' });
-                } })
+              _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', component: _Home2.default }),
+              _react2.default.createElement(_reactRouterDom.Route, { path: '/Newsboard/', component: _Newsboard2.default })
             )
           ),
           _react2.default.createElement(_RightSideMenu2.default, null)
@@ -43170,7 +43254,7 @@ var RightSideMenuItem = function (_React$Component) {
                 { className: 'centerAreaRightItem' },
                 _react2.default.createElement(
                     _reactRouterDom.Link,
-                    { to: "/Newsboard/".concat(this.props.newsNumber.toString()) },
+                    { to: "/Newsboard/".concat(this.props.newsTitle.toString()) },
                     this.props.newsTitle
                 )
             );

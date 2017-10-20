@@ -48,6 +48,7 @@ class Home extends React.Component {
 
   componentDidMount() {
     console.log('Home Did Mount');
+    console.log(this.props.location['pathname']);
   }
 
   componentWillUnmount() {
@@ -81,34 +82,34 @@ class Home extends React.Component {
     // '这里是主页，请登录查看更多内容';
 
     return (
-      // <div>
-      //      <h1>关于我们</h1><br/>
-      //      <h2>堪培拉华联社简介</h2><br/>
-      //      堪培拉华联社(Federation of Chinese Community of Canberra Inc.), 英语简称 FCCCI。 FCCCI成立于1994年，由堪培拉的资深大陆学人发起组成，是目前堪培拉最大的华人社团。<br/><br/>
-      //      堪培拉华联社为非政治、非宗教、非盈利的堪培拉华人社团，宗旨是团结当地华人及其他华人团体，促进华人子弟学习中文，举办华人康乐联谊活动，关心澳大利亚社会发展，发扬优秀的中华文化，维护自身正当权益，促进澳中友好，加强澳中两国间的互惠交流。<br/><br/>
+      <div>
+           <h1>关于我们</h1><br/>
+           <h2>堪培拉华联社简介</h2><br/>
+           堪培拉华联社(Federation of Chinese Community of Canberra Inc.), 英语简称 FCCCI。 FCCCI成立于1994年，由堪培拉的资深大陆学人发起组成，是目前堪培拉最大的华人社团。<br/><br/>
+           堪培拉华联社为非政治、非宗教、非盈利的堪培拉华人社团，宗旨是团结当地华人及其他华人团体，促进华人子弟学习中文，举办华人康乐联谊活动，关心澳大利亚社会发展，发扬优秀的中华文化，维护自身正当权益，促进澳中友好，加强澳中两国间的互惠交流。<br/><br/>
                    
-      // </div>
+      </div>
       
 
-        <div>
-        {
-          this.props.contentStr.includes("Newsboard") == false? (
-          <div>
+      //   <div>
+      //   {
+      //     this.props.contentStr.includes("Newsboard") == false? (
+      //     <div>
            
-          <h1>关于我们</h1><br/>
-          <h2>堪培拉华联社简介</h2><br/>
-          堪培拉华联社(Federation of Chinese Community of Canberra Inc.), 英语简称 FCCCI。 FCCCI成立于1994年，由堪培拉的资深大陆学人发起组成，是目前堪培拉最大的华人社团。<br/><br/>
-          堪培拉华联社为非政治、非宗教、非盈利的堪培拉华人社团，宗旨是团结当地华人及其他华人团体，促进华人子弟学习中文，举办华人康乐联谊活动，关心澳大利亚社会发展，发扬优秀的中华文化，维护自身正当权益，促进澳中友好，加强澳中两国间的互惠交流。<br/><br/>
+      //     <h1>关于我们</h1><br/>
+      //     <h2>堪培拉华联社简介</h2><br/>
+      //     堪培拉华联社(Federation of Chinese Community of Canberra Inc.), 英语简称 FCCCI。 FCCCI成立于1994年，由堪培拉的资深大陆学人发起组成，是目前堪培拉最大的华人社团。<br/><br/>
+      //     堪培拉华联社为非政治、非宗教、非盈利的堪培拉华人社团，宗旨是团结当地华人及其他华人团体，促进华人子弟学习中文，举办华人康乐联谊活动，关心澳大利亚社会发展，发扬优秀的中华文化，维护自身正当权益，促进澳中友好，加强澳中两国间的互惠交流。<br/><br/>
            
-          </div>
-        ):(
-          <div>
+      //     </div>
+      //   ):(
+      //     <div>
 
-            <Newsboard newsNum={this.props.contentStr.concat(Math.random())}/>
-          </div>  
-        )
-        }
-      </div> 
+      //       <Newsboard newsNum={this.props.contentStr.concat(Math.random())}/>
+      //     </div>  
+      //   )
+      //   }
+      // </div> 
 
 
 

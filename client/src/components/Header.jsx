@@ -88,7 +88,10 @@ class Header extends React.Component {
               <div className="menuAreaLeft">
                 {/* Menu Items */}
                 <div className="menuItem">
-                  <a className="linkButton" href="">关于我们</a>
+                  {/* <a className="linkButton" href="">关于我们</a> */}
+                  <Link to={"/"}>                    
+                  关于我们
+                  </Link>
                 </div>
                 <div className="menuItem">
                   <a className="linkButton" href="">活动看板</a>
@@ -111,9 +114,11 @@ class Header extends React.Component {
               </div>  
               <div className="menuAreaRight">
                 <div className="menuItem">  
-                  <a className="linkButton" href="">登录</a>
+                  {/* <a className="linkButton" href="">登录</a> */}
                   {/* <a className="linkButton" href="">新用户</a> */}
-                  
+                  <Link to={"/login"}>
+                  登录
+                  </Link>
                 </div>
               </div>                           
             </div>  

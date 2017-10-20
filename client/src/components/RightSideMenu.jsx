@@ -51,36 +51,39 @@ class RightSideMenu extends React.Component {
 
   render() {
 
+    var items = [];
+    for (var i = 0; i < this.state.listOfLatestNews.length; i++) {
+      // indents.push(<span className='indent' key={i}></span>);
+      items.push
+      (
+        <RightSideMenuItem
+          key={i}
+          newsTitle={this.state.listOfLatestNews[i]['titleCh']}           
+          newsNumber={i}
+        />
+      );
+    }
 
     return (
           <div className="centerAreaRight">
-            
-            {this.state.listOfLatestNews.length == 0?(
-              <RightSideMenuItem newsTitle={'loading...'} newsNumber={-1}/>
-            ):
-            (
-              <RightSideMenuItem newsTitle={this.state.listOfLatestNews[0]['titleCh']} newsNumber={0}/>
+              {items}
+              {/* {this.state.listOfLatestNews.length == 0?(
+                <RightSideMenuItem newsTitle={'loading...'} newsNumber={-1}/>
+              ):
+              (
+                <RightSideMenuItem newsTitle={this.state.listOfLatestNews[0]['titleCh']} newsNumber={0}/>
 
-            ) 
-            }
+              ) 
+              }
 
-            {this.state.listOfLatestNews.length == 0?(
-              <RightSideMenuItem newsTitle={'loading...'} newsNumber={-1}/>
-            ):
-            (
-              <RightSideMenuItem newsTitle={this.state.listOfLatestNews[1]['titleCh']} newsNumber={1}/>
+              {this.state.listOfLatestNews.length == 0?(
+                <RightSideMenuItem newsTitle={'loading...'} newsNumber={-1}/>
+              ):
+              (
+                <RightSideMenuItem newsTitle={this.state.listOfLatestNews[1]['titleCh']} newsNumber={1}/>
 
-            ) 
-            }            
-
-            {/* <div className="centerAreaRightItem">  
-                <a href="">母亲节爱心慈善跑</a>           
-            </div>
-
-            <div className="centerAreaRightItem">  
-                <a href="">风雨的无阻，我们的无悔</a>           
-            </div>     */}
-
+              ) 
+              }             */}
 
           </div>    
     )
