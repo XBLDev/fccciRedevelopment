@@ -2,6 +2,17 @@
 Code for the coming updated fccci: http://fccci.org.au/au/, code base for user auth and routing: 
 https://github.com/XBLDev/ReactJSNodejsAuthRouterv4
 
+Comment 23/10/2017, 8:48 pm:
+
+The backend can now read a file on Amazon S3 and send it back when the file is finished, previously
+the http request didn't work because to get a file from Amazon S3 a https request is required.
+
+Upon receiving the entire file string, the div renders the entire thing without new line breaks 
+which is contained in the string sent back by the server. Odd but the solution is simple: make a 
+new newsParagraph class, split the string sent back by the server by the return sign, and pass each
+individual paragraph as property to newsParagraph class. This solution also helps I think if I need
+to insert some images or style some paragraphs, seperating the paragraphs certainly makes it easier.
+
 Comment 20/10/2017, 8:48 pm:
 
 The event list on the right can now automatically generate list of events by reading the data

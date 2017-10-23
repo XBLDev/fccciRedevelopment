@@ -6031,6 +6031,10 @@ var _propTypes2 = _interopRequireDefault(_propTypes);
 
 var _reactRouterDom = __webpack_require__(12);
 
+var _NewsboardParagraph = __webpack_require__(309);
+
+var _NewsboardParagraph2 = _interopRequireDefault(_NewsboardParagraph);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -6048,6 +6052,7 @@ var Newsboard = function (_React$Component) {
         var _this = _possibleConstructorReturn(this, (Newsboard.__proto__ || Object.getPrototypeOf(Newsboard)).call(this, props));
 
         _this.state = {
+            listOfParagraphs: [],
             currentURL: _this.props.location['pathname'],
             currentContent: '',
             loadingContent: false
@@ -6077,7 +6082,7 @@ var Newsboard = function (_React$Component) {
             xhr.responseType = 'json';
             xhr.addEventListener('load', function () {
                 if (xhr.status === 200) {
-                    console.log(xhr.response.message);
+                    // console.log(xhr.response.message);
                     // console.log('Right Side Menu Got GET /NEWS');
                     _this2.setState({
                         // numberOfNews: xhr.response.message,
@@ -6087,6 +6092,12 @@ var Newsboard = function (_React$Component) {
                     _this2.setState({
                         loadingContent: false
                     });
+
+                    var paragraphs = _this2.state.currentContent.split("\n");
+                    _this2.setState({
+                        listOfParagraphs: paragraphs
+                    });
+                    console.log(_this2.state.listOfParagraphs);
                 }
             });
             // xhr.send(this.props.location['pathname']);    
@@ -6106,6 +6117,7 @@ var Newsboard = function (_React$Component) {
             //   console.log(this.props.location['pathname'])
             console.log(nextProps.location['pathname']);
 
+            this.setState({ listOfParagraphs: [] });
             this.setState({
                 currentURL: nextProps.location['pathname']
             });
@@ -6119,7 +6131,7 @@ var Newsboard = function (_React$Component) {
             xhr.responseType = 'json';
             xhr.addEventListener('load', function () {
                 if (xhr.status === 200) {
-                    console.log('GOT MESSAGE BACK FROM SERVER: ', xhr.response.message);
+                    //   console.log('GOT MESSAGE BACK FROM SERVER: ',xhr.response.message);
                     // console.log('Right Side Menu Got GET /NEWS');
                     _this3.setState({
                         // numberOfNews: xhr.response.message,
@@ -6128,6 +6140,11 @@ var Newsboard = function (_React$Component) {
                     });
                     _this3.setState({
                         loadingContent: false
+                    });
+
+                    var paragraphs = _this3.state.currentContent.split("\n");
+                    _this3.setState({
+                        listOfParagraphs: paragraphs
                     });
                 }
             });
@@ -6140,10 +6157,19 @@ var Newsboard = function (_React$Component) {
     }, {
         key: 'render',
         value: function render() {
+
+            var items = [];
+            for (var i = 0; i < this.state.listOfParagraphs.length; i++) {
+                items.push(_react2.default.createElement(_NewsboardParagraph2.default, {
+                    key: i,
+                    paragraphText: this.state.listOfParagraphs[i]
+                }));
+            }
+
             return _react2.default.createElement(
                 'div',
-                null,
-                this.state.currentContent
+                { className: 'centerAreaLeft' },
+                this.state.listOfParagraphs.length == 0 ? _react2.default.createElement(_NewsboardParagraph2.default, { paragraphText: 'loading...' }) : items
             );
         }
     }]);
@@ -43273,6 +43299,72 @@ RightSideMenuItem.propTypes = {
 };
 
 exports.default = RightSideMenuItem;
+
+/***/ }),
+/* 309 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(1);
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var NewsboardParagraph = function (_React$Component) {
+    _inherits(NewsboardParagraph, _React$Component);
+
+    function NewsboardParagraph(props) {
+        _classCallCheck(this, NewsboardParagraph);
+
+        return _possibleConstructorReturn(this, (NewsboardParagraph.__proto__ || Object.getPrototypeOf(NewsboardParagraph)).call(this, props));
+
+        // this.state = {
+
+        // };
+    }
+
+    _createClass(NewsboardParagraph, [{
+        key: 'componentDidMount',
+        value: function componentDidMount() {}
+    }, {
+        key: 'render',
+        value: function render() {
+            return _react2.default.createElement(
+                'div',
+                { className: 'centerAreaLeftItem' },
+                this.props.paragraphText
+            );
+        }
+    }]);
+
+    return NewsboardParagraph;
+}(_react2.default.Component);
+
+NewsboardParagraph.propTypes = {
+    paragraphText: _propTypes2.default.string.isRequired
+
+};
+
+exports.default = NewsboardParagraph;
 
 /***/ })
 /******/ ]);

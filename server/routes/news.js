@@ -97,13 +97,7 @@ newsModel.find().count(function(err, count){
 })    
 
 router.get('/requestNews', (req, res) => {
-    // console.log(req);
-    // console.log(req.body);
-    // console.log("request method :" + req.method);
-    // console.log("request params 0 :" + req.params[0]);
-    // console.log("request body :" + req.body);
-    // console.log("request query :" + req.query.news);
-    
+    console.log('SERVER: requestNews called, params: ', req.query.news);
     var nameOfTheNews = req.query.news.substring(req.query.news.lastIndexOf("/")+1, req.query.news.length);
 
     // find each person with a last name matching 'Ghost', selecting the `name` and `occupation` fields
@@ -118,46 +112,64 @@ router.get('/requestNews', (req, res) => {
         }
         else
         {
-            // console.log(newsURL['ContentURLCH']);
-            console.log('/'+newsURL['ContentURLCH'].substring(newsURL['ContentURLCH'].lastIndexOf('.com/')+5, newsURL['ContentURLCH'].length))
+            console.log('Found news with the same news name in the DB, the CH URL for file is: ',newsURL['ContentURLCH']);
             var http = require('http');
+            var https = require('https');            
+            var fs = require('fs');
             var str = '';
-            var options = {
-                host: 'someURL',
-                path: '/'+newsURL['ContentURLCH'].substring(newsURL['ContentURLCH'].lastIndexOf('.com/')+5, newsURL['ContentURLCH'].length)
-            };
-            http.request(options, function(response) {
+            // var file = fs.createWriteStream(dest);
+            https.get(newsURL['ContentURLCH'], function(response) {
 
                 response.on('data', function (chunk) {
-                        console.log(chunk);
+                        console.log('SERVER: chuck data: ',chunk);
                         str += chunk;
                 });
-        
+                
                 response.on('end', function () {
-                        console.log(str);
+                        // console.log(str);
+                        console.log('SERVER FINISHED DOWNLOADING FILE: ',str);
                         res.status(200).json({
-                            message: str
-                            // message: 'FROM SERVER: request received was: '.concat('GOT URL: '.concat(newsURL['ContentURLCH']))
-                            // listOfTitles: Values
+                            message: str                    
+                            // message: 'SERVER: GOT ENTIRE FILE IN A STRING FROM THE FILE: '.concat(newsURL['ContentURLCH'])
                         });                             
                 });
-        
-                //return str;
-            })
+
+            //   response.pipe(file);
+            //   file.on('finish', function() {
+            //     file.close(cb);
+            //   });
+            });
+
             // res.status(200).json({
-            //     message: 'FROM SERVER: request received was: '.concat('GOT URL: '.concat(newsURL['ContentURLCH']))
-            //     // listOfTitles: Values
-            // });     
+            //     message: 'FROM SERVER: the CH URL for file for the current newboard: '.concat(newsURL['ContentURLCH'])
+            // });                 
+            // console.log('/'+newsURL['ContentURLCH'].substring(newsURL['ContentURLCH'].lastIndexOf('.com/')+5, newsURL['ContentURLCH'].length))
+            // var http = require('http');
+            // var str = '';
+            // var options = {
+            //     host: 'someURL',
+            //     path: '/'+newsURL['ContentURLCH'].substring(newsURL['ContentURLCH'].lastIndexOf('.com/')+5, newsURL['ContentURLCH'].length)
+            // };
+            // http.request(options, function(response) {
+
+            //     response.on('data', function (chunk) {
+            //             console.log(chunk);
+            //             str += chunk;
+            //     });
+        
+            //     response.on('end', function () {
+            //             console.log(str);
+            //             res.status(200).json({
+            //                 message: str
+
+            //             });                             
+            //     });
+        
+            // })
+
         }
-    // if (err) return handleError(err);
-    // console.log('%s %s is a %s.', person.name.first, person.name.last, person.occupation) // Space Ghost is a talk show host.
     })
 
-
-    // res.status(200).json({
-    //     message: 'FROM SERVER: request received was: '.concat(nameOfTheNews)
-    //     // listOfTitles: Values
-    // });           
 })    
 
 

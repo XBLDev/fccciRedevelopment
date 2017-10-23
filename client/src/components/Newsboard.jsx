@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom'
 import {Redirect} from 'react-router-dom';
-
+import NewsboardParagraph from './NewsboardParagraph.jsx';
 
 class Newsboard extends React.Component {
 
@@ -10,6 +10,7 @@ class Newsboard extends React.Component {
         super(props);
 
         this.state = {
+            listOfParagraphs: [],
             currentURL: this.props.location['pathname'],
             currentContent: '',
             loadingContent: false
@@ -36,16 +37,22 @@ class Newsboard extends React.Component {
         xhr.responseType = 'json';
         xhr.addEventListener('load', () => {
         if (xhr.status === 200) {
-            console.log(xhr.response.message);
+            // console.log(xhr.response.message);
             // console.log('Right Side Menu Got GET /NEWS');
             this.setState({
             // numberOfNews: xhr.response.message,
                currentContent: xhr.response.message
-            
+                
             });
             this.setState({
               loadingContent: false
             });
+
+            var paragraphs = this.state.currentContent.split("\n");
+            this.setState({
+                listOfParagraphs: paragraphs                    
+            });
+            console.log(this.state.listOfParagraphs);
 
         }
         });
@@ -65,6 +72,7 @@ class Newsboard extends React.Component {
     //   console.log(this.props.location['pathname'])
       console.log(nextProps.location['pathname'])
 
+      this.setState({listOfParagraphs: []});
       this.setState({
         currentURL: nextProps.location['pathname']
       });
@@ -79,7 +87,7 @@ class Newsboard extends React.Component {
       xhr.responseType = 'json';
       xhr.addEventListener('load', () => {
       if (xhr.status === 200) {
-          console.log('GOT MESSAGE BACK FROM SERVER: ',xhr.response.message);
+        //   console.log('GOT MESSAGE BACK FROM SERVER: ',xhr.response.message);
           // console.log('Right Side Menu Got GET /NEWS');
           this.setState({
           // numberOfNews: xhr.response.message,
@@ -90,6 +98,12 @@ class Newsboard extends React.Component {
             loadingContent: false
           });
 
+          var paragraphs = this.state.currentContent.split("\n");
+          this.setState({
+              listOfParagraphs: paragraphs                    
+          });
+
+
       }
       });
       // xhr.send(this.props.location['pathname']);    
@@ -99,13 +113,33 @@ class Newsboard extends React.Component {
 
     // this.props.location
     render() {
-        return (
-        <div>
-            {/* this is news board */}
 
-                {
-                    this.state.currentContent
-                }
+
+        var items = [];
+        for (var i = 0; i < this.state.listOfParagraphs.length; i++) 
+        {
+          items.push
+          (       
+            <NewsboardParagraph
+              key={i}
+              paragraphText={this.state.listOfParagraphs[i]}
+            />
+          );
+        }
+
+
+        return (
+        <div className='centerAreaLeft'>
+             {this.state.listOfParagraphs.length == 0 ?
+             (
+                <NewsboardParagraph paragraphText='loading...' />
+
+             ):
+             (
+                items
+     
+             )
+             }
         </div>    
         
         )            

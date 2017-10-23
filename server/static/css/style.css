@@ -142,6 +142,28 @@ a:hover {
   /* overflow:auto */ /*<-----THIS WILL GENERATE A HORIZONTAL SCROLL BAR IF A LINE IS TOO LONG*/
 }  
 
+.centerAreaLeftItem{
+
+  margin-left: 0vw;
+  margin-right: 0vw;
+  margin-top: 0vw;
+  margin-bottom: 1vw;  
+
+  width: 70vw;
+  height: auto;/*30vh*/
+  word-wrap: break-word;
+
+  background: rgba(0, 255, 0, 1);
+  color: rgba(0, 0, 0, 1);  
+
+
+  align-content: top;
+  align-items: top;   
+  vertical-align: top;  
+  text-align: left;
+
+}
+
 
 .centerAreaLeft{
 
