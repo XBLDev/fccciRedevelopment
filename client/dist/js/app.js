@@ -6031,7 +6031,7 @@ var _propTypes2 = _interopRequireDefault(_propTypes);
 
 var _reactRouterDom = __webpack_require__(12);
 
-var _NewsboardParagraph = __webpack_require__(309);
+var _NewsboardParagraph = __webpack_require__(295);
 
 var _NewsboardParagraph2 = _interopRequireDefault(_NewsboardParagraph);
 
@@ -6065,6 +6065,7 @@ var Newsboard = function (_React$Component) {
         value: function componentDidMount() {
             var _this2 = this;
 
+            document.title = this.props.location['pathname'].substring(this.props.location['pathname'].lastIndexOf('/') + 1, this.props.location['pathname'].length);
             console.log('Newsboard Did Mount');
             // console.log('newsNum: ',this.props.newsNum)
             console.log(this.props.location['pathname']);
@@ -6112,6 +6113,8 @@ var Newsboard = function (_React$Component) {
         key: 'componentWillReceiveProps',
         value: function componentWillReceiveProps(nextProps) {
             var _this3 = this;
+
+            document.title = nextProps.location['pathname'].substring(nextProps.location['pathname'].lastIndexOf('/') + 1, nextProps.location['pathname'].length);
 
             console.log('Newsboard receive props!');
             //   console.log(this.props.location['pathname'])
@@ -6206,11 +6209,11 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRouterDom = __webpack_require__(12);
 
-var _FullRoster = __webpack_require__(295);
+var _FullRoster = __webpack_require__(296);
 
 var _FullRoster2 = _interopRequireDefault(_FullRoster);
 
-var _Player = __webpack_require__(296);
+var _Player = __webpack_require__(297);
 
 var _Player2 = _interopRequireDefault(_Player);
 
@@ -6319,7 +6322,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _LoginForm = __webpack_require__(297);
+var _LoginForm = __webpack_require__(298);
 
 var _LoginForm2 = _interopRequireDefault(_LoginForm);
 
@@ -6499,7 +6502,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = undefined;
 
-var _RaisedButton = __webpack_require__(298);
+var _RaisedButton = __webpack_require__(299);
 
 var _RaisedButton2 = _interopRequireDefault(_RaisedButton);
 
@@ -6519,7 +6522,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = undefined;
 
-var _TextField = __webpack_require__(299);
+var _TextField = __webpack_require__(300);
 
 var _TextField2 = _interopRequireDefault(_TextField);
 
@@ -6544,7 +6547,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _SignUpForm = __webpack_require__(307);
+var _SignUpForm = __webpack_require__(308);
 
 var _SignUpForm2 = _interopRequireDefault(_SignUpForm);
 
@@ -6739,7 +6742,7 @@ var _LanguageSetting = __webpack_require__(45);
 
 var _LanguageSetting2 = _interopRequireDefault(_LanguageSetting);
 
-var _RightSideMenuItem = __webpack_require__(308);
+var _RightSideMenuItem = __webpack_require__(309);
 
 var _RightSideMenuItem2 = _interopRequireDefault(_RightSideMenuItem);
 
@@ -40856,6 +40859,99 @@ exports.default = Dashboard;
 
 
 Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(1);
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _NewsboardParagraphElement = __webpack_require__(310);
+
+var _NewsboardParagraphElement2 = _interopRequireDefault(_NewsboardParagraphElement);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var NewsboardParagraph = function (_React$Component) {
+    _inherits(NewsboardParagraph, _React$Component);
+
+    function NewsboardParagraph(props) {
+        _classCallCheck(this, NewsboardParagraph);
+
+        return _possibleConstructorReturn(this, (NewsboardParagraph.__proto__ || Object.getPrototypeOf(NewsboardParagraph)).call(this, props));
+
+        // this.state = {
+
+        // };
+    }
+
+    _createClass(NewsboardParagraph, [{
+        key: 'componentDidMount',
+        value: function componentDidMount() {}
+    }, {
+        key: 'render',
+        value: function render() {
+
+            // var items = [];
+            // var elements = this.props.paragraphText.split(" ");
+            // for (var i = 0; i < elements.length; i++) 
+            // {
+            //   items.push
+            //   (       
+            //     <NewsboardParagraphElement
+            //       key={i}
+            //       ElementContent={elements[i]}
+            //     />
+            //   );
+            // }
+
+            return _react2.default.createElement(
+                'div',
+                { className: 'centerAreaLeftItem' },
+                this.props.paragraphText.lastIndexOf('<h1>') != -1 ? _react2.default.createElement(
+                    'h1',
+                    null,
+                    this.props.paragraphText.substring(4, this.props.paragraphText.length - 6)
+                ) : this.props.paragraphText.lastIndexOf('<img src=') != -1 ? _react2.default.createElement('img', { src: this.props.paragraphText.substring(this.props.paragraphText.lastIndexOf('<img src=') + '<img src='.length + 7, this.props.paragraphText.length - 5) })
+
+                // this.props.paragraphText.substring
+                // (this.props.paragraphText.lastIndexOf('<img src=')+'<img src='.length+7, 
+                // this.props.paragraphText.length-5)
+                : this.props.paragraphText
+            );
+        }
+    }]);
+
+    return NewsboardParagraph;
+}(_react2.default.Component);
+
+NewsboardParagraph.propTypes = {
+    paragraphText: _propTypes2.default.string.isRequired
+
+};
+
+exports.default = NewsboardParagraph;
+
+/***/ }),
+/* 296 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
@@ -40898,7 +40994,7 @@ var FullRoster = function FullRoster() {
 exports.default = FullRoster;
 
 /***/ }),
-/* 296 */
+/* 297 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -40960,7 +41056,7 @@ var Player = function Player(props) {
 exports.default = Player;
 
 /***/ }),
-/* 297 */
+/* 298 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -41076,7 +41172,7 @@ LoginForm.propTypes = {
 exports.default = LoginForm;
 
 /***/ }),
-/* 298 */
+/* 299 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -41568,7 +41664,7 @@ exports.default = RaisedButton;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
 /***/ }),
-/* 299 */
+/* 300 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -41630,19 +41726,19 @@ var _transitions = __webpack_require__(13);
 
 var _transitions2 = _interopRequireDefault(_transitions);
 
-var _EnhancedTextarea = __webpack_require__(300);
+var _EnhancedTextarea = __webpack_require__(301);
 
 var _EnhancedTextarea2 = _interopRequireDefault(_EnhancedTextarea);
 
-var _TextFieldHint = __webpack_require__(304);
+var _TextFieldHint = __webpack_require__(305);
 
 var _TextFieldHint2 = _interopRequireDefault(_TextFieldHint);
 
-var _TextFieldLabel = __webpack_require__(305);
+var _TextFieldLabel = __webpack_require__(306);
 
 var _TextFieldLabel2 = _interopRequireDefault(_TextFieldLabel);
 
-var _TextFieldUnderline = __webpack_require__(306);
+var _TextFieldUnderline = __webpack_require__(307);
 
 var _TextFieldUnderline2 = _interopRequireDefault(_TextFieldUnderline);
 
@@ -42166,7 +42262,7 @@ exports.default = TextField;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
 /***/ }),
-/* 300 */
+/* 301 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42216,7 +42312,7 @@ var _propTypes = __webpack_require__(1);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _reactEventListener = __webpack_require__(301);
+var _reactEventListener = __webpack_require__(302);
 
 var _reactEventListener2 = _interopRequireDefault(_reactEventListener);
 
@@ -42430,7 +42526,7 @@ exports.default = EnhancedTextarea;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
 /***/ }),
-/* 301 */
+/* 302 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42492,7 +42588,7 @@ var _warning = __webpack_require__(9);
 
 var _warning2 = _interopRequireDefault(_warning);
 
-var _supports = __webpack_require__(302);
+var _supports = __webpack_require__(303);
 
 var supports = _interopRequireWildcard(_supports);
 
@@ -42659,7 +42755,7 @@ exports.default = EventListener;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
 /***/ }),
-/* 302 */
+/* 303 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42670,7 +42766,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.passiveOption = exports.detachEvent = exports.attachEvent = exports.removeEventListener = exports.addEventListener = exports.canUseDOM = undefined;
 
-var _defineProperty = __webpack_require__(303);
+var _defineProperty = __webpack_require__(304);
 
 var _defineProperty2 = _interopRequireDefault(_defineProperty);
 
@@ -42713,7 +42809,7 @@ var passiveOption = exports.passiveOption = function () {
 }();
 
 /***/ }),
-/* 303 */
+/* 304 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42738,7 +42834,7 @@ function defineProperty(o, p, attr) {
 }
 
 /***/ }),
-/* 304 */
+/* 305 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42825,7 +42921,7 @@ exports.default = TextFieldHint;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
 /***/ }),
-/* 305 */
+/* 306 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42949,7 +43045,7 @@ exports.default = TextFieldLabel;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
 /***/ }),
-/* 306 */
+/* 307 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -43095,7 +43191,7 @@ exports.default = TextFieldUnderline;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
 /***/ }),
-/* 307 */
+/* 308 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -43215,7 +43311,7 @@ SignUpForm.propTypes = {
 exports.default = SignUpForm;
 
 /***/ }),
-/* 308 */
+/* 309 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -43301,7 +43397,7 @@ RightSideMenuItem.propTypes = {
 exports.default = RightSideMenuItem;
 
 /***/ }),
-/* 309 */
+/* 310 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -43329,42 +43425,41 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var NewsboardParagraph = function (_React$Component) {
-    _inherits(NewsboardParagraph, _React$Component);
+var NewsboardParagraphElement = function (_React$Component) {
+    _inherits(NewsboardParagraphElement, _React$Component);
 
-    function NewsboardParagraph(props) {
-        _classCallCheck(this, NewsboardParagraph);
+    function NewsboardParagraphElement(props) {
+        _classCallCheck(this, NewsboardParagraphElement);
 
-        return _possibleConstructorReturn(this, (NewsboardParagraph.__proto__ || Object.getPrototypeOf(NewsboardParagraph)).call(this, props));
+        return _possibleConstructorReturn(this, (NewsboardParagraphElement.__proto__ || Object.getPrototypeOf(NewsboardParagraphElement)).call(this, props));
 
         // this.state = {
 
         // };
     }
 
-    _createClass(NewsboardParagraph, [{
+    _createClass(NewsboardParagraphElement, [{
         key: 'componentDidMount',
         value: function componentDidMount() {}
     }, {
         key: 'render',
         value: function render() {
             return _react2.default.createElement(
-                'div',
-                { className: 'centerAreaLeftItem' },
-                this.props.paragraphText
+                'span',
+                null,
+                this.props.ElementContent
             );
         }
     }]);
 
-    return NewsboardParagraph;
+    return NewsboardParagraphElement;
 }(_react2.default.Component);
 
-NewsboardParagraph.propTypes = {
-    paragraphText: _propTypes2.default.string.isRequired
-
+NewsboardParagraphElement.propTypes = {
+    ElementContent: _propTypes2.default.string.isRequired
 };
 
-exports.default = NewsboardParagraph;
+exports.default = NewsboardParagraphElement;
 
 /***/ })
 /******/ ]);

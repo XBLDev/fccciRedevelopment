@@ -18,6 +18,7 @@ class Newsboard extends React.Component {
     }
 
     componentDidMount() {
+        document.title= this.props.location['pathname'].substring(this.props.location['pathname'].lastIndexOf('/')+1, this.props.location['pathname'].length);
         console.log('Newsboard Did Mount');
         // console.log('newsNum: ',this.props.newsNum)
         console.log(this.props.location['pathname'])
@@ -68,6 +69,8 @@ class Newsboard extends React.Component {
 
    componentWillReceiveProps(nextProps)
    {
+     document.title= nextProps.location['pathname'].substring(nextProps.location['pathname'].lastIndexOf('/')+1, nextProps.location['pathname'].length);
+    
       console.log('Newsboard receive props!')
     //   console.log(this.props.location['pathname'])
       console.log(nextProps.location['pathname'])

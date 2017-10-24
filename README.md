@@ -2,6 +2,17 @@
 Code for the coming updated fccci: http://fccci.org.au/au/, code base for user auth and routing: 
 https://github.com/XBLDev/ReactJSNodejsAuthRouterv4
 
+Comment 24/10/2017, 1:07 pm:
+
+The files that contain the latest news now contain html tags such as h1, img and when the file is 
+sent back to the front end, it's parsed to detect these tags to know that if a certain element is
+a header or image, and render accordingly. 
+
+For now it can render a paragraph that has its own tag, such as header and image. The problem is 
+that there are paragraphs which have href links in the middle of them, which makes it harder. I 
+assume I will have to create sub-components for paragraphs which can get the link as its property
+upon monuting and render it as a proper html link element. 
+
 Comment 23/10/2017, 8:48 pm:
 
 The backend can now read a file on Amazon S3 and send it back when the file is finished, previously
