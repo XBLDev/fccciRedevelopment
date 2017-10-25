@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import NewsboardParagraphElement from './NewsboardParagraphElement.jsx';
+import NewsboardParagraphLinkElement from './NewsboardParagraphLinkElement.jsx';
 
 class NewsboardParagraph extends React.Component {
 
@@ -49,14 +50,16 @@ class NewsboardParagraph extends React.Component {
                             <img src={this.props.paragraphText.substring
                                 (this.props.paragraphText.lastIndexOf('<img src=')+'<img src='.length+7, 
                                 this.props.paragraphText.length-5)} />
-
-                            // this.props.paragraphText.substring
-                            // (this.props.paragraphText.lastIndexOf('<img src=')+'<img src='.length+7, 
-                            // this.props.paragraphText.length-5)
                         )
                         :
                         (
-                            this.props.paragraphText
+                            this.props.paragraphText.lastIndexOf('<a href=') != -1 ?
+                            (
+                                <NewsboardParagraphLinkElement linkText={this.props.paragraphText}/>
+                            ):
+                            (
+                                this.props.paragraphText
+                            )
                         )
                     )    
                         

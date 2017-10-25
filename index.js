@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const passport = require('passport');
 const config = require('./config');
+var path = require('path');
 
 // connect to the database and load models
 require('./server/models').connect(config.dbUri);
@@ -36,6 +37,11 @@ app.use('/auth', authRoutes);
 app.use('/api', apiRoutes);
 app.use('/news', newsRoutes);
 
+app.route('/*').get(function(req, res) { 
+  return res.sendFile(path.join(__dirname, './server/static/index.html')); 
+  // return res.sendFile('index.html'); 
+  // console.log(path.join(__dirname, './server/static/index.html'));
+});
 
 // start the server
 app.listen(8080, () => {

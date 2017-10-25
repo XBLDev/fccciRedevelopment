@@ -144,7 +144,13 @@ a:hover {
   /* overflow :hidden;   */
   /* overflow:auto */ /*<-----THIS WILL GENERATE A HORIZONTAL SCROLL BAR IF A LINE IS TOO LONG*/
 }  
+.NewsboardParaLink{
 
+  color: rgba(0, 0, 255, 1);  
+  /* Or whatever color you want */
+  text-decoration: none;
+  
+}
 .centerAreaLeftItem{
 
   margin-left: 0vw;

@@ -2,6 +2,21 @@
 Code for the coming updated fccci: http://fccci.org.au/au/, code base for user auth and routing: 
 https://github.com/XBLDev/ReactJSNodejsAuthRouterv4
 
+Comment 25/10/2017, 1:29 pm:
+
+The paragraphs are now roughly put under 3 categories: title, image, and a paragraph with links in
+it. Basically with the first 2 they are just a paragraph on their own, so detecting the tags in them
+are enough for the moment; but with the 3rd one since the link could be placed anywhere in the paragraph,
+it has to be seperately passed into a specialized component as its property, parsed to identify the 
+links, and rendered according to the result of parsing. 
+
+With the original wordpress site it's easy with the built in tools that allow site builders to put tags 
+freely, but with the redeveloped site it has to be done mannually. Maybe it's preferable to develop a set of
+web interfaces that can do similiar things in the future so uploaders can just upload a new event by themselves.
+
+Previously refreshing the page will cause the error "can not get page abc", fixed with suggestions: https://stackoverflow.com/questions/39058646/cannot-get-login, a common, simple practice that can be applied when 
+building other sites. 
+
 Comment 24/10/2017, 1:07 pm:
 
 The files that contain the latest news now contain html tags such as h1, img and when the file is 
