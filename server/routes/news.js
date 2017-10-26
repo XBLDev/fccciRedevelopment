@@ -97,11 +97,22 @@ newsModel.find().count(function(err, count){
 })    
 
 router.get('/requestNews', (req, res) => {
-    console.log('SERVER: requestNews called, params: ', req.query.news);
+    console.log('SERVER: requestNews called, params: news: ', req.query.news,', language: ', req.query.language);
     var nameOfTheNews = req.query.news.substring(req.query.news.lastIndexOf("/")+1, req.query.news.length);
+    // var nameOfTheNews = req.query.news.substring(req.query.news.lastIndexOf("/")+1, req.query.news.length);
+    console.log('SERVER: parsed nameOfTheNews: ', nameOfTheNews);
+    var searchField = req.query.language == 'Eng' ? 'titleEng' : 'titleCh';
+    //'titleEng -_id' : 'titleCh -_id';
+    var searchReturnedField = req.query.language == 'Eng' ? 'ContentURLENG' : 'ContentURLCH';
+    console.log('SERVER: searchField: ',searchField,', searchReturnedField: ', searchReturnedField);
 
-    // find each person with a last name matching 'Ghost', selecting the `name` and `occupation` fields
-    newsModel.findOne({ 'titleCh': nameOfTheNews }, 'ContentURLCH', function (err, newsURL) {
+    // var name = req.params.name;
+    // var value = req.params.value;
+    var query = {};
+    query[searchField] = nameOfTheNews;
+
+    newsModel.findOne(query, searchReturnedField.concat(' -_id'), function (err, newsURL) {
+    // newsModel.findOne({ 'titleEng': nameOfTheNews }, searchReturnedField.concat(' -_id'), function (err, newsURL) {
         
         if(err)
         {
@@ -112,34 +123,38 @@ router.get('/requestNews', (req, res) => {
         }
         else
         {
-            console.log('Found news with the same news name in the DB, the CH URL for file is: ',newsURL['ContentURLCH']);
-            var http = require('http');
-            var https = require('https');            
-            var fs = require('fs');
-            var str = '';
-            // var file = fs.createWriteStream(dest);
-            https.get(newsURL['ContentURLCH'], function(response) {
-
-                response.on('data', function (chunk) {
-                        console.log('SERVER: chuck data: ',chunk);
-                        str += chunk;
-                });
+            // console.log('Found news with the same news name in the DB, the URL for file is: ',newsURL.length);
+            
+            if(!newsURL)
+            {
                 
-                response.on('end', function () {
-                        // console.log(str);
-                        console.log('SERVER FINISHED DOWNLOADING FILE: ',str);
-                        res.status(200).json({
-                            message: str                    
-                            // message: 'SERVER: GOT ENTIRE FILE IN A STRING FROM THE FILE: '.concat(newsURL['ContentURLCH'])
-                        });                             
+                res.status(200).json({
+                    message: 'CANNOT FIND A FILE THAT HAS THE SAME NAME'                  
+                    // message: 'SERVER: GOT ENTIRE FILE IN A STRING FROM THE FILE: '.concat(newsURL['ContentURLCH'])
+                });                     
+            }
+            else{
+                // console.log('Found news with the same news name in the DB, the URL for file is: ',newsURL);
+                var http = require('http');
+                var https = require('https');            
+                var fs = require('fs');
+                var str = '';
+                // var file = fs.createWriteStream(dest);
+                https.get(newsURL[searchReturnedField], function(response) {
+
+                    response.on('data', function (chunk) {
+                            str += chunk;
+                    });
+                    
+                    response.on('end', function () {
+
+                            res.status(200).json({
+                                message: str                    
+                            });                             
+                    });
+
                 });
-
-            //   response.pipe(file);
-            //   file.on('finish', function() {
-            //     file.close(cb);
-            //   });
-            });
-
+            }
             // res.status(200).json({
             //     message: 'FROM SERVER: the CH URL for file for the current newboard: '.concat(newsURL['ContentURLCH'])
             // });                 
@@ -178,8 +193,11 @@ router.get('/requestNews', (req, res) => {
 router.get('/news', (req, res) => {
         //query with mongoose
         // var query = newsModel.find({}).select('titleCh -_id');
-        
-        newsModel.find({}, 'titleCh -_id', function(err, Values){
+        console.log('SERVER: news called, params: language: ', req.query.language);
+
+        var searchParameter = req.query.language == 'Eng' ? 'titleEng -_id' : 'titleCh -_id';
+
+        newsModel.find({}, searchParameter, function(err, Values){
             if(err)
             {
                 console.log(err);

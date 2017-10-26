@@ -20,10 +20,11 @@ import PropTypes from 'prop-types';
 import { Card, CardTitle } from 'material-ui/Card';
 import Auth from '../modules/Auth';
 import DashboardPage from '../containers/DashboardPage.jsx';
-import LanguageSetting from '../modules/LanguageSetting';
+// import LanguageSetting from '../modules/LanguageSetting';
 import { Link } from 'react-router-dom'
 import {Redirect} from 'react-router-dom';
 import Newsboard from './Newsboard.jsx'
+import RightSideMenu from './RightSideMenu.jsx'
 
 class Home extends React.Component {
 
@@ -42,22 +43,26 @@ class Home extends React.Component {
 
   }
   
-  //  componentWillMount() {
-  //     console.log('Component WILL MOUNT!')
-  //  }
+   componentWillMount() {
+      console.log('Component WILL MOUNT!')
+   }
 
   componentDidMount() {
+
+
+    document.title= 'Home';
+    
     console.log('Home Did Mount');
-    console.log(this.props.location['pathname']);
+    console.log('Home location prop: ',this.props.location['pathname']);
   }
 
   componentWillUnmount() {
     console.log('Home will unmount!')
   }
 
-  //  componentWillReceiveProps(newProps) {    
-  //     console.log('Component WILL RECIEVE PROPS!')
-  //  }
+   componentWillReceiveProps(newProps) {    
+      console.log('Component WILL RECIEVE PROPS: ', newProps.location['pathname'])
+   }
 
   //  shouldComponentUpdate(newProps, newState) {
   //     return true;
@@ -82,14 +87,16 @@ class Home extends React.Component {
     // '这里是主页，请登录查看更多内容';
 
     return (
-      <div>
-           <h1>关于我们</h1><br/>
-           <h2>堪培拉华联社简介</h2><br/>
-           堪培拉华联社(Federation of Chinese Community of Canberra Inc.), 英语简称 FCCCI。 FCCCI成立于1994年，由堪培拉的资深大陆学人发起组成，是目前堪培拉最大的华人社团。<br/><br/>
-           堪培拉华联社为非政治、非宗教、非盈利的堪培拉华人社团，宗旨是团结当地华人及其他华人团体，促进华人子弟学习中文，举办华人康乐联谊活动，关心澳大利亚社会发展，发扬优秀的中华文化，维护自身正当权益，促进澳中友好，加强澳中两国间的互惠交流。<br/><br/>
-                   
+      <div className="centerAreaInner">
+        <div className="centerAreaLeft">
+            <h1>关于我们</h1><br/>
+            <h2>堪培拉华联社简介</h2><br/>
+            堪培拉华联社(Federation of Chinese Community of Canberra Inc.), 英语简称 FCCCI。 FCCCI成立于1994年，由堪培拉的资深大陆学人发起组成，是目前堪培拉最大的华人社团。<br/><br/>
+            堪培拉华联社为非政治、非宗教、非盈利的堪培拉华人社团，宗旨是团结当地华人及其他华人团体，促进华人子弟学习中文，举办华人康乐联谊活动，关心澳大利亚社会发展，发扬优秀的中华文化，维护自身正当权益，促进澳中友好，加强澳中两国间的互惠交流。<br/><br/>
+                    
+        </div>
+        <RightSideMenu menupath={this.props.location['pathname']}/>    
       </div>
-      
 
       //   <div>
       //   {

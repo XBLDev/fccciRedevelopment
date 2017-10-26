@@ -16,8 +16,20 @@ class RightSideMenuItem extends React.Component {
     }
 
     componentDidMount() {
+        console.log('RightSideMenuItem DID MOUNT!')
+        
     }
     
+
+    componentWillReceiveProps(nextProps)
+    {
+        console.log('RightSideMenuItem WILL RECEIVE PROPS!')
+    }    
+
+    componentWillUnmount() {
+        console.log('RightSideMenuItem WILL UNMOUNT!')
+    }
+
     onLinkClicked(){
         // this.setState({redirect: true});
         // this.props.history.push("/Newsboard/".concat(this.props.newsNumber.toString()));
@@ -57,6 +69,7 @@ class RightSideMenuItem extends React.Component {
 RightSideMenuItem.propTypes = {
   newsTitle: PropTypes.string.isRequired,
   newsNumber: PropTypes.number.isRequired,
+  currentPath: PropTypes.string.isRequired,
 //   cardsubtitleP: PropTypes.string.isRequired
   // errors: PropTypes.object.isRequired,
   // user: PropTypes.object.isRequired

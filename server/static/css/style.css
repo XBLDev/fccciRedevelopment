@@ -196,6 +196,21 @@ a:hover {
   text-align: left;
 }   
 
+.centerAreaInner{
+  margin-left: 0vw;
+  margin-right: 0vw;
+  margin-top: 0vh;/*1vw*/
+  margin-bottom: 0vw;  
+
+  width: 90vw;
+  height: auto;/*30vh*/
+  background: rgba(0, 0, 0, 1);
+  color: rgba(255, 255, 255, 1);
+  /* display: inline-block */
+  /* display: block; */
+
+}
+
 .centerArea{
   margin-left: 5vw;
   margin-right: 5vw;

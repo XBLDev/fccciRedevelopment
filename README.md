@@ -2,6 +2,19 @@
 Code for the coming updated fccci: http://fccci.org.au/au/, code base for user auth and routing: 
 https://github.com/XBLDev/ReactJSNodejsAuthRouterv4
 
+Comment 26/10/2017, 4:24 pm:
+
+The menu items on the right hand side can now use language based on language setting switching between
+Eng and Ch, and the backend can get the newsboard content based on the language which is passed to 
+the backend as a parameter of XMLHttp request. How to use variables to query object: https://stackoverflow.com/questions/17039018/how-to-use-a-variable-as-a-field-name-in-mongodb-native-findone
+
+The routing is still a bit of problem: it seems that if I don't include the right side menu as part of Home
+and Newsboard, when switching between 2 languages there will be some sort of problems caused by react component
+life cycle, which I think I already found the solution but that will be tomorrow.
+
+Ideally upon opening the site it can be redirected from / to /en which is the default language, now on start
+it's /, and needs the language button to switch between /, /en, and /cn 
+
 Comment 25/10/2017, 1:29 pm:
 
 The paragraphs are now roughly put under 3 categories: title, image, and a paragraph with links in

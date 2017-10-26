@@ -43,31 +43,34 @@ class Header extends React.Component {
 
   onLanguageSettingClicked()
   {
-    console.log(localStorage.getItem('currentLanguage'));
     if(localStorage.getItem('currentLanguage') == 'Eng')
     {
-      localStorage.setItem('currentLanguage', '中文')
+      console.log('CURRENT LANGUANGE IS ENG, CHANGING TO CH');
+      
+      localStorage.setItem('currentLanguage', 'Ch')
       //  LanguageSetting.setChi();
-       this.setState({LangBtnText:'English'});
+      //  this.setState({LangBtnText:'English'});
 
-       this.setState({SiteText:'网站名称'});
+      //  this.setState({SiteText:'网站名称'});
 
-       this.setState({loginText:'登录'});
-       this.setState({singupText:'注册'});
-       this.setState({userWelcomeText:'你好 '});
-       this.setState({redirect: true});
+      //  this.setState({loginText:'登录'});
+      //  this.setState({singupText:'注册'});
+      //  this.setState({userWelcomeText:'你好 '});
+      //  this.setState({redirect: true});
     }
     else
     {
+      console.log('CURRENT LANGUANGE IS CH, CHANGING TO ENG');
+      
       localStorage.setItem('currentLanguage', 'Eng');
-       this.setState({LangBtnText:'中文版'});
+      //  this.setState({LangBtnText:'中文版'});
 
-       this.setState({SiteText:'WebSite Name'});
+      //  this.setState({SiteText:'WebSite Name'});
 
-       this.setState({loginText:'Log in'});
-       this.setState({singupText:'Sign up'});
-       this.setState({userWelcomeText:'Hello '});
-       this.setState({redirect: true});
+      //  this.setState({loginText:'Log in'});
+      //  this.setState({singupText:'Sign up'});
+      //  this.setState({userWelcomeText:'Hello '});
+      //  this.setState({redirect: true});
 
     }
 
@@ -109,7 +112,19 @@ class Header extends React.Component {
                   <a className="linkButton" href="">联系我们</a>
                 </div>
                 <div className="menuItem">
-                  <a className="linkButton" href=""> ENGLISH</a>
+                  <Link to={localStorage.getItem('currentLanguage') == 'Eng' ? "/ch":"/en"} onClick={this.onLanguageSettingClicked}>
+                    {localStorage.getItem('currentLanguage') == 'Eng' ?(
+                      '中文版'
+                    ):
+                    (
+                      'English'
+                    )
+
+
+
+                    }
+                  </Link>
+
                 </div>                                                                                                                       
               </div>  
               <div className="menuAreaRight">

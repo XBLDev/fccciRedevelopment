@@ -34,7 +34,7 @@ class NewsboardParagraphLinkElement extends React.Component {
         this.setState({parsedText: text});
         // var 
         this.setState({paragraphElements: text.split(" ")});
-        console.log('parsed text: ',text.split(" "));
+        // console.log('parsed text: ',text.split(" "));
 
     }
 

@@ -47,9 +47,11 @@ class Main extends React.Component {
               centerAreaLeft, news area  <br/>          
       
               centerAreaLeft, news area  <br/>  */}
-            <div className="centerAreaLeft">  
+            {/* <div className="centerAreaLeft">   */}
               <Switch>
                 <Route exact path='/' component={Home}/>
+                {<Route exact path='/ch' component={Home}/>}
+                {<Route exact path='/en' component={Home}/>}
 
                 {/* <Route exact path='/' render={() => <Home contentStr="Home" />}/>    */}
                  {/* <Route path='/login' component={LoginPage}/> */}
@@ -66,8 +68,8 @@ class Main extends React.Component {
                 {/* <Route path='/Newsboard/' component={Home} /> */}
 
               </Switch>
-            </div>
-            {<RightSideMenu/>    }
+            {/* </div> */}
+            {/* <RightSideMenu/>     */}
           {/* </main> */}
           </div>    
     )

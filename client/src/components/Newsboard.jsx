@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom'
 import {Redirect} from 'react-router-dom';
 import NewsboardParagraph from './NewsboardParagraph.jsx';
+import LanguageSetting from '../modules/LanguageSetting';
+import RightSideMenu from './RightSideMenu.jsx'
 
 class Newsboard extends React.Component {
 
@@ -18,6 +20,11 @@ class Newsboard extends React.Component {
     }
 
     componentDidMount() {
+        // localStorage.setItem('currentLanguage', 'Eng');
+        
+        // localStorage.setItem('currentLanguage', 'Ch');
+        // console.log('currentLanguage: ', localStorage.getItem('currentLanguage'));
+
         document.title= this.props.location['pathname'].substring(this.props.location['pathname'].lastIndexOf('/')+1, this.props.location['pathname'].length);
         console.log('Newsboard Did Mount');
         // console.log('newsNum: ',this.props.newsNum)
@@ -33,7 +40,11 @@ class Newsboard extends React.Component {
         });            
 
         const xhr = new XMLHttpRequest();
-        xhr.open('get', '/news/requestNews?news='+encodeURI(this.state.currentURL));
+
+        var currentLanguage = localStorage.getItem('currentLanguage').toString();
+        console.log(currentLanguage);
+
+        xhr.open('get', '/news/requestNews?news='+encodeURI(this.state.currentURL)+'&language='+encodeURIComponent(currentLanguage), true);
         xhr.setRequestHeader('Content-Type', 'application/json')
         xhr.responseType = 'json';
         xhr.addEventListener('load', () => {
@@ -53,7 +64,7 @@ class Newsboard extends React.Component {
             this.setState({
                 listOfParagraphs: paragraphs                    
             });
-            console.log(this.state.listOfParagraphs);
+            // console.log(this.state.listOfParagraphs);
 
         }
         });
@@ -85,7 +96,13 @@ class Newsboard extends React.Component {
 
 
       const xhr = new XMLHttpRequest();
-      xhr.open('get', '/news/requestNews?news='+encodeURI(nextProps.location['pathname']));
+
+      var currentLanguage = localStorage.getItem('currentLanguage');
+
+      xhr.open('get', '/news/requestNews?news='+encodeURIComponent(nextProps.location['pathname'])+'&language='+encodeURIComponent(currentLanguage), true);
+      
+    //   xhr.open('get', '/news/requestNews?news='+encodeURI(nextProps.location['pathname'])+'&language='+encodeURI(currentLanguage));
+    //   xhr.open('get', '/news/requestNews?news='+encodeURI(nextProps.location['pathname']));
       xhr.setRequestHeader('Content-Type', 'application/json')
       xhr.responseType = 'json';
       xhr.addEventListener('load', () => {
@@ -132,18 +149,34 @@ class Newsboard extends React.Component {
 
 
         return (
-        <div className='centerAreaLeft'>
-             {this.state.listOfParagraphs.length == 0 ?
-             (
-                <NewsboardParagraph paragraphText='loading...' />
 
-             ):
-             (
-                items
+            <div className="centerAreaInner">
+                <div className='centerAreaLeft'>
+                    {this.state.listOfParagraphs.length == 0 ?
+                    (
+                        <NewsboardParagraph paragraphText='loading...' />
+
+                    ):
+                    (
+                        items
+            
+                    )
+                    }
+                </div>
+                <RightSideMenu menupath={this.props.location['pathname']}/>                        
+            </div>    
+        // <div className='centerAreaLeft'>
+        //      {this.state.listOfParagraphs.length == 0 ?
+        //      (
+        //         <NewsboardParagraph paragraphText='loading...' />
+
+        //      ):
+        //      (
+        //         items
      
-             )
-             }
-        </div>    
+        //      )
+        //      }
+        // </div>    
         
         )            
     
