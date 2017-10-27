@@ -150,21 +150,19 @@ class Newsboard extends React.Component {
 
         return (
 
-            <div className="centerAreaInner">
+            // <div className="centerAreaInner">
                 <div className='centerAreaLeft'>
                     {this.state.listOfParagraphs.length == 0 ?
                     (
                         <NewsboardParagraph paragraphText='loading...' />
-
                     ):
                     (
                         items
-            
                     )
                     }
                 </div>
-                <RightSideMenu menupath={this.props.location['pathname']}/>                        
-            </div>    
+                // <RightSideMenu menupath={this.props.location['pathname']}/>                        
+            // </div>    
         // <div className='centerAreaLeft'>
         //      {this.state.listOfParagraphs.length == 0 ?
         //      (

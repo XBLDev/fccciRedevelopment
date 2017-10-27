@@ -44,7 +44,7 @@ class Home extends React.Component {
   }
   
    componentWillMount() {
-      console.log('Component WILL MOUNT!')
+      console.log('Home WILL MOUNT!');
    }
 
   componentDidMount() {
@@ -57,11 +57,11 @@ class Home extends React.Component {
   }
 
   componentWillUnmount() {
-    console.log('Home will unmount!')
+    console.log('Home will unmount!');
   }
 
    componentWillReceiveProps(newProps) {    
-      console.log('Component WILL RECIEVE PROPS: ', newProps.location['pathname'])
+      console.log('Home will receive props: ', newProps.location['pathname']);
    }
 
   //  shouldComponentUpdate(newProps, newState) {
@@ -87,7 +87,7 @@ class Home extends React.Component {
     // '这里是主页，请登录查看更多内容';
 
     return (
-      <div className="centerAreaInner">
+      // <div className="centerAreaInner">
         <div className="centerAreaLeft">
             <h1>关于我们</h1><br/>
             <h2>堪培拉华联社简介</h2><br/>
@@ -95,8 +95,8 @@ class Home extends React.Component {
             堪培拉华联社为非政治、非宗教、非盈利的堪培拉华人社团，宗旨是团结当地华人及其他华人团体，促进华人子弟学习中文，举办华人康乐联谊活动，关心澳大利亚社会发展，发扬优秀的中华文化，维护自身正当权益，促进澳中友好，加强澳中两国间的互惠交流。<br/><br/>
                     
         </div>
-        <RightSideMenu menupath={this.props.location['pathname']}/>    
-      </div>
+        // <RightSideMenu menupath={this.props.location['pathname']}/>    
+      // </div>
 
       //   <div>
       //   {

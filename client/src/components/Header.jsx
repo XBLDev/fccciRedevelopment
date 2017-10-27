@@ -37,15 +37,18 @@ class Header extends React.Component {
 
   onLogOutClicked()
   {
-    Auth.deauthenticateUser();
-    
+    if(Auth.isUserAuthenticated() == true)
+    {
+      console.log('Current User is: ', localStorage.getItem('usrname'),', logging out');
+      Auth.deauthenticateUser();
+    }
   }
 
   onLanguageSettingClicked()
   {
     if(localStorage.getItem('currentLanguage') == 'Eng')
     {
-      console.log('CURRENT LANGUANGE IS ENG, CHANGING TO CH');
+      // console.log('CURRENT LANGUANGE IS ENG, CHANGING TO CH');
       
       localStorage.setItem('currentLanguage', 'Ch')
       //  LanguageSetting.setChi();
@@ -60,7 +63,7 @@ class Header extends React.Component {
     }
     else
     {
-      console.log('CURRENT LANGUANGE IS CH, CHANGING TO ENG');
+      // console.log('CURRENT LANGUANGE IS CH, CHANGING TO ENG');
       
       localStorage.setItem('currentLanguage', 'Eng');
       //  this.setState({LangBtnText:'中文版'});
@@ -75,6 +78,8 @@ class Header extends React.Component {
     }
 
   }
+
+
 
 
   render() {
@@ -92,7 +97,7 @@ class Header extends React.Component {
                 {/* Menu Items */}
                 <div className="menuItem">
                   {/* <a className="linkButton" href="">关于我们</a> */}
-                  <Link to={"/"}>                    
+                  <Link to={localStorage.getItem('currentLanguage') == 'Eng' ? "/en":"/ch"}>                    
                   关于我们
                   </Link>
                 </div>
@@ -111,6 +116,7 @@ class Header extends React.Component {
                 <div className="menuItem">
                   <a className="linkButton" href="">联系我们</a>
                 </div>
+
                 <div className="menuItem">
                   <Link to={localStorage.getItem('currentLanguage') == 'Eng' ? "/ch":"/en"} onClick={this.onLanguageSettingClicked}>
                     {localStorage.getItem('currentLanguage') == 'Eng' ?(
@@ -119,22 +125,36 @@ class Header extends React.Component {
                     (
                       'English'
                     )
-
-
-
                     }
                   </Link>
+                </div>   
 
-                </div>                                                                                                                       
+                {/* <div className="menuItem">
+                  {Auth.isUserAuthenticated() == false ? "_":"你好".concat(JSON.parse(localStorage.getItem('usrname')).name)}
+                </div> */}
+                {/* {Auth.isUserAuthenticated() == false ?(
+                    <div>
+                    </div>  
+                ):
+                (
+                  <div>
+                  </div>  
+                )
+                } */}
+
+
               </div>  
               <div className="menuAreaRight">
                 <div className="menuItem">  
                   {/* <a className="linkButton" href="">登录</a> */}
                   {/* <a className="linkButton" href="">新用户</a> */}
-                  <Link to={"/login"}>
-                  登录
+                  <Link to={Auth.isUserAuthenticated() == false ? "/login":"/"} onClick={this.onLogOutClicked}>
+                    {Auth.isUserAuthenticated() == false ? ('登录'):('登出')}
                   </Link>
                 </div>
+
+
+
               </div>                           
             </div>  
 

@@ -22,6 +22,7 @@ class RightSideMenu extends React.Component {
     this.state = {
         listOfLatestNews: [],
         numberOfNews: "0",
+        currentLanguage: 'Eng'
     };
   }
   
@@ -32,7 +33,7 @@ class RightSideMenu extends React.Component {
 
 
     var currentLanguage = localStorage.getItem('currentLanguage').toString();
-    console.log('RightSideMenu: currentLanguage: ',currentLanguage);
+    console.log('RightSideMenu will mountm, currentLanguage: ',currentLanguage);
 
     const xhr = new XMLHttpRequest();
     xhr.open('get', '/news/news?language='+encodeURIComponent(currentLanguage));
@@ -63,7 +64,7 @@ class RightSideMenu extends React.Component {
   componentDidMount() {
 
 
-    console.log('RightSideMenu: mounted, pathname: ',this.props);
+    console.log('RightSideMenu: mounted, props: ',this.props);
 
     // var currentLanguage = localStorage.getItem('currentLanguage').toString();
     // console.log('RightSideMenu: currentLanguage: ',currentLanguage);
@@ -94,63 +95,44 @@ class RightSideMenu extends React.Component {
   componentWillReceiveProps(nextProps)
   {
 
-    this.setState({
-      listOfLatestNews: []
-    });
 
+    // console.log('RightSideMenu will receive props of length: ', nextProps.length);
+    // if (typeof myVar != 'undefined')
+    
+    var nextPropsLength = nextProps.length;
+    console.log('nextProps length: ', nextPropsLength, ', current props: ', this.state.listOfLatestNews);
     console.log('RightSideMenu will receive props: ',nextProps);
-    var currentLanguage = localStorage.getItem('currentLanguage').toString();
-    // console.log('RightSideMenu: currentLanguage: ',currentLanguage);
+    
+    // var prevListOfLatestNews = this.state.listOfLatestNews;
 
+    // this.setState({
+    //   listOfLatestNews: prevListOfLatestNews
+    // });
+    // this.setState({
+    //   listOfLatestNews: []
+    // });
+
+    var currentLanguageSetting = localStorage.getItem('currentLanguage').toString();
     const xhr = new XMLHttpRequest();
-    xhr.open('get', '/news/news?language='+encodeURIComponent(currentLanguage));
-    // xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-    // set the authorization HTTP header
-    // xhr.setRequestHeader('Authorization', `bearer ${Auth.getToken()}`);
+    xhr.open('get', '/news/news?language='+encodeURIComponent(currentLanguageSetting));
     xhr.responseType = 'json';
     xhr.addEventListener('load', () => {
     if (xhr.status === 200) {
-        // console.log('Right Side Menu Got GET /NEWS');
         this.setState({
         numberOfNews: xhr.response.message
         });
         this.setState({
-          listOfLatestNews: xhr.response.listOfTitles
+          listOfLatestNews: xhr.response.listOfTitles,
+          currentLanguage: currentLanguageSetting
         });
-        // console.log('RightSideMenu, recieved list of news upon Mounting:')
-        console.log('RightSideMenu will receive props:, listOfLatestNews: ',this.state.listOfLatestNews)
 
+
+
+        // console.log('RightSideMenu will receive props:, listOfLatestNews: ',this.state.listOfLatestNews)
     }
     });
     xhr.send();   
-    // var currentLanguage = localStorage.getItem('currentLanguage').toString();
-    // console.log('RightSideMenu: currentLanguage: ',currentLanguage);
 
-    // const xhr = new XMLHttpRequest();
-    // xhr.open('get', '/news/news?language='+encodeURIComponent(currentLanguage));
-    // // xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-    // // set the authorization HTTP header
-    // // xhr.setRequestHeader('Authorization', `bearer ${Auth.getToken()}`);
-    // xhr.responseType = 'json';
-    // xhr.addEventListener('load', () => {
-    // if (xhr.status === 200) {
-    //     // console.log('Right Side Menu Got GET /NEWS');
-    //     this.setState({
-    //     numberOfNews: xhr.response.message
-    //     });
-    //     this.setState({
-    //       listOfLatestNews: xhr.response.listOfTitles
-    //     });
-    //     // console.log('RightSideMenu, recieved list of news upon Mounting:')
-    //     // console.log(this.state.listOfLatestNews)
-    // }
-    // });
-    // xhr.send();    
-
-
-    // console.log('RightSideMenu will receive props! pathname: ' ,nextProps)
-    //   console.log(this.props.location['pathname'])
-    // console.log(nextProps.location['pathname'])
   }  
 
 
@@ -159,16 +141,19 @@ class RightSideMenu extends React.Component {
   render() {
 
     var items = [];
-    var title = localStorage.getItem('currentLanguage') == 'Eng'? 'titleEng' : 'titleCh';
+    // var title = localStorage.getItem('currentLanguage') == 'Eng'? 'titleEng' : 'titleCh';
+    var title = this.state.currentLanguage == 'Eng'? 'titleEng' : 'titleCh';
+    
     for (var i = 0; i < this.state.listOfLatestNews.length; i++) {
       // indents.push(<span className='indent' key={i}></span>);
       items.push
       (
         <RightSideMenuItem
           key={i}
-          newsTitle={this.state.listOfLatestNews[i][title]}           
+          newsTitle={this.state.listOfLatestNews[i][title]}
           newsNumber={i}
-          currentPath={this.props.menupath}
+          currentLanguage={this.state.currentLanguage}
+          /* currentPath={this.props.menupath} */
         />
       );
     }
@@ -205,12 +190,12 @@ class RightSideMenu extends React.Component {
 }
 
 
-RightSideMenu.propTypes = {
-  menupath: PropTypes.string.isRequired,
-  // newsNumber: PropTypes.number.isRequired,
-//   cardsubtitleP: PropTypes.string.isRequired
-  // errors: PropTypes.object.isRequired,
-  // user: PropTypes.object.isRequired
-};
+// RightSideMenu.propTypes = {
+//   menupath: PropTypes.string.isRequired,
+//   // newsNumber: PropTypes.number.isRequired,
+// //   cardsubtitleP: PropTypes.string.isRequired
+//   // errors: PropTypes.object.isRequired,
+//   // user: PropTypes.object.isRequired
+// };
 
 export default RightSideMenu

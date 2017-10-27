@@ -8,7 +8,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 
 const App = () => (
-  // <MuiThemeProvider>
+  <MuiThemeProvider>
 
     <div className="outerMostContainer">
         <Header />  
@@ -31,7 +31,7 @@ const App = () => (
         {/* </div> */}
     </div>
 
-  //  </MuiThemeProvider>
+    </MuiThemeProvider>
 
 )
 

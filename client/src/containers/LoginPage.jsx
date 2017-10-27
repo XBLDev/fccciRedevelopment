@@ -119,19 +119,20 @@ class LoginPage extends React.Component {
       // <div>
       //   LoginPage
       // </div> 
-      <div>
-      {this.state.redirect == false? (   
-      <LoginForm
-        onSubmit={this.processForm}
-        onChange={this.changeUser}
-        errors={this.state.errors}
-        successMessage={this.state.successMessage}        
-        user={this.state.user}
-      />):(
-        <Redirect to='/' />
-        
-      )
-      }
+      <div className='centerAreaLeft'>
+        {
+          this.state.redirect == false? (   
+          <LoginForm
+            onSubmit={this.processForm}
+            onChange={this.changeUser}
+            errors={this.state.errors}
+            successMessage={this.state.successMessage}        
+            user={this.state.user}
+          />):(
+            <Redirect to={localStorage.getItem('currentLanguage') == 'Eng' ? '/ch':'/en'} />
+          )
+        }
+
       </div>
     );
   }

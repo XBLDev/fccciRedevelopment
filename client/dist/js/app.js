@@ -1836,7 +1836,8 @@ var RightSideMenu = function (_React$Component) {
 
     _this.state = {
       listOfLatestNews: [],
-      numberOfNews: "0"
+      numberOfNews: "0",
+      currentLanguage: 'Eng'
     };
     return _this;
   }
@@ -1847,7 +1848,7 @@ var RightSideMenu = function (_React$Component) {
       var _this2 = this;
 
       var currentLanguage = localStorage.getItem('currentLanguage').toString();
-      console.log('RightSideMenu: currentLanguage: ', currentLanguage);
+      console.log('RightSideMenu will mountm, currentLanguage: ', currentLanguage);
 
       var xhr = new XMLHttpRequest();
       xhr.open('get', '/news/news?language=' + encodeURIComponent(currentLanguage));
@@ -1879,7 +1880,7 @@ var RightSideMenu = function (_React$Component) {
     key: 'componentDidMount',
     value: function componentDidMount() {
 
-      console.log('RightSideMenu: mounted, pathname: ', this.props);
+      console.log('RightSideMenu: mounted, props: ', this.props);
 
       // var currentLanguage = localStorage.getItem('currentLanguage').toString();
       // console.log('RightSideMenu: currentLanguage: ',currentLanguage);
@@ -1910,76 +1911,57 @@ var RightSideMenu = function (_React$Component) {
     value: function componentWillReceiveProps(nextProps) {
       var _this3 = this;
 
-      this.setState({
-        listOfLatestNews: []
-      });
+      // console.log('RightSideMenu will receive props of length: ', nextProps.length);
+      // if (typeof myVar != 'undefined')
 
+      var nextPropsLength = nextProps.length;
+      console.log('nextProps length: ', nextPropsLength, ', current props: ', this.state.listOfLatestNews);
       console.log('RightSideMenu will receive props: ', nextProps);
-      var currentLanguage = localStorage.getItem('currentLanguage').toString();
-      // console.log('RightSideMenu: currentLanguage: ',currentLanguage);
 
+      // var prevListOfLatestNews = this.state.listOfLatestNews;
+
+      // this.setState({
+      //   listOfLatestNews: prevListOfLatestNews
+      // });
+      // this.setState({
+      //   listOfLatestNews: []
+      // });
+
+      var currentLanguageSetting = localStorage.getItem('currentLanguage').toString();
       var xhr = new XMLHttpRequest();
-      xhr.open('get', '/news/news?language=' + encodeURIComponent(currentLanguage));
-      // xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-      // set the authorization HTTP header
-      // xhr.setRequestHeader('Authorization', `bearer ${Auth.getToken()}`);
+      xhr.open('get', '/news/news?language=' + encodeURIComponent(currentLanguageSetting));
       xhr.responseType = 'json';
       xhr.addEventListener('load', function () {
         if (xhr.status === 200) {
-          // console.log('Right Side Menu Got GET /NEWS');
           _this3.setState({
             numberOfNews: xhr.response.message
           });
           _this3.setState({
-            listOfLatestNews: xhr.response.listOfTitles
+            listOfLatestNews: xhr.response.listOfTitles,
+            currentLanguage: currentLanguageSetting
           });
-          // console.log('RightSideMenu, recieved list of news upon Mounting:')
-          console.log('RightSideMenu will receive props:, listOfLatestNews: ', _this3.state.listOfLatestNews);
+
+          // console.log('RightSideMenu will receive props:, listOfLatestNews: ',this.state.listOfLatestNews)
         }
       });
       xhr.send();
-      // var currentLanguage = localStorage.getItem('currentLanguage').toString();
-      // console.log('RightSideMenu: currentLanguage: ',currentLanguage);
-
-      // const xhr = new XMLHttpRequest();
-      // xhr.open('get', '/news/news?language='+encodeURIComponent(currentLanguage));
-      // // xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-      // // set the authorization HTTP header
-      // // xhr.setRequestHeader('Authorization', `bearer ${Auth.getToken()}`);
-      // xhr.responseType = 'json';
-      // xhr.addEventListener('load', () => {
-      // if (xhr.status === 200) {
-      //     // console.log('Right Side Menu Got GET /NEWS');
-      //     this.setState({
-      //     numberOfNews: xhr.response.message
-      //     });
-      //     this.setState({
-      //       listOfLatestNews: xhr.response.listOfTitles
-      //     });
-      //     // console.log('RightSideMenu, recieved list of news upon Mounting:')
-      //     // console.log(this.state.listOfLatestNews)
-      // }
-      // });
-      // xhr.send();    
-
-
-      // console.log('RightSideMenu will receive props! pathname: ' ,nextProps)
-      //   console.log(this.props.location['pathname'])
-      // console.log(nextProps.location['pathname'])
     }
   }, {
     key: 'render',
     value: function render() {
 
       var items = [];
-      var title = localStorage.getItem('currentLanguage') == 'Eng' ? 'titleEng' : 'titleCh';
+      // var title = localStorage.getItem('currentLanguage') == 'Eng'? 'titleEng' : 'titleCh';
+      var title = this.state.currentLanguage == 'Eng' ? 'titleEng' : 'titleCh';
+
       for (var i = 0; i < this.state.listOfLatestNews.length; i++) {
         // indents.push(<span className='indent' key={i}></span>);
         items.push(_react2.default.createElement(_RightSideMenuItem2.default, {
           key: i,
           newsTitle: this.state.listOfLatestNews[i][title],
           newsNumber: i,
-          currentPath: this.props.menupath
+          currentLanguage: this.state.currentLanguage
+          /* currentPath={this.props.menupath} */
         }));
       }
 
@@ -1994,13 +1976,13 @@ var RightSideMenu = function (_React$Component) {
   return RightSideMenu;
 }(_react2.default.Component);
 
-RightSideMenu.propTypes = {
-  menupath: _propTypes2.default.string.isRequired
-  // newsNumber: PropTypes.number.isRequired,
-  //   cardsubtitleP: PropTypes.string.isRequired
-  // errors: PropTypes.object.isRequired,
-  // user: PropTypes.object.isRequired
-};
+// RightSideMenu.propTypes = {
+//   menupath: PropTypes.string.isRequired,
+//   // newsNumber: PropTypes.number.isRequired,
+// //   cardsubtitleP: PropTypes.string.isRequired
+//   // errors: PropTypes.object.isRequired,
+//   // user: PropTypes.object.isRequired
+// };
 
 exports.default = RightSideMenu;
 
@@ -5129,7 +5111,7 @@ var Home = function (_React$Component) {
   _createClass(Home, [{
     key: 'componentWillMount',
     value: function componentWillMount() {
-      console.log('Component WILL MOUNT!');
+      console.log('Home WILL MOUNT!');
     }
   }, {
     key: 'componentDidMount',
@@ -5148,7 +5130,7 @@ var Home = function (_React$Component) {
   }, {
     key: 'componentWillReceiveProps',
     value: function componentWillReceiveProps(newProps) {
-      console.log('Component WILL RECIEVE PROPS: ', newProps.location['pathname']);
+      console.log('Home will receive props: ', newProps.location['pathname']);
     }
 
     //  shouldComponentUpdate(newProps, newState) {
@@ -5175,9 +5157,8 @@ var Home = function (_React$Component) {
       // var subtitle = localStorage.getItem('currentLanguage') == 'Eng' ?  'This is the home page. Log in to see the hidden content':
       // '这里是主页，请登录查看更多内容';
 
-      return _react2.default.createElement(
-        'div',
-        { className: 'centerAreaInner' },
+      return (
+        // <div className="centerAreaInner">
         _react2.default.createElement(
           'div',
           { className: 'centerAreaLeft' },
@@ -5199,68 +5180,68 @@ var Home = function (_React$Component) {
           '\u582A\u57F9\u62C9\u534E\u8054\u793E\u4E3A\u975E\u653F\u6CBB\u3001\u975E\u5B97\u6559\u3001\u975E\u76C8\u5229\u7684\u582A\u57F9\u62C9\u534E\u4EBA\u793E\u56E2\uFF0C\u5B97\u65E8\u662F\u56E2\u7ED3\u5F53\u5730\u534E\u4EBA\u53CA\u5176\u4ED6\u534E\u4EBA\u56E2\u4F53\uFF0C\u4FC3\u8FDB\u534E\u4EBA\u5B50\u5F1F\u5B66\u4E60\u4E2D\u6587\uFF0C\u4E3E\u529E\u534E\u4EBA\u5EB7\u4E50\u8054\u8C0A\u6D3B\u52A8\uFF0C\u5173\u5FC3\u6FB3\u5927\u5229\u4E9A\u793E\u4F1A\u53D1\u5C55\uFF0C\u53D1\u626C\u4F18\u79C0\u7684\u4E2D\u534E\u6587\u5316\uFF0C\u7EF4\u62A4\u81EA\u8EAB\u6B63\u5F53\u6743\u76CA\uFF0C\u4FC3\u8FDB\u6FB3\u4E2D\u53CB\u597D\uFF0C\u52A0\u5F3A\u6FB3\u4E2D\u4E24\u56FD\u95F4\u7684\u4E92\u60E0\u4EA4\u6D41\u3002',
           _react2.default.createElement('br', null),
           _react2.default.createElement('br', null)
-        ),
-        _react2.default.createElement(_RightSideMenu2.default, { menupath: this.props.location['pathname'] })
-      )
+        )
+        // <RightSideMenu menupath={this.props.location['pathname']}/>    
+        // </div>
 
-      //   <div>
-      //   {
-      //     this.props.contentStr.includes("Newsboard") == false? (
-      //     <div>
+        //   <div>
+        //   {
+        //     this.props.contentStr.includes("Newsboard") == false? (
+        //     <div>
 
-      //     <h1>关于我们</h1><br/>
-      //     <h2>堪培拉华联社简介</h2><br/>
-      //     堪培拉华联社(Federation of Chinese Community of Canberra Inc.), 英语简称 FCCCI。 FCCCI成立于1994年，由堪培拉的资深大陆学人发起组成，是目前堪培拉最大的华人社团。<br/><br/>
-      //     堪培拉华联社为非政治、非宗教、非盈利的堪培拉华人社团，宗旨是团结当地华人及其他华人团体，促进华人子弟学习中文，举办华人康乐联谊活动，关心澳大利亚社会发展，发扬优秀的中华文化，维护自身正当权益，促进澳中友好，加强澳中两国间的互惠交流。<br/><br/>
+        //     <h1>关于我们</h1><br/>
+        //     <h2>堪培拉华联社简介</h2><br/>
+        //     堪培拉华联社(Federation of Chinese Community of Canberra Inc.), 英语简称 FCCCI。 FCCCI成立于1994年，由堪培拉的资深大陆学人发起组成，是目前堪培拉最大的华人社团。<br/><br/>
+        //     堪培拉华联社为非政治、非宗教、非盈利的堪培拉华人社团，宗旨是团结当地华人及其他华人团体，促进华人子弟学习中文，举办华人康乐联谊活动，关心澳大利亚社会发展，发扬优秀的中华文化，维护自身正当权益，促进澳中友好，加强澳中两国间的互惠交流。<br/><br/>
 
-      //     </div>
-      //   ):(
-      //     <div>
+        //     </div>
+        //   ):(
+        //     <div>
 
-      //       <Newsboard newsNum={this.props.contentStr.concat(Math.random())}/>
-      //     </div>  
-      //   )
-      //   }
-      // </div> 
-
-
-      // <div>
-      //   {
-      //     this.props.location['pathname'].startsWith("/Newsboard") == false? (
-      //     <div>
-
-      //     <h1>关于我们</h1><br/>
-      //     <h2>堪培拉华联社简介</h2><br/>
-      //     堪培拉华联社(Federation of Chinese Community of Canberra Inc.), 英语简称 FCCCI。 FCCCI成立于1994年，由堪培拉的资深大陆学人发起组成，是目前堪培拉最大的华人社团。<br/><br/>
-      //     堪培拉华联社为非政治、非宗教、非盈利的堪培拉华人社团，宗旨是团结当地华人及其他华人团体，促进华人子弟学习中文，举办华人康乐联谊活动，关心澳大利亚社会发展，发扬优秀的中华文化，维护自身正当权益，促进澳中友好，加强澳中两国间的互惠交流。<br/><br/>
-
-      //     </div>
-      //   ):(
-      //     <div>
-
-      //       <Newsboard newsNum={this.props.location['pathname']}/>
-      //     </div>  
-      //   )
-      //   }
-      // </div> 
+        //       <Newsboard newsNum={this.props.contentStr.concat(Math.random())}/>
+        //     </div>  
+        //   )
+        //   }
+        // </div> 
 
 
-      // <div>
+        // <div>
+        //   {
+        //     this.props.location['pathname'].startsWith("/Newsboard") == false? (
+        //     <div>
 
-      //   {Auth.isUserAuthenticated() == false ? (
+        //     <h1>关于我们</h1><br/>
+        //     <h2>堪培拉华联社简介</h2><br/>
+        //     堪培拉华联社(Federation of Chinese Community of Canberra Inc.), 英语简称 FCCCI。 FCCCI成立于1994年，由堪培拉的资深大陆学人发起组成，是目前堪培拉最大的华人社团。<br/><br/>
+        //     堪培拉华联社为非政治、非宗教、非盈利的堪培拉华人社团，宗旨是团结当地华人及其他华人团体，促进华人子弟学习中文，举办华人康乐联谊活动，关心澳大利亚社会发展，发扬优秀的中华文化，维护自身正当权益，促进澳中友好，加强澳中两国间的互惠交流。<br/><br/>
 
-      // <Card className="container">
+        //     </div>
+        //   ):(
+        //     <div>
 
-      //     <CardTitle title={this.props.cardtitleP} subtitle={this.props.cardsubtitleP} />  
+        //       <Newsboard newsNum={this.props.location['pathname']}/>
+        //     </div>  
+        //   )
+        //   }
+        // </div> 
 
 
-      // </Card>):
-      // (
-      //   <DashboardPage/>
-      // )}
-      // </div>    
+        // <div>
 
-      ;
+        //   {Auth.isUserAuthenticated() == false ? (
+
+        // <Card className="container">
+
+        //     <CardTitle title={this.props.cardtitleP} subtitle={this.props.cardsubtitleP} />  
+
+
+        // </Card>):
+        // (
+        //   <DashboardPage/>
+        // )}
+        // </div>    
+
+      );
     }
   }]);
 
@@ -6444,30 +6425,30 @@ var Newsboard = function (_React$Component) {
                 }));
             }
 
-            return _react2.default.createElement(
-                'div',
-                { className: 'centerAreaInner' },
+            return (
+
+                // <div className="centerAreaInner">
                 _react2.default.createElement(
                     'div',
                     { className: 'centerAreaLeft' },
                     this.state.listOfParagraphs.length == 0 ? _react2.default.createElement(_NewsboardParagraph2.default, { paragraphText: 'loading...' }) : items
-                ),
-                _react2.default.createElement(_RightSideMenu2.default, { menupath: this.props.location['pathname'] })
-            )
-            // <div className='centerAreaLeft'>
-            //      {this.state.listOfParagraphs.length == 0 ?
-            //      (
-            //         <NewsboardParagraph paragraphText='loading...' />
+                )
+                // <RightSideMenu menupath={this.props.location['pathname']}/>                        
+                // </div>    
+                // <div className='centerAreaLeft'>
+                //      {this.state.listOfParagraphs.length == 0 ?
+                //      (
+                //         <NewsboardParagraph paragraphText='loading...' />
 
-            //      ):
-            //      (
-            //         items
+                //      ):
+                //      (
+                //         items
 
-            //      )
-            //      }
-            // </div>    
+                //      )
+                //      }
+                // </div>    
 
-            ;
+            );
         }
     }]);
 
@@ -6766,14 +6747,14 @@ var LoginPage = function (_React$Component) {
         // </div> 
         _react2.default.createElement(
           'div',
-          null,
+          { className: 'centerAreaLeft' },
           this.state.redirect == false ? _react2.default.createElement(_LoginForm2.default, {
             onSubmit: this.processForm,
             onChange: this.changeUser,
             errors: this.state.errors,
             successMessage: this.state.successMessage,
             user: this.state.user
-          }) : _react2.default.createElement(_reactRouterDom.Redirect, { to: '/' })
+          }) : _react2.default.createElement(_reactRouterDom.Redirect, { to: localStorage.getItem('currentLanguage') == 'Eng' ? '/ch' : '/en' })
         )
       );
     }
@@ -36248,18 +36229,15 @@ var _MuiThemeProvider2 = _interopRequireDefault(_MuiThemeProvider);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var App = function App() {
-  return (
-    // <MuiThemeProvider>
-
+  return _react2.default.createElement(
+    _MuiThemeProvider2.default,
+    null,
     _react2.default.createElement(
       'div',
       { className: 'outerMostContainer' },
       _react2.default.createElement(_Header2.default, null),
       _react2.default.createElement(_Main2.default, null)
     )
-
-    //  </MuiThemeProvider>
-
   );
 };
 
@@ -36336,13 +36314,16 @@ var Header = function (_React$Component) {
   _createClass(Header, [{
     key: 'onLogOutClicked',
     value: function onLogOutClicked() {
-      _Auth2.default.deauthenticateUser();
+      if (_Auth2.default.isUserAuthenticated() == true) {
+        console.log('Current User is: ', localStorage.getItem('usrname'), ', logging out');
+        _Auth2.default.deauthenticateUser();
+      }
     }
   }, {
     key: 'onLanguageSettingClicked',
     value: function onLanguageSettingClicked() {
       if (localStorage.getItem('currentLanguage') == 'Eng') {
-        console.log('CURRENT LANGUANGE IS ENG, CHANGING TO CH');
+        // console.log('CURRENT LANGUANGE IS ENG, CHANGING TO CH');
 
         localStorage.setItem('currentLanguage', 'Ch');
         //  LanguageSetting.setChi();
@@ -36355,7 +36336,7 @@ var Header = function (_React$Component) {
         //  this.setState({userWelcomeText:'你好 '});
         //  this.setState({redirect: true});
       } else {
-        console.log('CURRENT LANGUANGE IS CH, CHANGING TO ENG');
+        // console.log('CURRENT LANGUANGE IS CH, CHANGING TO ENG');
 
         localStorage.setItem('currentLanguage', 'Eng');
         //  this.setState({LangBtnText:'中文版'});
@@ -36395,7 +36376,7 @@ var Header = function (_React$Component) {
               { className: 'menuItem' },
               _react2.default.createElement(
                 _reactRouterDom.Link,
-                { to: "/" },
+                { to: localStorage.getItem('currentLanguage') == 'Eng' ? "/en" : "/ch" },
                 '\u5173\u4E8E\u6211\u4EEC'
               )
             ),
@@ -36462,8 +36443,8 @@ var Header = function (_React$Component) {
               { className: 'menuItem' },
               _react2.default.createElement(
                 _reactRouterDom.Link,
-                { to: "/login" },
-                '\u767B\u5F55'
+                { to: _Auth2.default.isUserAuthenticated() == false ? "/login" : "/", onClick: this.onLogOutClicked },
+                _Auth2.default.isUserAuthenticated() == false ? '登录' : '登出'
               )
             )
           )
@@ -36671,8 +36652,10 @@ var Main = function (_React$Component) {
             _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', component: _Home2.default }),
             _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/ch', component: _Home2.default }),
             _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/en', component: _Home2.default }),
+            _react2.default.createElement(_reactRouterDom.Route, { path: '/login', component: _LoginPage2.default }),
             _react2.default.createElement(_reactRouterDom.Route, { path: '/Newsboard/', component: _Newsboard2.default })
-          )
+          ),
+          _react2.default.createElement(_RightSideMenu2.default, null)
         )
       );
     }
@@ -41441,9 +41424,10 @@ var LoginForm = function LoginForm(_ref) {
       errors = _ref.errors,
       successMessage = _ref.successMessage,
       user = _ref.user;
-  return _react2.default.createElement(
-    _Card.Card,
-    { className: 'container' },
+  return (
+    // <div className='centerAreaLeft'>
+    // <Card className="container">
+
     _react2.default.createElement(
       'form',
       { action: '/', onSubmit: onSubmit },
@@ -41493,15 +41477,17 @@ var LoginForm = function LoginForm(_ref) {
       _react2.default.createElement(
         _Card.CardText,
         null,
-        'Don\'t have an account? ',
+        'Don\'t have an account?',
         _react2.default.createElement(
           _reactRouterDom.Link,
           { to: '/signup' },
           'Create one'
-        ),
-        '.'
+        )
       )
     )
+    //  </Card>
+    // </div>
+
   );
 };
 
@@ -43727,6 +43713,8 @@ var RightSideMenuItem = function (_React$Component) {
         key: 'render',
         value: function render() {
             // "/Newsboard/".concat(this.props.newsNumber.toString())
+
+
             return _react2.default.createElement(
                 'div',
                 { className: 'centerAreaRightItem' },
@@ -43744,8 +43732,10 @@ var RightSideMenuItem = function (_React$Component) {
 
 RightSideMenuItem.propTypes = {
     newsTitle: _propTypes2.default.string.isRequired,
+    //   newsTitleArr: PropTypes.array.isRequired,
     newsNumber: _propTypes2.default.number.isRequired,
-    currentPath: _propTypes2.default.string.isRequired
+    currentLanguage: _propTypes2.default.string.isRequired
+    //   currentPath: PropTypes.string.isRequired,
     //   cardsubtitleP: PropTypes.string.isRequired
     // errors: PropTypes.object.isRequired,
     // user: PropTypes.object.isRequired

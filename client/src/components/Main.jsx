@@ -54,7 +54,7 @@ class Main extends React.Component {
                 {<Route exact path='/en' component={Home}/>}
 
                 {/* <Route exact path='/' render={() => <Home contentStr="Home" />}/>    */}
-                 {/* <Route path='/login' component={LoginPage}/> */}
+                 <Route path='/login' component={LoginPage}/>
                 {/*<Route path='/signup' component={SignUpPage}/> */}
                 {/* <Route path='/Newboard/number' component={Newsboard} render={(props) => <Newsboard {...props} newsNum={this.props.location['pathname']}/>} /> */}
                 {/* <Route exact path='/Newboard/' component={Home}/> */}
@@ -69,7 +69,7 @@ class Main extends React.Component {
 
               </Switch>
             {/* </div> */}
-            {/* <RightSideMenu/>     */}
+            {<RightSideMenu/>    }
           {/* </main> */}
           </div>    
     )

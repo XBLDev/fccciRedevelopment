@@ -2,6 +2,21 @@
 Code for the coming updated fccci: http://fccci.org.au/au/, code base for user auth and routing: 
 https://github.com/XBLDev/ReactJSNodejsAuthRouterv4
 
+Comment 27/10/2017, 6:40 pm:
+
+The cause of the previous error caused by switching language is: the menu items get a newsTitle property passed
+by the Menu, which get the newsTitle based on the current Language in the render loop by selecting the title field 
+of each item in the list of news, which causes a problem because every time it switches the language, what happens 
+is that since the language is already changed say from Eng to Ch, it wants the menu items to render the Ch titles, 
+but the list of news needs to load new data from backend before it can get Ch titles, and since the menu items 
+can't find Ch titles, or rather get a non-defined Ch title from Menu because it can only find Eng titles, it returns 
+an error.
+
+The user Auth is back, the UI style is still the material UI used by the base code, so the style is a bit 
+in-consistent with the rest of the page, but since the material UI is the def better looking style it might
+worth considering changing to material UI. The header UI might need re-work so the username won't cause the 
+entire UI to collapse.
+
 Comment 26/10/2017, 4:24 pm:
 
 The menu items on the right hand side can now use language based on language setting switching between

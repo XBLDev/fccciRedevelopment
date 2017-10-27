@@ -38,6 +38,8 @@ class RightSideMenuItem extends React.Component {
 
     render() {
         // "/Newsboard/".concat(this.props.newsNumber.toString())
+
+        
         return (
 
 
@@ -49,6 +51,8 @@ class RightSideMenuItem extends React.Component {
                     </div> */}
                     <Link to={"/Newsboard/".concat(this.props.newsTitle.toString())}>
                         {this.props.newsTitle}
+                        {/*this.props.newsTitleArr*/}
+
                     </Link>
                 {/* 
                    { this.state.redirect == false ? (
@@ -68,8 +72,10 @@ class RightSideMenuItem extends React.Component {
 
 RightSideMenuItem.propTypes = {
   newsTitle: PropTypes.string.isRequired,
+//   newsTitleArr: PropTypes.array.isRequired,
   newsNumber: PropTypes.number.isRequired,
-  currentPath: PropTypes.string.isRequired,
+  currentLanguage: PropTypes.string.isRequired,
+//   currentPath: PropTypes.string.isRequired,
 //   cardsubtitleP: PropTypes.string.isRequired
   // errors: PropTypes.object.isRequired,
   // user: PropTypes.object.isRequired
