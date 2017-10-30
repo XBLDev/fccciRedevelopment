@@ -6650,14 +6650,19 @@ var LoginPage = function (_React$Component) {
     return _this;
   }
 
-  /**
-   * Process the form.
-   *
-   * @param {object} event - the JavaScript event object
-   */
-
-
   _createClass(LoginPage, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      document.title = localStorage.getItem('currentLanguage') == 'Eng' ? "Login" : "登录";
+    }
+
+    /**
+     * Process the form.
+     *
+     * @param {object} event - the JavaScript event object
+     */
+
+  }, {
     key: 'processForm',
     value: function processForm(event) {
       var _this2 = this;
@@ -6754,7 +6759,9 @@ var LoginPage = function (_React$Component) {
             errors: this.state.errors,
             successMessage: this.state.successMessage,
             user: this.state.user
-          }) : _react2.default.createElement(_reactRouterDom.Redirect, { to: localStorage.getItem('currentLanguage') == 'Eng' ? '/ch' : '/en' })
+          }) :
+          // <Redirect to={localStorage.getItem('currentLanguage') == 'Eng' ? '/ch':'/en'} />
+          _react2.default.createElement(_reactRouterDom.Redirect, { to: '/myProfile' })
         )
       );
     }
@@ -36377,52 +36384,34 @@ var Header = function (_React$Component) {
               _react2.default.createElement(
                 _reactRouterDom.Link,
                 { to: localStorage.getItem('currentLanguage') == 'Eng' ? "/en" : "/ch" },
-                '\u5173\u4E8E\u6211\u4EEC'
+                localStorage.getItem('currentLanguage') == 'Eng' ? "About Us" : "关于我们"
               )
             ),
             _react2.default.createElement(
               'div',
               { className: 'menuItem' },
               _react2.default.createElement(
-                'a',
-                { className: 'linkButton', href: '' },
-                '\u6D3B\u52A8\u770B\u677F'
+                _reactRouterDom.Link,
+                { to: "/" },
+                localStorage.getItem('currentLanguage') == 'Eng' ? "Events" : "活动看板"
               )
             ),
             _react2.default.createElement(
               'div',
               { className: 'menuItem' },
               _react2.default.createElement(
-                'a',
-                { className: 'linkButton', href: '' },
-                '\u4E2D\u6587\u5B66\u6821'
+                _reactRouterDom.Link,
+                { to: "/" },
+                localStorage.getItem('currentLanguage') == 'Eng' ? "Chinese School" : "中文学校"
               )
             ),
             _react2.default.createElement(
               'div',
               { className: 'menuItem' },
               _react2.default.createElement(
-                'a',
-                { className: 'linkButton', href: '' },
-                '\u65B0\u661F\u821E\u56E2'
-              )
-            ),
-            _react2.default.createElement(
-              'div',
-              { className: 'menuItem' },
-              _react2.default.createElement(
-                'a',
-                { className: 'linkButton', href: '' },
-                '\u5408\u5531\u56E2'
-              )
-            ),
-            _react2.default.createElement(
-              'div',
-              { className: 'menuItem' },
-              _react2.default.createElement(
-                'a',
-                { className: 'linkButton', href: '' },
-                '\u8054\u7CFB\u6211\u4EEC'
+                _reactRouterDom.Link,
+                { to: "/" },
+                localStorage.getItem('currentLanguage') == 'Eng' ? "New Star Dance Group" : "新星舞团"
               )
             ),
             _react2.default.createElement(
@@ -36433,11 +36422,25 @@ var Header = function (_React$Component) {
                 { to: localStorage.getItem('currentLanguage') == 'Eng' ? "/ch" : "/en", onClick: this.onLanguageSettingClicked },
                 localStorage.getItem('currentLanguage') == 'Eng' ? '中文版' : 'English'
               )
+            ),
+            _react2.default.createElement(
+              'div',
+              { className: 'menuItem' },
+              _react2.default.createElement(
+                _reactRouterDom.Link,
+                { to: _Auth2.default.isUserAuthenticated() == false ? "/login" : "/myProfile" },
+                localStorage.getItem('currentLanguage') == 'Eng' ? 'My Profile' : '我的资料'
+              )
             )
           ),
           _react2.default.createElement(
             'div',
             { className: 'menuAreaRight' },
+            _react2.default.createElement(
+              'div',
+              { className: _Auth2.default.isUserAuthenticated() == false ? "menuItemHidden" : "menuItem" },
+              _Auth2.default.isUserAuthenticated() == false ? '-' : JSON.parse(localStorage.getItem('usrname')).name
+            ),
             _react2.default.createElement(
               'div',
               { className: 'menuItem' },
@@ -36603,6 +36606,10 @@ var _RightSideMenu = __webpack_require__(47);
 
 var _RightSideMenu2 = _interopRequireDefault(_RightSideMenu);
 
+var _myProfile = __webpack_require__(312);
+
+var _myProfile2 = _interopRequireDefault(_myProfile);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -36653,7 +36660,8 @@ var Main = function (_React$Component) {
             _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/ch', component: _Home2.default }),
             _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/en', component: _Home2.default }),
             _react2.default.createElement(_reactRouterDom.Route, { path: '/login', component: _LoginPage2.default }),
-            _react2.default.createElement(_reactRouterDom.Route, { path: '/Newsboard/', component: _Newsboard2.default })
+            _react2.default.createElement(_reactRouterDom.Route, { path: '/Newsboard/', component: _Newsboard2.default }),
+            _react2.default.createElement(_reactRouterDom.Route, { path: '/myProfile', component: _myProfile2.default })
           ),
           _react2.default.createElement(_RightSideMenu2.default, null)
         )
@@ -43742,6 +43750,70 @@ RightSideMenuItem.propTypes = {
 };
 
 exports.default = RightSideMenuItem;
+
+/***/ }),
+/* 312 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(1);
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var myProfile = function (_React$Component) {
+  _inherits(myProfile, _React$Component);
+
+  function myProfile(props) {
+    _classCallCheck(this, myProfile);
+
+    var _this = _possibleConstructorReturn(this, (myProfile.__proto__ || Object.getPrototypeOf(myProfile)).call(this, props));
+
+    _this.state = {};
+
+    return _this;
+  }
+
+  _createClass(myProfile, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      document.title = localStorage.getItem('currentLanguage') == 'Eng' ? "My Profile" : "我的资料";
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        'div',
+        { className: 'centerAreaLeft' },
+        'my profile, my name is: ',
+        JSON.parse(localStorage.getItem('usrname')).name
+      );
+    }
+  }]);
+
+  return myProfile;
+}(_react2.default.Component);
+
+exports.default = myProfile;
 
 /***/ })
 /******/ ]);

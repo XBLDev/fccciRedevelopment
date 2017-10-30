@@ -2,6 +2,14 @@
 Code for the coming updated fccci: http://fccci.org.au/au/, code base for user auth and routing: 
 https://github.com/XBLDev/ReactJSNodejsAuthRouterv4
 
+Comment 30/10/2017, 5:52 pm:
+
+Added a new user profile page with for now just user's name on it, and the menu UI adjusted to have enough room 
+to display user's name when logged in, when there's no log in the user name area is just a slash with a font color
+that's the same as the background so it can't be seen. 
+
+Next steps will be creating event photos and event calendar with ReactJS, potential libraries to use: https://www.npmjs.com/package/react-event-calendar, https://www.npmjs.com/package/react-photo-gallery  
+
 Comment 27/10/2017, 6:40 pm:
 
 The cause of the previous error caused by switching language is: the menu items get a newsTitle property passed

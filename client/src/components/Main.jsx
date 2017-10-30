@@ -13,6 +13,7 @@ import SignUpPage from '../containers/SignUpPage.jsx';
 import Auth from '../modules/Auth';
 import LanguageSetting from '../modules/LanguageSetting';
 import RightSideMenu from './RightSideMenu.jsx'
+import myProfile from './myProfile.jsx'
 
 
 
@@ -59,7 +60,8 @@ class Main extends React.Component {
                 {/* <Route path='/Newboard/number' component={Newsboard} render={(props) => <Newsboard {...props} newsNum={this.props.location['pathname']}/>} /> */}
                 {/* <Route exact path='/Newboard/' component={Home}/> */}
                 <Route path='/Newsboard/' component={Newsboard}/>
-                
+                <Route path='/myProfile' component={myProfile}/>
+
                 {/* {<Route path='/Newsboard/:number' render={() => <Newsboard newsNum={0}/>} />} */}
 
                 {/* <Route path='/Newsboard/' render={() => <Home contentStr="Newsboard" />} /> */}

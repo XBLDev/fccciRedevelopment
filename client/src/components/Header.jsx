@@ -95,30 +95,45 @@ class Header extends React.Component {
             <div className="menuArea">
               <div className="menuAreaLeft">
                 {/* Menu Items */}
+                
                 <div className="menuItem">
                   {/* <a className="linkButton" href="">关于我们</a> */}
                   <Link to={localStorage.getItem('currentLanguage') == 'Eng' ? "/en":"/ch"}>                    
-                  关于我们
+                    {localStorage.getItem('currentLanguage') == 'Eng' ? "About Us":"关于我们"}
                   </Link>
                 </div>
+                
                 <div className="menuItem">
-                  <a className="linkButton" href="">活动看板</a>
-                </div>
-                <div className="menuItem">
-                  <a className="linkButton" href="">中文学校</a>
-                </div>  
-                <div className="menuItem">
-                  <a className="linkButton" href="">新星舞团</a>
-                </div> 
-                <div className="menuItem">
-                  <a className="linkButton" href="">合唱团</a>
-                </div>
-                <div className="menuItem">
-                  <a className="linkButton" href="">联系我们</a>
+                  <Link to={"/"}>                    
+                    {localStorage.getItem('currentLanguage') == 'Eng' ? "Events":"活动看板"}
+                  </Link>
                 </div>
 
                 <div className="menuItem">
-                  <Link to={localStorage.getItem('currentLanguage') == 'Eng' ? "/ch":"/en"} onClick={this.onLanguageSettingClicked}>
+                  <Link to={"/"}>                    
+                    {localStorage.getItem('currentLanguage') == 'Eng' ? "Chinese School":"中文学校"}
+                  </Link>                  
+                </div>
+
+                <div className="menuItem">
+                  <Link to={"/"}>                    
+                    {localStorage.getItem('currentLanguage') == 'Eng' ? "New Star Dance Group":"新星舞团"}
+                  </Link>                   
+                </div>
+
+                {/* <div className="menuItem">
+                  <Link to={"/"}>                    
+                    {localStorage.getItem('currentLanguage') == 'Eng' ? "合唱团":"合唱团"}
+                  </Link>                         
+                  <a className="linkButton" href="">合唱团</a>
+                </div> */}
+
+                {/* <div className="menuItem">
+                  <a className="linkButton" href="">联系我们</a>
+                </div> */}
+                
+                <div className="menuItem">
+                <Link to={localStorage.getItem('currentLanguage') == 'Eng' ? "/ch":"/en"} onClick={this.onLanguageSettingClicked}>
                     {localStorage.getItem('currentLanguage') == 'Eng' ?(
                       '中文版'
                     ):
@@ -127,7 +142,22 @@ class Header extends React.Component {
                     )
                     }
                   </Link>
+                </div>
+                
+                <div className="menuItem">
+                  <Link to={Auth.isUserAuthenticated() == false ? "/login":"/myProfile"}>
+                    {localStorage.getItem('currentLanguage') == 'Eng' ?(
+                      'My Profile'
+                    ):
+                    (
+                      '我的资料'
+                    )
+                    }
+                  </Link>
                 </div>   
+
+
+
 
                 {/* <div className="menuItem">
                   {Auth.isUserAuthenticated() == false ? "_":"你好".concat(JSON.parse(localStorage.getItem('usrname')).name)}
@@ -143,8 +173,21 @@ class Header extends React.Component {
                 } */}
 
 
-              </div>  
+              </div>
+
+
               <div className="menuAreaRight">
+
+                <div className={Auth.isUserAuthenticated() == false ? "menuItemHidden":"menuItem"}>
+                    {Auth.isUserAuthenticated() == false ?(
+                      '-'
+                    ):
+                    (
+                      (JSON.parse(localStorage.getItem('usrname')).name)
+                    )
+                    }
+                </div>   
+
                 <div className="menuItem">  
                   {/* <a className="linkButton" href="">登录</a> */}
                   {/* <a className="linkButton" href="">新用户</a> */}

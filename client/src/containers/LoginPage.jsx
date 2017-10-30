@@ -35,6 +35,12 @@ class LoginPage extends React.Component {
     this.changeUser = this.changeUser.bind(this);
   }
 
+
+
+  componentDidMount() {
+    document.title= localStorage.getItem('currentLanguage') == 'Eng' ? "Login":"登录";
+  }    
+
   /**
    * Process the form.
    *
@@ -129,7 +135,9 @@ class LoginPage extends React.Component {
             successMessage={this.state.successMessage}        
             user={this.state.user}
           />):(
-            <Redirect to={localStorage.getItem('currentLanguage') == 'Eng' ? '/ch':'/en'} />
+            // <Redirect to={localStorage.getItem('currentLanguage') == 'Eng' ? '/ch':'/en'} />
+            <Redirect to={'/myProfile'} />
+
           )
         }
 

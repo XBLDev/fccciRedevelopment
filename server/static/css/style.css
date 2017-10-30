@@ -228,7 +228,9 @@ a:hover {
 .menuAreaRight{
   margin: 0 auto; 
   
-  width: 10vw;
+  width: 15vw;
+  /* width: auto; */
+  
   height: 10vh;
   line-height: 10vh;
   /* background: rgba(0, 255, 0, 1); */
@@ -255,6 +257,25 @@ a:hover {
     font-weight: bold;
 }
 
+.menuItemHidden {
+  margin-left: 0vw;
+  margin-right: 1vw;
+  margin-top: 0vw;
+  margin-bottom: 0vw;  
+
+  width: auto;
+  height: 10vh;
+  line-height: 10vh;
+  white-space: nowrap;
+  background: rgba(255, 0, 0, 1);
+  text-align: left;    
+  color: rgba(255, 0, 0, 1);
+  display: inline-block;
+  align-content: center;
+  align-items: center;   
+  vertical-align: center;
+}  
+
 .menuItem {
 
   margin-left: 0vw;
@@ -278,7 +299,7 @@ a:hover {
 .menuAreaLeft {
   margin: 0 auto; 
   
-  width: 80vw;
+  width: 75vw;
   height: 10vh;
   line-height: 10vh;
   /* background: rgba(0, 0, 255, 1); */
