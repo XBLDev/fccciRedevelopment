@@ -13,6 +13,7 @@ import Auth from '../modules/Auth';
 // import LanguageSetting from '../modules/LanguageSetting';
 import RightSideMenuItem from './RightSideMenuItem.jsx'; 
 
+import RightSideCalendar from './Calendar.jsx'; 
 
 class RightSideMenu extends React.Component {
 
@@ -161,6 +162,7 @@ class RightSideMenu extends React.Component {
     return (
           <div className="centerAreaRight">
               {items}
+              {<RightSideCalendar/>}
               {/* {this.state.listOfLatestNews.length == 0?(
                 <RightSideMenuItem newsTitle={'loading...'} newsNumber={-1}/>
               ):

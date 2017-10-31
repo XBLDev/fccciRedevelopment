@@ -1,7 +1,9 @@
 import React from 'react'
 import Header from './Header.jsx'
 import Main from './Main.jsx'
-import RightSideMenu from './RightSideMenu.jsx'
+import RightSideCalendar from './Calendar.jsx'; 
+
+// import RightSideMenu from './RightSideMenu.jsx'
 
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
@@ -11,7 +13,7 @@ const App = () => (
   <MuiThemeProvider>
 
     <div className="outerMostContainer">
-        <Header />  
+        {<Header />  }
         {/* <div className="headerElement">
             <div className="headerEng">
               headerEng
@@ -29,6 +31,9 @@ const App = () => (
           {/* {<RightSideMenu/>} */}
           {/* centerArea */}
         {/* </div> */}
+  
+        {/* <RightSideCalendar/> */}
+
     </div>
 
     </MuiThemeProvider>

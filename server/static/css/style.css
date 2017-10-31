@@ -99,7 +99,20 @@ a:hover {
 
 } */
 
-
+.centerAreaRightCalendar{
+  margin-left: 0vw;
+  margin-right: 0vw;
+  margin-top: 0vw;
+  margin-bottom: 1vw;  
+  width: 20vw;
+  height: 40vh;/*30vh*/
+   background: rgba(0, 0, 255, 1);
+  /*color: rgba(255, 255, 255, 1);   */
+  
+  /* word-wrap: break-word;
+  font-family: 'Noto Sans SC Sliced', sans-serif; */
+  
+}
 
 .centerAreaRightItem{
   margin-left: 0vw;
@@ -210,6 +223,20 @@ a:hover {
   /* display: block; */
 
 }
+.BottomArea{
+  margin-left: 5vw;
+  margin-right: 5vw;
+  margin-top: 1vh;/*1vw*/
+  margin-bottom: 0vw;  
+
+  width: 90vw;
+  height: auto;/*30vh*/
+  background: rgba(0, 0, 0, 1);
+  color: rgba(255, 255, 255, 1);
+  /* display: inline-block */
+  display: block;
+}
+
 
 .centerArea{
   margin-left: 5vw;
@@ -389,6 +416,7 @@ a:hover {
 .outerMostContainer {
   background: rgb(255, 25, 255, 1);
   width: 100vw;
+  height: auto;
   /* height: 100vh; */
   display: block;  
   align-content: center;

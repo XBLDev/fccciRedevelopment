@@ -2,6 +2,15 @@
 Code for the coming updated fccci: http://fccci.org.au/au/, code base for user auth and routing: 
 https://github.com/XBLDev/ReactJSNodejsAuthRouterv4
 
+Comment 31/10/2017, 7:42 pm:
+
+Added the calendar using the react-big-calender package: https://github.com/intljusticemission/react-big-calendar,
+the react-event-calendar https://www.npmjs.com/package/react-event-calendar gives an error when compiled even with 
+the simplest setup. The UI of the react-big-calendar is a bit way too complex for the purpose of just re-creating 
+the original event calendar, and the top tool-bar is too wide to fit into the 20vw space. The calendar itself requires
+the parent div element to have a fixed height, which I don't think is a reasonable design decision on the original 
+author, but maybe min and max height can be used to compensate that.
+
 Comment 30/10/2017, 5:52 pm:
 
 Added a new user profile page with for now just user's name on it, and the menu UI adjusted to have enough room 
