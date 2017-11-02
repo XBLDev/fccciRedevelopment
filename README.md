@@ -2,6 +2,21 @@
 Code for the coming updated fccci: http://fccci.org.au/au/, code base for user auth and routing: 
 https://github.com/XBLDev/ReactJSNodejsAuthRouterv4
 
+Comment 2/11/2017, 9:04 pm:
+
+The 3 calendar packages explored: https://github.com/nathanstitt/dayz, https://github.com/Hanse/react-calendar, 
+https://github.com/intljusticemission/react-big-calendar, basically the idea is that the package ideally should: 
+be easy to modify such that it can put a link on each of the event days, and each link when clicked can go to 
+the corresponding event, and since react-big-calendar is too difficult to modify and is using the pre2015 createelement
+syntax, it's not suitable for the purpose; dayz give an error saying a prop date is not defined; therefore the only 
+viable option at this point is react-calendar, a simple library that's written in the component-subcomponent sort of
+way, and adding props/modifying the original code is relative easy to do. The idea is that when changing the month with 
+the forward and backward buttons, it sends a request to backend to load the events of next/previous month, send the events
+to the calendar as a prop, and the calendar gives the days that have events links and gives different classnames to each day cell accordingly so the user knows that whether a day has an event or not.
+
+Started on testing React Components with Jest and Enzyme, for now just basic ideas such as testing whether the output render
+is as expected, following tutorial here: https://www.sitepoint.com/test-react-components-jest/. Next steps would be to test function logics and if possible whether routing is working as expected.
+
 Comment 31/10/2017, 7:42 pm:
 
 Added the calendar using the react-big-calender package: https://github.com/intljusticemission/react-big-calendar,

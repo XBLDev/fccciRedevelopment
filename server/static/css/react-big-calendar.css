@@ -36,6 +36,7 @@ button.rbc-input::-moz-focus-inner {
 }
 .rbc-abs-full,
 .rbc-row-bg {
+  /* background: rgba(0, 255, 255, 1); */
   overflow: hidden;
   position: absolute;
   top: 0;
@@ -87,7 +88,8 @@ button.rbc-input::-moz-focus-inner {
   z-index: 4;
 }
 .rbc-today {
-  background-color: #eaf6ff;
+  font-weight: bold;
+  background-color: #2afd00;
 }
 .rbc-toolbar {
   display: -webkit-flex;
@@ -182,14 +184,19 @@ button.rbc-input::-moz-focus-inner {
   margin-left: 10px;
 }
 .rbc-event {
-  cursor: pointer;
+  cursor: pointer;/*pointer*/
   padding: 2px 5px;
-  background-color: #3174ad;
+  background-color: #00fff2;
   border-radius: 5px;
-  color: #fff;
+  color: black;
 }
+.rbc-event:hover{
+  background-color: blue;
+  color:white;
+}
+
 .rbc-event.rbc-selected {
-  background-color: #265985;
+  background-color: #ffee00;
 }
 .rbc-event-label {
   font-size: 80%;
@@ -233,7 +240,9 @@ button.rbc-input::-moz-focus-inner {
   padding: 0 1px 1px 1px;
 }
 .rbc-selected-cell {
-  background-color: rgba(0, 0, 0, 0.1);
+  /* background-color: rgba(0, 0, 0, 0.1); */
+  background-color: rgba(255, 0, 0, 1);
+  
 }
 .rbc-show-more {
   background-color: rgba(255, 255, 255, 0.3);
@@ -312,6 +321,7 @@ button.rbc-input::-moz-focus-inner {
   text-decoration: none;
 }
 .rbc-row-bg {
+  background: rgba(255, 0, 255, 1);
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
@@ -442,7 +452,7 @@ button.rbc-input::-moz-focus-inner {
   position: relative;
 }
 .rbc-day-slot .rbc-event {
-  border: 1px solid #265985;
+  border: 1px solid #fd7200;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
@@ -463,6 +473,8 @@ button.rbc-input::-moz-focus-inner {
   width: auto;
 }
 .rbc-day-slot .rbc-event-content {
+  /*cursor: crosshair;*/
+  /* background: rgba(255, 0, 0, 1);   */
   width: 100%;
   -webkit-flex: 1 1 0;
       -ms-flex: 1 1 0px;
@@ -471,6 +483,7 @@ button.rbc-input::-moz-focus-inner {
   line-height: 1;
   height: 100%;
   min-height: 1em;
+  /* color: black; */
 }
 .rbc-day-slot .rbc-time-slot {
   border-top: 1px solid #f7f7f7;
@@ -487,6 +500,7 @@ button.rbc-input::-moz-focus-inner {
   text-align: center;
 }
 .rbc-day-slot .rbc-event {
+
   position: absolute;
   z-index: 2;
 }

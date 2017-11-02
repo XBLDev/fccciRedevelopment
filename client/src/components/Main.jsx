@@ -56,7 +56,7 @@ class Main extends React.Component {
 
                 {/* <Route exact path='/' render={() => <Home contentStr="Home" />}/>    */}
                  <Route path='/login' component={LoginPage}/>
-                {/*<Route path='/signup' component={SignUpPage}/> */}
+                <Route path='/signup' component={SignUpPage}/>
                 {/* <Route path='/Newboard/number' component={Newsboard} render={(props) => <Newsboard {...props} newsNum={this.props.location['pathname']}/>} /> */}
                 {/* <Route exact path='/Newboard/' component={Home}/> */}
                 <Route path='/Newsboard/' component={Newsboard}/>

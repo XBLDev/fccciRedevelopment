@@ -4,8 +4,13 @@ import PropTypes from 'prop-types';
 
 // import EventCalendar from 'react-event-calendar';
 // const EventCalendar = require('react-event-calendar');
+import { Calendar } from 'react-calendar-component';
 import BigCalendar from 'react-big-calendar';
 import moment from 'moment';
+import { Link } from 'react-router-dom'
+import 'moment/locale/nb';
+// import Dayz from 'dayz';
+// import PureDayZCalendar from './PureDayZCalendar.jsx'; 
 
 BigCalendar.setLocalizer(
   BigCalendar.momentLocalizer(moment)
@@ -93,27 +98,46 @@ const fakeevents = [
   ];
 
 
+// would come from a network request in a "real" app
+// const EVENTS = new Dayz.EventsCollection([
+//     { content: 'A short event',
+//       range: moment.range( date.clone(),
+//                            date.clone().add(1, 'day') ) },
+//     { content: 'Two Hours ~ 8-10',
+//       range: moment.range( date.clone().hour(8),
+//                            date.clone().hour(10) ) },
+//     { content: "A Longer Event",
+//       range: moment.range( date.clone().subtract(2,'days'),
+//                            date.clone().add(8,'days') ) }
+// ]);
+
 class RightSideCalendar extends React.Component {
 
     constructor(props) {
         super(props);
     
         this.state = {
+          date: moment(),
+          loading: false
         };
 
-    this.myevents =  [
-        {
-            'title': 'All Day Event',
-            'allDay': true,
-            'start': new Date(2017, 10, 30),
-            'end': new Date(2017, 10, 31)
-        },
-        {
-            'title': 'Long Event',
-            'start': new Date(2017, 11, 1),
-            'end': new Date(2017, 11, 10)
-        },
-    ]
+        this.myevents = [
+            {
+                'title': 'All Day Event',
+                'allDay': true,
+                'start': new Date(2017, 10, 30),
+                'end': new Date(2017, 10, 31)
+            },
+            {
+                'title': 'Long Event',
+                'start': new Date(2017, 11, 1),
+                'end': new Date(2017, 11, 10)
+            },
+        ]
+
+        this.onNextMonth = this.onNextMonth.bind(this);
+        this.onPreviousMonth = this.onPreviousMonth.bind(this);
+
     }
 
     componentWillMount()
@@ -130,24 +154,84 @@ class RightSideCalendar extends React.Component {
         console.log('RightSideCalendar DID UNMOUNT!');
     }        
 
+    componentWillUpdate(nextProps, nextState)
+    {
+      console.log('RightSideCalendar will update, nextProps: ', nextProps, ', nextState: ', nextState);
+
+    }
+
+    componentDidUpdate(prevProps, prevState){
+      console.log('RightSideCalendar did updated, prevProps: ', prevProps, ', prevState: ', prevState);
+
+      if(this.state.loading == true)
+      {
+        console.log('RightSideCalendar: month changed, should load the event from backend');
+        // var prevMonthFirstDay = moment().subtract(1, 'months').startOf('month')
+        // var nextMonthFirstDay = moment().add(1, 'months').startOf('month');
+        console.log('Next month first day: ', this.state.date);
+      } 
+      // console.log('Calendar: loading iss: ',this.state.loading);
+    }
+
     componentWillReceiveProps(nextProps)
     {
-        console.log('RightSideCalendar will receive props');
-        
+        console.log('RightSideCalendar will receive props, nextProps: ',nextProps);
     }   
+
+    onNextMonth()
+    {
+      this.setState({loading: true, date: moment().add(1, 'months').startOf('month')});
+    }
+
+    onPreviousMonth()
+    {
+      this.setState({loading: true, date: moment().subtract(1, 'months').startOf('month')});
+    }
     
     render() {
         let allViews = Object.keys(BigCalendar.Views).map(k => BigCalendar.Views[k])
         
         return (
         <div className="centerAreaRightCalendar">
-            <BigCalendar
+            {/* <PureDayZCalendar date={moment()}/> */}
+
+            {/* <BigCalendar
              events={fakeevents} 
              views={allViews}
              selectable={true}
              onSelectSlot={() => console.log('a date is selected')}
-             toolbar={false}
+             toolbar={true}
+            /> */}
+
+            {this.state.loading == false ?(
+            <Calendar
+              /* onChangeMonth={(date) => this.setState({ date })}   */
+              date={moment()}
+              /* onPickDate={(date) => console.log(date)} */
+              renderDay={day => day.format('D')}
+              onNextMonth={this.onNextMonth} 
+              onPrevMonth={this.onPreviousMonth} 
             />
+            ):
+            (
+              'loading....'
+            //   <Calendar
+            //   /* onChangeMonth={(date) => this.setState({ date })}  */
+            //   date={moment()}
+            //   /* onPickDate={(date) => console.log(date)} */
+            //   renderDay={day => day.format('D')}
+            //    onNextMonth={this.onNextMonth} 
+            //   /* onPrevMonth={this.onPreviousMonth} */
+            // />            
+            )
+            }
+
+              {/* <Dayz
+                   display='month'
+                   date={this.props.date}
+                   events={EVENTS}
+               /> */}
+
         </div>
         )            
     
@@ -155,5 +239,15 @@ class RightSideCalendar extends React.Component {
 
 
 }
+
+// RightSideMenuItem.propTypes = {
+//   date: PropTypes.any.isRequired
+// //   newsTitleArr: PropTypes.array.isRequired,
+// //   currentLanguage: PropTypes.string.isRequired,
+// //   currentPath: PropTypes.string.isRequired,
+// //   cardsubtitleP: PropTypes.string.isRequired
+//   // errors: PropTypes.object.isRequired,
+//   // user: PropTypes.object.isRequired
+// };
 
 export default RightSideCalendar

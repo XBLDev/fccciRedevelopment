@@ -74,7 +74,7 @@ RightSideMenuItem.propTypes = {
   newsTitle: PropTypes.string.isRequired,
 //   newsTitleArr: PropTypes.array.isRequired,
   newsNumber: PropTypes.number.isRequired,
-  currentLanguage: PropTypes.string.isRequired,
+//   currentLanguage: PropTypes.string.isRequired,
 //   currentPath: PropTypes.string.isRequired,
 //   cardsubtitleP: PropTypes.string.isRequired
   // errors: PropTypes.object.isRequired,

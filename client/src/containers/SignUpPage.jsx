@@ -97,7 +97,7 @@ class SignUpPage extends React.Component {
       // <div>
       //   signup
       // </div>
-      <div>
+      <div className='centerAreaLeft'>
       {this.state.redirect == false ?(
       <SignUpForm
         onSubmit={this.processForm}

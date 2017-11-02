@@ -14,6 +14,7 @@ import Auth from '../modules/Auth';
 import RightSideMenuItem from './RightSideMenuItem.jsx'; 
 
 import RightSideCalendar from './Calendar.jsx'; 
+import moment from 'moment';
 
 class RightSideMenu extends React.Component {
 
@@ -153,7 +154,6 @@ class RightSideMenu extends React.Component {
           key={i}
           newsTitle={this.state.listOfLatestNews[i][title]}
           newsNumber={i}
-          currentLanguage={this.state.currentLanguage}
           /* currentPath={this.props.menupath} */
         />
       );
@@ -162,7 +162,7 @@ class RightSideMenu extends React.Component {
     return (
           <div className="centerAreaRight">
               {items}
-              {<RightSideCalendar/>}
+              {<RightSideCalendar />}
               {/* {this.state.listOfLatestNews.length == 0?(
                 <RightSideMenuItem newsTitle={'loading...'} newsNumber={-1}/>
               ):

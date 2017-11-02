@@ -105,9 +105,10 @@ a:hover {
   margin-top: 0vw;
   margin-bottom: 1vw;  
   width: 20vw;
-  height: 40vh;/*30vh*/
-   background: rgba(0, 0, 255, 1);
+  height: 50vh;/*30vh*/
+   background: rgba(255, 255, 255, 1);
   /*color: rgba(255, 255, 255, 1);   */
+  color: rgba(0, 0, 255, 1);  
   
   /* word-wrap: break-word;
   font-family: 'Noto Sans SC Sliced', sans-serif; */
