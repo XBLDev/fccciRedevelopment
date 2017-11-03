@@ -142,13 +142,13 @@ class RightSideMenu extends React.Component {
 
   render() {
 
-    var items = [];
+    var Events = [];
     // var title = localStorage.getItem('currentLanguage') == 'Eng'? 'titleEng' : 'titleCh';
     var title = this.state.currentLanguage == 'Eng'? 'titleEng' : 'titleCh';
     
     for (var i = 0; i < this.state.listOfLatestNews.length; i++) {
       // indents.push(<span className='indent' key={i}></span>);
-      items.push
+      Events.push
       (
         <RightSideMenuItem
           key={i}
@@ -161,7 +161,7 @@ class RightSideMenu extends React.Component {
 
     return (
           <div className="centerAreaRight">
-              {items}
+              {Events}
               {<RightSideCalendar />}
               {/* {this.state.listOfLatestNews.length == 0?(
                 <RightSideMenuItem newsTitle={'loading...'} newsNumber={-1}/>

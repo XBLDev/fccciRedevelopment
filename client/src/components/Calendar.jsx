@@ -118,7 +118,8 @@ class RightSideCalendar extends React.Component {
     
         this.state = {
           date: moment(),
-          loading: false
+          loading: true,
+          calendarEvents: []
         };
 
         this.myevents = [
@@ -142,7 +143,31 @@ class RightSideCalendar extends React.Component {
 
     componentWillMount()
     {
+      console.log('RightSideCalendar will mount');
 
+      console.log('RightSideCalendar: on mounting, load data from backend');
+      // var prevMonthFirstDay = moment().subtract(1, 'months').startOf('month')
+      // var nextMonthFirstDay = moment().add(1, 'months').startOf('month');
+      // console.log('Next month first day: year: ', this.state.date.year(), ', month: ', (this.state.date.month()+1));
+      //moment("25/04/2012","DD/MM/YYYY").year()
+      const xhr = new XMLHttpRequest();
+      xhr.open('get', '/Events/calendarEvents?year='+encodeURIComponent(this.state.date.year())+'&month='+encodeURIComponent(this.state.date.month()+1));
+      xhr.responseType = 'json';
+      xhr.addEventListener('load', () => {
+        if (xhr.status === 200) {
+          // this.setState({
+          //   numberOfNews: xhr.response.message
+          //   });
+          console.log('RightSideCalendar: GOT RESPONSE FROM SERVER: ', xhr.response.message);
+          console.log('RightSideCalendar: GOT ARRAY OF EVENTS FOR CURRENT MONTH: '.concat(this.state.date.month()+1).concat(': ').concat(xhr.response.Events));
+          // console.log('RightSideCalendar: GOT ARRAY OF EVENTS: CH: '.concat(xhr.response.CH_Str).concat(', EN: ').concat(xhr.response.EN_Str).concat(', DATE: ').concat(xhr.response.DATE_Str));
+          
+          this.setState({loading: false, calendarEvents: xhr.response.Events});
+        }            
+      
+      });          
+
+      xhr.send();   
     }
 
     componentWillUnmount() 
@@ -168,7 +193,28 @@ class RightSideCalendar extends React.Component {
         console.log('RightSideCalendar: month changed, should load the event from backend');
         // var prevMonthFirstDay = moment().subtract(1, 'months').startOf('month')
         // var nextMonthFirstDay = moment().add(1, 'months').startOf('month');
-        console.log('Next month first day: ', this.state.date);
+        console.log('Next month first day: year: ', this.state.date.year(), ', month: ', (this.state.date.month()+1));
+        //moment("25/04/2012","DD/MM/YYYY").year()
+        const xhr = new XMLHttpRequest();
+        xhr.open('get', '/Events/calendarEvents?year='+encodeURIComponent(this.state.date.year())+'&month='+encodeURIComponent(this.state.date.month()+1));
+        xhr.responseType = 'json';
+        xhr.addEventListener('load', () => {
+          if (xhr.status === 200) {
+            // this.setState({
+            //   numberOfNews: xhr.response.message
+            //   });
+            console.log('RightSideCalendar: GOT RESPONSE FROM SERVER: ', xhr.response.message);
+            console.log('RightSideCalendar: GOT ARRAY OF EVENTS FOR CURRENT MONTH: '.concat(this.state.date.month()+1).concat(': ').concat(xhr.response.Events));
+            // console.log('RightSideCalendar: GOT ARRAY OF EVENTS: CH: '.concat(xhr.response.CH_Str).concat(', EN: ').concat(xhr.response.EN_Str).concat(', DATE: ').concat(xhr.response.DATE_Str));
+            this.setState({loading: false, calendarEvents: xhr.response.Events});
+            
+            // this.setState({loading: false});
+          }            
+        
+        });          
+
+        xhr.send();    
+        
       } 
       // console.log('Calendar: loading iss: ',this.state.loading);
     }
@@ -180,12 +226,12 @@ class RightSideCalendar extends React.Component {
 
     onNextMonth()
     {
-      this.setState({loading: true, date: moment().add(1, 'months').startOf('month')});
+      this.setState({loading: true, date: this.state.date.add(1, 'months').startOf('month')});
     }
 
     onPreviousMonth()
     {
-      this.setState({loading: true, date: moment().subtract(1, 'months').startOf('month')});
+      this.setState({loading: true, date: this.state.date.subtract(1, 'months').startOf('month')});
     }
     
     render() {
@@ -206,7 +252,9 @@ class RightSideCalendar extends React.Component {
             {this.state.loading == false ?(
             <Calendar
               /* onChangeMonth={(date) => this.setState({ date })}   */
-              date={moment()}
+              CurrentLanguage={localStorage.getItem('currentLanguage').toString()}
+              Events={this.state.calendarEvents.toString()}
+              date={this.state.date}
               /* onPickDate={(date) => console.log(date)} */
               renderDay={day => day.format('D')}
               onNextMonth={this.onNextMonth} 

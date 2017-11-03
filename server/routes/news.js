@@ -48,14 +48,14 @@ newsModel.find().count(function(err, count){
             var firstNews = {titleEng: 'Rain and rain unimpeded, we regret', 
                              titleCh: '风雨的无阻, 我们的无悔',
                              date: new Date().toISOString(),
-                             ContentURLCH: "someURL",
-                             ContentURLENG: "someURL"};
+                             ContentURLCH: "https://s3-us-west-2.amazonaws.com/fccci/LATESTNEWS/Event1/Event01_CH.txt",
+                             ContentURLENG: "https://s3-us-west-2.amazonaws.com/fccci/LATESTNEWS/Event1/Event01_ENG.txt"};
 
             var secondNews = {titleEng: 'Hualian Chinese School 2017 Seeking Tour of Heilongjiang Winter Camp Summary Conference', 
                              titleCh: '华联社中文学校2017年寻根之旅黑龙江冬令营总结大会',
                              date: new Date().toISOString(),
-                             ContentURLCH: "someURL",
-                             ContentURLENG: "someURL"};
+                             ContentURLCH: "https://s3-us-west-2.amazonaws.com/fccci/LATESTNEWS/Event2/Event02_CH.txt",
+                             ContentURLENG: "https://s3-us-west-2.amazonaws.com/fccci/LATESTNEWS/Event2/Event02_ENG.txt"};
 
             conn.collection('latestnews').insert(firstNews, function(err, records){
                 // console.log("Record added as "+records[0]._id);

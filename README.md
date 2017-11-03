@@ -2,6 +2,17 @@
 Code for the coming updated fccci: http://fccci.org.au/au/, code base for user auth and routing: 
 https://github.com/XBLDev/ReactJSNodejsAuthRouterv4
 
+Comment 3/11/2017, 6:48 pm:
+
+The calendar now can load the events from backend based on the currently rendered days of the month, and put links on the 
+days that have an event. When the month is changed by clicking on the foward/backward button, the calendar reloads the event from backend again.
+
+Basic idea behind the implementation is based on the original react-calendar-component: the original library when gets the date prop, use the prop to render 3 sets of days: days before this month, days in this month, and days after this month. And now when the calendar is reloaded it also passes the event names/dates of events of the month which it got from backend, and the current language the page uses. And when the calendar gets these props, it checks if any days in the current month matches the dates of events passed in, and if so give that day an extra link that links to an URL based on the current language, plus a different CSS which makes it stand out so the user knows that there's an event on that day.
+
+The calendar currently cannot deal with any event that lasts for longer than 1 day, any event that's longer than 1 day is just conuted as 1 day. It also doesn't take into account of the case where multiple events happening on the same day, which is quite possbile to happen. The react-big-calendar has options of pop ups for multi-events day and rendering for multi-days event, could use as a future reference.
+
+Added a very simple test for the function that generates the days rendered, basically just testing that the output generates more than 30 days, which is true I think for almost all the cases, Feb could be an exception since Feb has 28 days, but since it also renders days from Jan and Mar the total days rendered should exceed 30.
+
 Comment 2/11/2017, 9:04 pm:
 
 The 3 calendar packages explored: https://github.com/nathanstitt/dayz, https://github.com/Hanse/react-calendar, 

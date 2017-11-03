@@ -32,10 +32,12 @@ app.use('/api', authCheckMiddleware);
 const authRoutes = require('./server/routes/auth');
 const apiRoutes = require('./server/routes/api');
 const newsRoutes = require('./server/routes/news');
+const eventRoutes = require('./server/routes/Events');
 
 app.use('/auth', authRoutes);
 app.use('/api', apiRoutes);
 app.use('/news', newsRoutes);
+app.use('/Events', eventRoutes);
 
 app.route('/*').get(function(req, res) { 
   return res.sendFile(path.join(__dirname, './server/static/index.html')); 
