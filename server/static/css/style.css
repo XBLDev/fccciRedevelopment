@@ -98,6 +98,40 @@ a:hover {
    display: inline-block; 
 
 } */
+.centerAreaEventPhotos .currenteventPhoto{
+  margin-left: 0vw;
+  margin-right: 0vw;
+  margin-top: 0vw;
+  margin-bottom: 0vw;  
+  width: 20vw;
+  height: auto;
+    
+}
+.centerAreaEventPhotos .title {
+  margin-left: 0vw;
+  margin-right: 0vw;
+  margin-top: 0vw;
+  margin-bottom: 0vw;  
+  
+  height: 5vh;
+  width: 20vw;
+  background: rgba(0, 255, 255, 1);
+  color: rgba(255, 0, 0, 1);  
+  
+}
+  
+.centerAreaEventPhotos{
+  margin-left: 0vw;
+  margin-right: 0vw;
+  margin-top: 0vw;
+  margin-bottom: 1vw;  
+  width: 20vw;
+  height: auto;
+  min-height: 25vh;/*30vh*/
+  background: rgba(0, 255, 0, 1);
+  /*color: rgba(255, 255, 255, 1);   */
+  color: rgba(0, 0, 255, 1);  
+}  
 
 .centerAreaRightCalendar{
   margin-left: 0vw;

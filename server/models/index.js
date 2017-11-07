@@ -20,5 +20,6 @@ module.exports.connect = (uri) => {
   require('./user');
   require('./newsInfo');
   require('./calendarEvents');
+  require('./GalaryPhoto');
   
 };

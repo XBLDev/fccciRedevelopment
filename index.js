@@ -33,11 +33,13 @@ const authRoutes = require('./server/routes/auth');
 const apiRoutes = require('./server/routes/api');
 const newsRoutes = require('./server/routes/news');
 const eventRoutes = require('./server/routes/Events');
+const galaryPhotoRoutes = require('./server/routes/GalaryPhotos');
 
 app.use('/auth', authRoutes);
 app.use('/api', apiRoutes);
 app.use('/news', newsRoutes);
 app.use('/Events', eventRoutes);
+app.use('/GalaryPhotos', galaryPhotoRoutes);
 
 app.route('/*').get(function(req, res) { 
   return res.sendFile(path.join(__dirname, './server/static/index.html')); 

@@ -2,6 +2,12 @@
 Code for the coming updated fccci: http://fccci.org.au/au/, code base for user auth and routing: 
 https://github.com/XBLDev/ReactJSNodejsAuthRouterv4
 
+Comment 7/11/2017, 6:36 pm:
+
+Added galary photos section, whose state is initiated in Redux store and changed by Redux actions. The basic idea here is that instead of saving: loading images, current showing images, total number of images, and the timer that changes the current showing image, every state and the actions that change the states are initiated as a state in a Redux store, and the functions and states are all mapped to a component class as its props. Normally once the frontend gets an array of URLs from backend it saves it as its own state, and the timer starts inside the same component to change the current shown image index, and with Redux these are all saved as states in Redux as states of the entire application instead of just states for a single component, which for this particular case is not very useful, but for other apps that need to keep global states this is useful. However I wonder what's the use for Redux if I can use localStorage: I can just save everything that I want to be global, such as current language, in the local storage.
+
+Tried testing action creator with Jest + Enzyme, not working.
+
 Comment 3/11/2017, 6:48 pm:
 
 The calendar now can load the events from backend based on the currently rendered days of the month, and put links on the 

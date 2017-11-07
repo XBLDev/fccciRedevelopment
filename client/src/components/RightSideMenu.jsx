@@ -14,6 +14,10 @@ import Auth from '../modules/Auth';
 import RightSideMenuItem from './RightSideMenuItem.jsx'; 
 
 import RightSideCalendar from './Calendar.jsx'; 
+import RRightSideEventPhotos from './RightSideEventPhotos.jsx'; 
+import { Provider } from 'react-redux'
+import store, { history } from './store'
+
 import moment from 'moment';
 
 class RightSideMenu extends React.Component {
@@ -161,8 +165,13 @@ class RightSideMenu extends React.Component {
 
     return (
           <div className="centerAreaRight">
+              <div className="centerAreaRightItem">LATEST NEWS</div>
               {Events}
               {<RightSideCalendar />}
+              <div className="centerAreaRightItem">EVENT PHOTOS</div>
+              <Provider store={store}>
+                  <RRightSideEventPhotos/>
+              </Provider>
               {/* {this.state.listOfLatestNews.length == 0?(
                 <RightSideMenuItem newsTitle={'loading...'} newsNumber={-1}/>
               ):
