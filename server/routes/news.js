@@ -96,8 +96,52 @@ newsModel.find().count(function(err, count){
 
 })    
 
+
+router.get('/search', (req, res) => {
+    console.log('SERVER: /news/search called, params: language: ', req.query.language);
+    var searchParameter = req.query.language == 'Eng' ? 'titleEng -_id' : 'titleCh -_id';
+    var title = req.query.language == 'Eng' ? 'titleEng' : 'titleCh';
+
+    newsModel.find({}, searchParameter, function(err, Values){
+        if(err)
+        {
+            res.status(200).json({
+                allnews: []
+                // listOfTitles: Values
+            });                 
+        }
+        else
+        {
+            // console.log('SERVER: VALUES LENGTH: ',Values.length);
+            var returnedNews = [];
+            for(var i = 0; i< Values.length; i++)
+            {
+                console.log('SERVER: CURRENT VALUE: ',Values[i][title]);
+                // returnedNews.push(Values[i][title]);
+                returnedNews.push(Values[i]);
+                
+            }
+            
+            res.status(200).json({
+                allnews: returnedNews,
+                filter: title
+                // listOfTitles: Values
+            });            
+        }
+    
+    
+    })        
+    // res.status(200).json({
+    //     message: 'FROM SERVER: /news/search request received '
+    //     // listOfTitles: Values
+    // });     
+
+})
+    
+
+
 router.get('/requestNews', (req, res) => {
-    console.log('SERVER: requestNews called, params: news: ', req.query.news,', language: ', req.query.language);
+    console.log('SERVER: /news/requestNews called, params: news: ', req.query.news,', language: ', req.query.language);
     var nameOfTheNews = req.query.news.substring(req.query.news.lastIndexOf("/")+1, req.query.news.length);
     // var nameOfTheNews = req.query.news.substring(req.query.news.lastIndexOf("/")+1, req.query.news.length);
     console.log('SERVER: parsed nameOfTheNews: ', nameOfTheNews);
@@ -193,7 +237,7 @@ router.get('/requestNews', (req, res) => {
 router.get('/news', (req, res) => {
         //query with mongoose
         // var query = newsModel.find({}).select('titleCh -_id');
-        console.log('SERVER: news called, params: language: ', req.query.language);
+        console.log('SERVER: /news/news called, params: language: ', req.query.language);
 
         var searchParameter = req.query.language == 'Eng' ? 'titleEng -_id' : 'titleCh -_id';
 

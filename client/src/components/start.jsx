@@ -1,6 +1,8 @@
 import React from 'react'
 import Header from './Header.jsx'
 import Main from './Main.jsx'
+import PageBottom from './PageBottom.jsx'
+
 import RightSideCalendar from './Calendar.jsx'; 
 
 // import RightSideMenu from './RightSideMenu.jsx'
@@ -31,7 +33,8 @@ const App = () => (
           {/* {<RightSideMenu/>} */}
           {/* centerArea */}
         {/* </div> */}
-  
+        {<PageBottom />}
+
         {/* <RightSideCalendar/> */}
 
     </div>

@@ -132,6 +132,42 @@ a:hover {
   /*color: rgba(255, 255, 255, 1);   */
   color: rgba(0, 0, 255, 1);  
 }  
+.centerAreaArchive{
+  width: 20vw;
+  height: auto;/*30vh*/
+  min-height: 30vh;
+  /* display: inline-block; */
+  background: blueviolet;
+}
+
+.centerAreaRightSearch .SBtn{
+  width: 20vw;
+  height: 5vh;/*30vh*/
+  /* display: inline-block; */
+  background: yellowgreen;
+  
+}
+
+.centerAreaRightSearch .SBox{
+  width: 20vw;
+  height: 5vh;/*30vh*/
+  /* display: inline-block; */
+  background: grey;
+}  
+
+.centerAreaRightSearch{
+  margin-left: 0vw;
+  margin-right: 0vw;
+  margin-top: 0vw;
+  margin-bottom: 1vw;  
+  width: 20vw;
+  height: 10vh;/*30vh*/
+
+  background: blue;
+  /*color: rgba(255, 255, 255, 1);   */
+  color: white;  
+}  
+
 
 .centerAreaRightCalendar{
   margin-left: 0vw;
@@ -270,7 +306,11 @@ a:hover {
   color: rgba(255, 255, 255, 1);
   /* display: inline-block */
   display: block;
+  text-align: center;    
+  
 }
+
+
 
 
 .centerArea{

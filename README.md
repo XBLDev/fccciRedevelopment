@@ -2,6 +2,20 @@
 Code for the coming updated fccci: http://fccci.org.au/au/, code base for user auth and routing: 
 https://github.com/XBLDev/ReactJSNodejsAuthRouterv4
 
+Comment 10/11/2017, 4:44 pm:
+
+For Redux I think i maybe worth it to at least try wrap each of the component with a store provider such that testing the state of each component is easy. Even if the component/app cannot solely rely on Redux it helps with TDD.
+
+Added 2 last sections on the right:
+
+Search, which sends the search keyword to the mounted searchresult page, and the mounted page first gets all the event titles based on the current language, and then uses react-search-input: https://github.com/enkidevs/react-search-input and the keyword to filter the titles and generates a link for each title that contains the keyword. The problem for now is that upon mounting/getting new props the page needs to load all the titles, which may seem not to be that big at the moment but it will certainly explode over time. The other possible approach is that upon clicking the search link, it finds the titles that contain the keyword and pass them as props to the searchresult page, but that also involves loading data.
+
+FCCCI ARCHIVES, which gets a list of the nubmer of events for each month using the same DB the calendar component uses to load its own events, and for each month it generates a link that goes to an archivedeventspage which uses the URL to load the events of the month and generates a list of links each goes to a different event.
+
+Comment 8/11/2017, 2:35 pm:
+
+Added simple reducer test following tutorial: https://medium.com/javascript-inside/some-thoughts-on-testing-react-redux-applications-8571fbc1b78f, whose code is in: https://github.com/Gethyl/ReactReduxTestingUsingJestEnzyme. Yesterday the test was based on the test instruction from the official Redux site: https://redux.js.org/docs/recipes/WritingTests.html, which doesn't seem to work for the action creators as it says. And I don't think there's much to test action creators because they just simply return a pair of type and value, which is not really worth testing; the logic and result after executing an action in the reducer on the other hand does have value in testing because we want to make sure that after a certain action the resulting state in the store is as expected.
+
 Comment 7/11/2017, 6:36 pm:
 
 Added galary photos section, whose state is initiated in Redux store and changed by Redux actions. The basic idea here is that instead of saving: loading images, current showing images, total number of images, and the timer that changes the current showing image, every state and the actions that change the states are initiated as a state in a Redux store, and the functions and states are all mapped to a component class as its props. Normally once the frontend gets an array of URLs from backend it saves it as its own state, and the timer starts inside the same component to change the current shown image index, and with Redux these are all saved as states in Redux as states of the entire application instead of just states for a single component, which for this particular case is not very useful, but for other apps that need to keep global states this is useful. However I wonder what's the use for Redux if I can use localStorage: I can just save everything that I want to be global, such as current language, in the local storage.

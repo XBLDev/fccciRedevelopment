@@ -14,6 +14,8 @@ import Auth from '../modules/Auth';
 import LanguageSetting from '../modules/LanguageSetting';
 import RightSideMenu from './RightSideMenu.jsx'
 import myProfile from './myProfile.jsx'
+import SearchResult from './searchresult.jsx'
+import ArchivedEvents from './ArchivedEventsPage.jsx'
 
 
 
@@ -51,8 +53,18 @@ class Main extends React.Component {
             {/* <div className="centerAreaLeft">   */}
               <Switch>
                 <Route exact path='/' component={Home}/>
-                {<Route exact path='/ch' component={Home}/>}
-                {<Route exact path='/en' component={Home}/>}
+
+                {/* <Route exact path='/ch' component={Home}/>
+                <Route exact path='/en' component={Home}/> */}
+
+                <Route exact path='/ch' component={Home}/>
+                <Route exact path='/en' component={Home}/>
+
+                <Route path='/en/search/:s?' component={SearchResult}/>
+                <Route path='/ch/search/:s?' component={SearchResult}/>
+
+                <Route path='/en/Archive/:yearmonth?' component={ArchivedEvents}/>
+                <Route path='/ch/Archive/:yearmonth?' component={ArchivedEvents}/>
 
                 {/* <Route exact path='/' render={() => <Home contentStr="Home" />}/>    */}
                  <Route path='/login' component={LoginPage}/>
@@ -61,6 +73,7 @@ class Main extends React.Component {
                 {/* <Route exact path='/Newboard/' component={Home}/> */}
                 <Route path='/Newsboard/' component={Newsboard}/>
                 <Route path='/myProfile' component={myProfile}/>
+
 
                 {/* {<Route path='/Newsboard/:number' render={() => <Newsboard newsNum={0}/>} />} */}
 

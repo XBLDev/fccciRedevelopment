@@ -97,6 +97,65 @@ calendarevents.find().count(function(err, count){
 
 })
 
+
+router.get('/archiveEvents', (req, res) => {
+    console.log('SERVER: /Events/archiveEvents called');
+    calendarevents.find({}, 'year Events -_id', function (err, events) {
+        if(err)
+        {
+            res.status(200).json({
+                message: 'FROM SERVER: /Events/archiveEvents request received: '.concat(err),
+                Events: []
+            });     
+        }
+        else
+        {
+            // console.log('FROM SERVER: /Events/archiveEvents request result: ', events.length);
+
+        //     FROM SERVER: /Events/archiveEvents request result:  { year: '2017',
+        //     Events:
+        //      [ { month: '11', MonthlyEvent: [Array] },
+        //        { month: '12', MonthlyEvent: [Array] } ] }
+        //   FROM SERVER: /Events/archiveEvents request result:  { year: '2018',
+        //     Events: [ { month: '1', MonthlyEvent: [Array] } ] }
+
+            var returnedArchiveEvents = [];//November 2014 (2)
+            for(var i = 0; i < events.length; i++)
+            {   
+                // console.log('FROM SERVER: /Events/archiveEvents request result: year: ', events[i]['year'],', events length: ', events[i]['Events'].length);
+                console.log('FROM SERVER: /Events/archiveEvents request result: year: ', events[i]['year'],', events in that year: ');
+                
+                // console.log(events[i]['Events']);
+                
+                for(var a = 0; a < events[i]['Events'].length; a++)
+                {
+                    console.log('Month: ',events[i]['Events'][a]['month'],', event number in that month: ', events[i]['Events'][a]['MonthlyEvent'].length);
+                    var NumOfMonthlyEvents = events[i]['Events'][a]['month'].toString().
+                    concat('/').
+                    concat(events[i]['year'].toString()).
+                    concat(' (').
+                    concat(events[i]['Events'][a]['MonthlyEvent'].length.toString()).
+                    concat(')');
+
+                    returnedArchiveEvents.push(NumOfMonthlyEvents);
+                }
+            }
+
+            res.status(200).json({
+                message: 'FROM SERVER: /Events/archiveEvents request received: '.concat('SUCCEED'),
+                Events: returnedArchiveEvents
+            });                 
+        }
+    
+    })        
+    // res.status(200).json({
+    //     message: 'FROM SERVER: /Events/archiveEvents request received: '.concat('SUCCEED'),
+
+    // });     
+
+})
+
+
 router.get('/calendarEvents', (req, res) => {
 
     console.log('SERVER: /Events/calendarEvents called, params: year: ', req.query.year,', month: ', req.query.month);

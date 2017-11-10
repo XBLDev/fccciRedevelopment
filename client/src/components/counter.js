@@ -3,6 +3,8 @@ export const INCREMENT = 'counter/INCREMENT'
 export const DECREMENT_REQUESTED = 'counter/DECREMENT_REQUESTED'
 export const DECREMENT = 'counter/DECREMENT'
 export const INCREMENT_TIMER = 'counter/INCREMENT_TIMER'
+export const INCREMENT_TIMER_MANNUAL = 'counter/INCREMENT_TIMER_MANNUAL'
+
 export const TIMER_START = 'counter/TIMER_START'
 export const STOP_TIMER = 'counter/TIMER_STOP'
 export const LOADING_FINISHED = 'counter/LOADING_FINISHED'
@@ -23,35 +25,8 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
-
-    case SET_ALLPHOTOS:
-      console.log('SET_ALLPHOTOS ACTION CALLED');
-      return {
-        ...state,
-        allGalaryPhotos: action.value,        
-      }     
-
-    case SET_TOTAL:
-      console.log('SET_TOTAL ACTION CALLED');
-      return {
-        ...state,
-        totalPhotoNum: action.value,        
-      }      
-
-    case LOADING_FINISHED:
-      console.log('LOADING FINISHED ACTION CALLED');
-      return {
-        ...state,
-        loading: false,        
-      }      
-
-    case STOP_TIMER:
-      console.log('STOP_TIMER ACTION CALLED');
-      clearInterval(timerFunc);
-      return state
-      
-    case INCREMENT_TIMER:
-      console.log('INCREMENT_TIMER ACTION CALLED!');
+    case INCREMENT_TIMER_MANNUAL:
+      // console.log('INCREMENT_TIMER_MANNUAL ACTION CALLED');
       var currentTimer = -1;
       if(state.timer + 1 < state.totalPhotoNum)
       {
@@ -61,6 +36,50 @@ export default (state = initialState, action) => {
       {
         currentTimer = 0;
       }
+      return {
+        ...state,
+        timer: currentTimer,        
+      }      
+
+    case SET_ALLPHOTOS:
+      // console.log('SET_ALLPHOTOS ACTION CALLED');
+      return {
+        ...state,
+        allGalaryPhotos: action.value,        
+      }     
+
+    case SET_TOTAL:
+      // console.log('SET_TOTAL ACTION CALLED');
+      return {
+        ...state,
+        totalPhotoNum: action.value,        
+      }      
+
+    case LOADING_FINISHED:
+      // console.log('LOADING FINISHED ACTION CALLED');
+      return {
+        ...state,
+        loading: false,        
+      }      
+
+    case STOP_TIMER:
+      // console.log('STOP_TIMER ACTION CALLED');
+      clearInterval(timerFunc);
+      return state
+      
+    case INCREMENT_TIMER:
+      // console.log('INCREMENT_TIMER ACTION CALLED!');
+      var currentTimer = -1;
+      if(state.timer + 1 < state.totalPhotoNum)
+      {
+        currentTimer = state.timer + 1;
+      }
+      else
+      {
+        currentTimer = 0;
+      }
+      // console.log('currentTimer is: ',currentTimer,', totlaPhotoNum: ', state.totalPhotoNum);
+      
       return {
         ...state,
         timer: currentTimer,        
@@ -74,12 +93,29 @@ export default (state = initialState, action) => {
 
 var timerFunc = null;
 
-// export function setAllPhotosFunc(value) {
-//   return {
-//     type: 'SET_ALLPHOTOS',
-//     value
-//   }
-// }
+export function setAllPhotosFunc(value) {
+  return {
+    type: 'ADD_TODO', 
+    value
+  }
+}
+
+// type,
+// value,
+// somethingelse
+
+
+export const setAllPhotosTEST = (value) => {
+  return dispatch => 
+  {
+    dispatch({
+      type: 'counter/SET_ALLPHOTOS',
+      value
+    })
+
+  }
+}
+
 
 export const setAllPhotos = (value) => {
   return dispatch => 
@@ -109,6 +145,19 @@ export const stopTimer = () => {
   {
     dispatch({
       type: STOP_TIMER
+    })
+
+  }
+}
+
+
+
+
+export const incrementTimerMannual = () => {
+  return dispatch => 
+  {
+    dispatch({
+      type: INCREMENT_TIMER_MANNUAL
     })
 
   }

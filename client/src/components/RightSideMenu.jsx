@@ -14,7 +14,10 @@ import Auth from '../modules/Auth';
 import RightSideMenuItem from './RightSideMenuItem.jsx'; 
 
 import RightSideCalendar from './Calendar.jsx'; 
-import RRightSideEventPhotos from './RightSideEventPhotos.jsx'; 
+import RightSideEventPhotos from './RightSideEventPhotos.jsx'; 
+import RightSideSearch from './RightSideSearch.jsx'; 
+import RightSideArchive from './RightSideArchive.jsx'; 
+
 import { Provider } from 'react-redux'
 import store, { history } from './store'
 
@@ -167,11 +170,29 @@ class RightSideMenu extends React.Component {
           <div className="centerAreaRight">
               <div className="centerAreaRightItem">LATEST NEWS</div>
               {Events}
+
+              <div className="centerAreaRightItem">
+                  {this.state.currentLanguage == 'Ch'?
+                  ( 
+                    '华联社活动日历'
+                  ):
+                  (
+                    'FCCCI EVENTS CALENDAR'          
+                  )
+                  }
+              </div>
               {<RightSideCalendar />}
+
               <div className="centerAreaRightItem">EVENT PHOTOS</div>
               <Provider store={store}>
-                  <RRightSideEventPhotos/>
+                  <RightSideEventPhotos/>
               </Provider>
+              
+              <div className="centerAreaRightItem">EVENT SEARCH</div>
+              <RightSideSearch />
+              
+              <div className="centerAreaRightItem">FCCCI ARCHIVES</div>
+              <RightSideArchive/>
               {/* {this.state.listOfLatestNews.length == 0?(
                 <RightSideMenuItem newsTitle={'loading...'} newsNumber={-1}/>
               ):

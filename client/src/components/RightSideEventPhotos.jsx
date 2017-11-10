@@ -9,7 +9,8 @@ import {
     stopTimer,
     loadingfinished,
     setTotalPhotos,
-    setAllPhotos
+    setAllPhotos,
+    incrementTimerMannual
 } from './counter'
 
 
@@ -40,8 +41,9 @@ class RightSideEventPhotos extends React.Component {
                     photos.push(xhr.response.URLS[i]['URL']);
                 }
 
-                this.props.setAllPhotos(photos);
                 this.props.setTotalPhotos(xhr.response.message);
+                this.props.setAllPhotos(photos);
+                // this.props.setTotalPhotos(xhr.response.message);
                 this.props.loadingfinished();
                 this.props.incrementTimer();
                 
@@ -88,7 +90,7 @@ class RightSideEventPhotos extends React.Component {
                 (
                     // this.props.allGalaryPhotos[this.props.timer]
 
-                    <img className="currenteventPhoto" src={this.props.allGalaryPhotos[this.props.timer]}/>
+                    <img className="currenteventPhoto" src={this.props.allGalaryPhotos[this.props.timer]} onClick={this.props.incrementTimerMannual}/>
                 
                 )
                 }
@@ -108,6 +110,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => bindActionCreators({
     incrementTimer,
+    incrementTimerMannual,
     stopTimer,
     loadingfinished,
     setTotalPhotos,
