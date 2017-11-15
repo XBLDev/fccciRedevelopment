@@ -27,9 +27,14 @@ const App = () => (
               menuArea
             </div> 
         </div> */}
-
+        <div className="centerAreaLong">
+            <div className="centerAreaLongTop">
+              {/* center */}
+                {<Main />}
+            </div>  
+        </div>  
         {/* <div className="centerArea"> */}
-          {<Main />}
+          {/* {<Main />} */}
           {/* {<RightSideMenu/>} */}
           {/* centerArea */}
         {/* </div> */}

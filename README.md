@@ -2,6 +2,10 @@
 Code for the coming updated fccci: http://fccci.org.au/au/, code base for user auth and routing: 
 https://github.com/XBLDev/ReactJSNodejsAuthRouterv4
 
+Comment 15/11/2017, 7:57 pm:
+
+The header and footer now stick to top and bottom while the center area scrolls down, to achieve this, set the position css property of header and footer to fixed, and set the z-index css property of the header to a positive number, same for center but a higher than that of header, and footer higher than that of center.
+
 Comment 10/11/2017, 4:44 pm:
 
 For Redux I think i maybe worth it to at least try wrap each of the component with a store provider such that testing the state of each component is easy. Even if the component/app cannot solely rely on Redux it helps with TDD.

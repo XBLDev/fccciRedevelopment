@@ -295,36 +295,92 @@ a:hover {
 
 }
 .BottomArea{
-  margin-left: 5vw;
-  margin-right: 5vw;
-  margin-top: 1vh;/*1vw*/
-  margin-bottom: 0vw;  
+   margin-left: 5vw;
+  /*margin-right: 5vw;
+  margin-top: 1vh;
+  margin-bottom: 0vw;   */
 
   width: 90vw;
+  /* min-height: 15vh; */
   height: auto;/*30vh*/
-  background: rgba(0, 0, 0, 1);
-  color: rgba(255, 255, 255, 1);
-  /* display: inline-block */
-  display: block;
-  text-align: center;    
   
+  background: rgb(1, 247, 54);
+  color: rgba(255, 255, 255, 1);
+  display: block;
+  text-align: center;   
+  position: fixed;
+  /* left: 5vw; */
+  bottom: 0;
+  z-index: 3
+  /* bottom: 0;
+  right:  */
 }
 
 
+.centerAreaLongTop{
+  margin-left: 0vw;
+  margin-right: 0vw;
+  margin-top: 0vh;/*1vw*/
+  margin-bottom: 0vw;  
 
+  position: absolute;
+  top: 31vh;
+  z-index: 1;
 
-.centerArea{
+  width: 90vw;
+  min-height: 40vh;
+  height: auto;/*30vh*/
+  background: rgb(236, 240, 0);
+  color: rgba(255, 255, 255, 1);
+}
+
+.centerAreaLong{
   margin-left: 5vw;
   margin-right: 5vw;
-  margin-top: 1vh;/*1vw*/
+  margin-top: 0vh;
+  margin-bottom: 0vw;  
+
+  /* position:fixed; */
+
+  /* position: absolute;
+  top:40vh; */
+  /* overflow-x: hidden; */
+  
+  width: 90vw;
+  min-height: 1000px;
+  /* height: auto; */
+  background: rgba(0, 0, 0, 1);
+  color: rgb(54, 36, 36);
+  /* display:  display: block;*/
+  display: block 
+}
+
+.centerArea{
+
+  margin-left: vw;
+  margin-right: vw;
+  margin-top: 1vh;
+  margin-bottom: 0vw;  
+
+  width: 100%;  
+  height: auto;
+  background: rgba(0, 0, 0, 1);
+  color: rgba(255, 255, 255, 1);
+  display: block;
+
+
+
+  /* margin-left: 5vw;
+  margin-right: 5vw;
+  margin-top: 1vh;
   margin-bottom: 0vw;  
 
   width: 90vw;
-  height: auto;/*30vh*/
+  
+  height: auto;
   background: rgba(0, 0, 0, 1);
   color: rgba(255, 255, 255, 1);
-  /* display: inline-block */
-  display: block;
+  display: block; */
 }
 
 .menuAreaRight{
@@ -471,10 +527,13 @@ a:hover {
 }
 
 .headerElement {
+  z-index: 2;
+  
+
   margin-left: 5vw;
   margin-right: 5vw;
   margin-top: 0vh;
-  margin-bottom: 5vh; /*0vh*/ 
+  margin-bottom: 0vh; /*0vh*/ 
 
   display: block;  
   width: 90vw;
@@ -486,12 +545,17 @@ a:hover {
   line-height: 10vh; 
   font-weight: bold;
   font-size: 18px; 
-  /* position: fixed; */
+  position:fixed;
 }
 .outerMostContainer {
   background: rgb(255, 25, 255, 1);
   width: 100vw;
   height: auto;
+  overflow-x: hidden;
+  max-width: 100%;
+  
+  /* min-height: 110vh; */
+  /* position: fixed; */
   /* height: 100vh; */
   display: block;  
   align-content: center;
