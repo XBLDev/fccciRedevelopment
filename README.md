@@ -2,6 +2,10 @@
 Code for the coming updated fccci: http://fccci.org.au/au/, code base for user auth and routing: 
 https://github.com/XBLDev/ReactJSNodejsAuthRouterv4
 
+Comment 22/11/2017, 3:14 pm:
+
+Try linking this repo with Jira, commit with issus ID to link commits with issue.
+
 Comment 15/11/2017, 7:57 pm:
 
 The header and footer now stick to top and bottom while the center area scrolls down, to achieve this, set the position css property of header and footer to fixed, and set the z-index css property of the header to a positive number, same for center but a higher than that of header, and footer higher than that of center.

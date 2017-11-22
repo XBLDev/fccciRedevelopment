@@ -133,13 +133,13 @@ class SearchResult extends React.Component {
         return (
             <div className="centerAreaLeft">
 
-                <div>
+                {/* <div>
                     filter: {this.state.filter}
                 </div><br/>
 
                 <div>
                     Server Msg: {this.state.serverMsg}
-                </div><br/>
+                </div><br/> */}
 
                 <div>
                     SearchResult page, search keyword is: {this.state.searchKeyWord}

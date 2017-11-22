@@ -1,0 +1,585 @@
+body {
+  margin: 0;
+  font-size: 16px;
+}
+
+a {
+  color: #00bcd4;
+  font-weight: bold;
+  text-decoration: none;
+  transition: color 0.4s;
+}
+
+a:hover {
+  color: white;/*#1976d2*/
+}
+
+.text-center {
+  text-align: center;
+}
+
+.top-bar {
+  padding: 10px 15px;
+  margin-bottom: 50px;
+}
+.top-bar::after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+.top-bar-left {
+  float: left;
+  font-size: 1.5em;
+}
+
+.top-bar-right {
+  float: right;
+}
+
+.top-bar a,
+.nav a {
+  margin: 0 8px;
+}
+
+.container {
+  margin: 0 auto;
+  text-align: center;
+  width: 700px;
+}
+
+.card-heading {
+  padding: 16px;
+}
+
+.field-line, .button-line {
+  padding: 16px;
+}
+
+.error-message {
+  padding: 0 16px;
+  color: tomato;
+}
+
+.success-message {
+  padding: 0 16px;
+  color: green;
+}
+
+
+.headerInnerMiddle {
+  margin-left: 0vw;
+ margin-right: 2vw;
+ margin-top: 0vw;
+ margin-bottom: 0vw;   
+
+ width: 33vw;
+ height: 10vh;
+ line-height: 10vh; 
+ color: white;
+
+ background: rgba(0, 191, 255, 1);
+ display: inline-block;
+ text-align: right;
+ font-weight: bold;
+}
+
+
+/* .headerInnerLeft {
+  color: white;
+  
+  margin-left: 5vw;
+  margin-right: 0vw;
+  margin-top: 0vw;
+  margin-bottom: 0vw;  
+  width: 45vw;
+  background: rgba(0, 191, 255, 1);
+  height: 10vh;
+   display: inline-block; 
+
+} */
+.centerAreaEventPhotos .currenteventPhoto{
+  margin-left: 0vw;
+  margin-right: 0vw;
+  margin-top: 0vw;
+  margin-bottom: 0vw;  
+  width: 20vw;
+  height: auto;
+    
+}
+.centerAreaEventPhotos .title {
+  margin-left: 0vw;
+  margin-right: 0vw;
+  margin-top: 0vw;
+  margin-bottom: 0vw;  
+  
+  height: 5vh;
+  width: 20vw;
+  background: rgba(255, 255, 255, 1);
+  color: rgba(255, 0, 0, 1);  
+  
+}
+  
+.centerAreaEventPhotos{
+  margin-left: 0vw;
+  margin-right: 0vw;
+  margin-top: 0vw;
+  margin-bottom: 1vw;  
+  width: 20vw;
+  height: auto;
+  min-height: 25vh;/*30vh*/
+  background: rgba(255, 255, 255, 1);
+  /*color: rgba(255, 255, 255, 1);   */
+  color: rgba(0, 0, 255, 1);  
+}  
+.centerAreaArchive{
+  width: 20vw;
+  height: auto;/*30vh*/
+  min-height: 30vh;
+  /* display: inline-block; */
+  background: white;
+}
+
+.centerAreaRightSearch .SBtn{
+  width: 20vw;
+  height: 5vh;/*30vh*/
+  /* display: inline-block; */
+  background: white;
+  
+}
+
+.centerAreaRightSearch .SBox{
+  width: 20vw;
+  height: 5vh;/*30vh*/
+  /* display: inline-block; */
+  background: white;
+}  
+
+.centerAreaRightSearch{
+  margin-left: 0vw;
+  margin-right: 0vw;
+  margin-top: 0vw;
+  margin-bottom: 1vw;  
+  width: 20vw;
+  height: 10vh;/*30vh*/
+
+  background: white;
+  /*color: rgba(255, 255, 255, 1);   */
+  color: white;  
+}  
+
+
+.centerAreaRightCalendar{
+  margin-left: 0vw;
+  margin-right: 0vw;
+  margin-top: 0vw;
+  margin-bottom: 1vw;  
+  width: 20vw;
+  height: 50vh;/*30vh*/
+   background: rgba(255, 255, 255, 1);
+  /*color: rgba(255, 255, 255, 1);   */
+  color: rgba(0, 0, 255, 1);  
+  
+  /* word-wrap: break-word;
+  font-family: 'Noto Sans SC Sliced', sans-serif; */
+  
+}
+
+
+.centerAreaRightSectionName{
+  margin-left: 0vw;
+  margin-right: 0vw;
+  margin-top: 0vw;
+  margin-bottom: 1vw;  
+  width: 20vw;
+  height: auto;/*30vh*/
+  word-wrap: break-word;
+  
+  background: rgba(255, 255, 255, 1);
+  color: rgba(0, 0, 0, 1);  
+
+  align-content: top;
+  align-items: top;   
+  vertical-align: top;  
+  text-align: left;  
+
+  font-family: 'Noto Sans SC Sliced', sans-serif;
+}
+.centerAreaRightItem{
+  margin-left: 0vw;
+  margin-right: 0vw;
+  margin-top: 0vw;
+  margin-bottom: 1vw;  
+  width: 20vw;
+  height: auto;/*30vh*/
+  word-wrap: break-word;
+  
+  background: rgba(255, 255, 255, 1);
+  color: rgba(0, 255, 0, 1);  
+
+  align-content: top;
+  align-items: top;   
+  vertical-align: top;  
+  text-align: left;  
+
+  font-family: 'Noto Sans SC Sliced', sans-serif;
+  
+}
+.centerAreaRight{
+  /* position: 76vw 31vh; */
+  
+  margin-left: 0vw;
+  margin-right: 0vw;
+  margin-top: 0vw;
+  margin-bottom: 0vw;  
+  width: 20vw;
+  height: auto;/*30vh*/
+  background: rgba(255, 255, 255, 1);
+  color: rgba(0, 255, 0, 1);    
+  display: inline-block;
+
+  align-content: top;
+  align-items: top;   
+  vertical-align: top;  
+  text-align: left; 
+
+  word-wrap: break-word;
+  
+  /* overflow :hidden;   */
+  /* overflow:auto */ /*<-----THIS WILL GENERATE A HORIZONTAL SCROLL BAR IF A LINE IS TOO LONG*/
+}  
+.NewsboardParaLink{
+
+  color: rgba(0, 0, 255, 1);  
+  /* Or whatever color you want */
+  text-decoration: none;
+  
+}
+.centerAreaLeftItem{
+
+  margin-left: 0vw;
+  margin-right: 0vw;
+  margin-top: 0vw;
+  margin-bottom: 1vw;  
+
+  width: 70vw;
+  height: auto;/*30vh*/
+  word-wrap: break-word;
+
+  background: rgba(255, 255, 255, 1);
+  color: rgba(0, 0, 0, 1);  
+
+
+  align-content: top;
+  align-items: top;   
+  vertical-align: top;  
+  text-align: left;
+  font-family: 'Noto Sans SC Sliced', sans-serif;
+  /* font-weight: bold; */
+  /* font-size: 12px; */
+}
+
+
+.centerAreaLeft{
+
+  margin-left: 0vw;
+  margin-right: 0vw;
+  margin-top: 0vw;
+  margin-bottom: 0vw;  
+
+  width: 70vw;
+  height: auto;/*30vh*/
+  /* line-height: auto; */
+  /* font-size: auto; */
+  background: rgba(255, 255, 255, 1);
+  color: rgba(0, 0, 0, 1);  
+  display: inline-block;
+  align-content: top;
+  align-items: top;   
+  vertical-align: top;  
+  text-align: left;
+}   
+
+.centerAreaInner{
+  margin-left: 0vw;
+  margin-right: 0vw;
+  margin-top: 0vh;/*1vw*/
+  margin-bottom: 0vw;  
+
+  width: 90vw;
+  height: auto;/*30vh*/
+  background: rgba(255, 255, 255, 1);
+  color: rgba(255, 255, 255, 1);
+  /* display: inline-block */
+  /* display: block; */
+
+}
+.BottomArea{
+   margin-left: 5vw;
+  /*margin-right: 5vw;
+  margin-top: 1vh;
+  margin-bottom: 0vw;   */
+
+  width: 90vw;
+  /* min-height: 15vh; */
+  height: auto;/*30vh*/
+  
+  background: rgb(0, 100, 255);
+  color: rgba(255, 255, 255, 1);
+  display: block;
+  text-align: center;   
+  position: fixed;
+  /* left: 5vw; */
+  bottom: 0;
+  z-index: 3
+  /* bottom: 0;
+  right:  */
+}
+
+
+.centerAreaLongTop{
+  margin-left: 0vw;
+  margin-right: 0vw;
+  margin-top: 0vh;/*1vw*/
+  margin-bottom: 0vw;  
+
+  position: absolute;
+  top: 31vh;
+  z-index: 1;
+
+  width: 90vw;
+  min-height: 40vh;
+  height: auto;/*30vh*/
+  background: rgb(255, 255, 255);
+  color: rgba(255, 255, 255, 1);
+}
+
+.centerAreaLong{
+  margin-left: 5vw;
+  margin-right: 5vw;
+  margin-top: 0vh;
+  margin-bottom: 0vw;  
+
+  /* position:fixed; */
+
+  /* position: absolute;
+  top:40vh; */
+  /* overflow-x: hidden; */
+  
+  width: 90vw;
+  min-height: 1000px;
+  /* height: auto; */
+  background: rgba(255, 255, 255, 1);
+  color: rgb(54, 36, 36);
+  /* display:  display: block;*/
+  display: block 
+}
+
+.centerArea{
+
+  margin-left: vw;
+  margin-right: vw;
+  margin-top: 1vh;
+  margin-bottom: 0vw;  
+
+  width: 100%;  
+  height: auto;
+  background: rgba(255, 255, 255, 1);
+  color: rgba(255, 255, 255, 1);
+  display: block;
+
+
+
+  /* margin-left: 5vw;
+  margin-right: 5vw;
+  margin-top: 1vh;
+  margin-bottom: 0vw;  
+
+  width: 90vw;
+  
+  height: auto;
+  background: rgba(0, 0, 0, 1);
+  color: rgba(255, 255, 255, 1);
+  display: block; */
+}
+
+.menuAreaRight{
+  margin: 0 auto; 
+  
+  width: 15vw;
+  /* width: auto; */
+  
+  height: 10vh;
+  line-height: 10vh;
+  /* background: rgba(0, 255, 0, 1); */
+  color: Black;  
+  display: inline-block;
+  text-align: right;    
+  
+  }
+
+
+
+.linkButton {
+    display: block;
+    width: auto;
+    height: 10vh;
+    /* background: rgba(0, 191, 255, 1); */
+    background: rgba(255, 255, 255, 1);
+    
+    /* padding: 1px; */
+    padding-left: 1vh;
+    padding-right: 1vh;
+    /* padding-top: 0; */
+    text-align: center;
+    border-radius: 15px;
+    color: black;
+    font-weight: bold;
+}
+
+.menuItemHidden {
+  margin-left: 0vw;
+  margin-right: 1vw;
+  margin-top: 0vw;
+  margin-bottom: 0vw;  
+
+  width: auto;
+  height: 10vh;
+  line-height: 10vh;
+  white-space: nowrap;
+  background: rgba(255, 255, 255, 1);
+  text-align: left;    
+  color: rgba(0, 0, 0, 0);
+  display: inline-block;
+  align-content: center;
+  align-items: center;   
+  vertical-align: center;
+}  
+
+.menuItem {
+
+  margin-left: 0vw;
+  margin-right: 1vw;
+  margin-top: 0vw;
+  margin-bottom: 0vw;  
+
+  width: auto;
+  height: 10vh;
+  line-height: 10vh;
+  white-space: nowrap;
+  background: rgba(255, 255, 255, 1);
+  text-align: left;    
+  color: black;
+  display: inline-block;
+  /* font-size: 12.5px; */
+  align-content: center;
+  align-items: center;   
+  vertical-align: center;
+}
+.menuAreaLeft {
+  margin: 0 auto; 
+  
+  width: 75vw;
+  height: 10vh;
+  line-height: 10vh;
+  /* background: rgba(0, 0, 255, 1); */
+  color: black;  
+  display: inline-block;
+  text-align: left;    
+  
+}
+
+.menuArea {
+  margin-left: 0vw;
+  margin-right: 0vw;
+  margin-top: 0vw;
+  margin-bottom: 0vw;   
+  width: 90vw;
+  height: 10vh;
+  /* line-height: 10vh; */
+  background: rgba(255, 255, 255, 1);
+  text-align: center;    
+  align-content: center;
+  align-items: center;   
+  display: inline-block
+}
+
+.headerCh {
+
+  margin-left: 0vw;
+  margin-right: 0vw;
+  margin-top: 0vw;
+  margin-bottom: 0vw;   
+  width: 90vw;
+  height: 10vh;
+
+    /* background: rgba(255, 0, 0, 1); */
+    color: rgba(0, 100, 255, 1);
+    
+    line-height: 5vh; 
+    font-weight: bold;
+    font-size: 30px;  
+    /* align-content: center;
+    align-items: center; */
+    text-align: center;    
+}
+
+
+
+.headerEng {
+  margin-left: 0vw;
+  margin-right: 0vw;
+  margin-top: 0vw;
+  margin-bottom: 0vw;  
+
+  width: 90vw;
+  height: 10vh;
+
+
+  /* background: rgba(255, 255, 0, 1); */
+  color: rgba(0, 100, 255, 1);
+  
+  line-height: 10vh; 
+  font-weight: bold;
+  font-size: 25px;/*20px*/
+  /* align-content: center;
+  align-items: center; */
+  text-align: center;    
+  /* display: inline-block   */
+}
+
+.headerElement {
+  z-index: 2;
+  
+
+  margin-left: 5vw;
+  margin-right: 5vw;
+  margin-top: 0vh;
+  margin-bottom: 0vh; /*0vh*/ 
+
+  display: block;  
+  width: 90vw;
+  height: 30vh;
+  background: rgba(255, 255, 255, 1);
+  color: rgba(0, 191, 255, 1);
+  align-content: center;
+  align-items: center;
+  line-height: 10vh; 
+  font-weight: bold;
+  font-size: 18px; 
+  position:fixed;
+}
+.outerMostContainer {
+  background: rgb(255, 25, 255, 1);
+  width: 100vw;
+  height: auto;
+  overflow-x: hidden;
+  max-width: 100%;
+  
+  /* min-height: 110vh; */
+  /* position: fixed; */
+  /* height: 100vh; */
+  display: block;  
+  align-content: center;
+  align-items: center;  
+}

@@ -168,10 +168,23 @@ class RightSideMenu extends React.Component {
 
     return (
           <div className="centerAreaRight">
-              <div className="centerAreaRightItem">LATEST NEWS</div>
+              {/* <div className="centerAreaRightItem">LATEST NEWS</div> */}
+
+              <div className="centerAreaRightSectionName">
+                  {this.state.currentLanguage == 'Ch'?
+                  ( 
+                    '最新活动'
+                  ):
+                  (
+                    'LATEST NEWS'          
+                  )
+                  }
+              </div>
+
+
               {Events}
 
-              <div className="centerAreaRightItem">
+              <div className="centerAreaRightSectionName">
                   {this.state.currentLanguage == 'Ch'?
                   ( 
                     '华联社活动日历'
@@ -183,15 +196,50 @@ class RightSideMenu extends React.Component {
               </div>
               {<RightSideCalendar />}
 
-              <div className="centerAreaRightItem">EVENT PHOTOS</div>
+              {/* <div className="centerAreaRightSectionName">EVENT PHOTOS</div> */}
+
+              <div className="centerAreaRightSectionName">
+                  {this.state.currentLanguage == 'Ch'?
+                  ( 
+                    '华联社活动照片'
+                  ):
+                  (
+                    'EVENT PHOTOS'          
+                  )
+                  }
+              </div>
+
               <Provider store={store}>
                   <RightSideEventPhotos/>
               </Provider>
               
-              <div className="centerAreaRightItem">EVENT SEARCH</div>
+
+              <div className="centerAreaRightSectionName">
+                  {this.state.currentLanguage == 'Ch'?
+                  ( 
+                    '活动搜索'
+                  ):
+                  (
+                    'EVENT SEARCH'          
+                  )
+                  }
+              </div>
+              {/* <div className="centerAreaRightSectionName">EVENT SEARCH</div> */}
               <RightSideSearch />
               
-              <div className="centerAreaRightItem">FCCCI ARCHIVES</div>
+
+
+              <div className="centerAreaRightSectionName">
+                  {this.state.currentLanguage == 'Ch'?
+                  ( 
+                    '华联社档案'
+                  ):
+                  (
+                    'FCCCI ARCHIVES'          
+                  )
+                  }
+              </div>
+              {/* <div className="centerAreaRightSectionName">FCCCI ARCHIVES</div> */}
               <RightSideArchive/>
               {/* {this.state.listOfLatestNews.length == 0?(
                 <RightSideMenuItem newsTitle={'loading...'} newsNumber={-1}/>
