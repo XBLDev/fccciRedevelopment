@@ -5,7 +5,9 @@ https://github.com/XBLDev/ReactJSNodejsAuthRouterv4
 Comment 22/11/2017, 3:14 pm:
 
 Try linking this repo with Jira, commit with issus ID to link commits with issue, generally the 
-command is: git -m "ISSUE_NUMBER some normal comment"
+command is: git -m "ISSUE_NUMBER some normal comment". It looks like there's a delay between the 
+commit and the linking of the commit and Jira issue. For the subtask of each issue it also 
+generates an issue number, so the linking command is the same.
 
 Comment 15/11/2017, 7:57 pm:
 
