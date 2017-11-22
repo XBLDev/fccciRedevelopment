@@ -4,7 +4,8 @@ https://github.com/XBLDev/ReactJSNodejsAuthRouterv4
 
 Comment 22/11/2017, 3:14 pm:
 
-Try linking this repo with Jira, commit with issus ID to link commits with issue.
+Try linking this repo with Jira, commit with issus ID to link commits with issue, generally the 
+command is: git -m "ISSUE_NUMBER some normal comment"
 
 Comment 15/11/2017, 7:57 pm:
 
