@@ -17,14 +17,17 @@ const LoginForm = ({onSubmit,onChange,errors,successMessage,user}) => (
     // <Card className="container">
 
     <form action="/" onSubmit={onSubmit}>
-      <h2 className="card-heading">Login</h2> 
+      <h2 className="card-heading">
+        {localStorage.getItem('currentLanguage') == 'Eng' ? "Login":"登录"}
+        {/* localStorage.getItem('currentLanguage') == 'Eng' ? "ABOUT US":"关于我们" */}
+      </h2> 
 
       {successMessage && <p className="success-message">{successMessage}</p>}
       {errors.summary && <p className="error-message">{errors.summary}</p>}
 
       <div className="field-line">
         <TextField
-          floatingLabelText="Email"
+          floatingLabelText={localStorage.getItem('currentLanguage') == 'Eng' ? "Email":"邮箱"}
           name="email"
           errorText={errors.email}
           onChange={onChange}
@@ -34,7 +37,7 @@ const LoginForm = ({onSubmit,onChange,errors,successMessage,user}) => (
 
       <div className="field-line">
         <TextField
-          floatingLabelText="Password"
+          floatingLabelText={localStorage.getItem('currentLanguage') == 'Eng' ? "Password":"密码"}
           type="password"
           name="password"
           onChange={onChange}
@@ -42,14 +45,22 @@ const LoginForm = ({onSubmit,onChange,errors,successMessage,user}) => (
           value={user.password}
         />
       </div>
+      
+      <br/>
 
       <div className="button-line">
-        <RaisedButton type="submit" label="Log in" primary />
+        <RaisedButton 
+          type="submit" 
+          label={localStorage.getItem('currentLanguage') == 'Eng' ? "LOG IN":"登录"} 
+          primary 
+        />
       </div>
 
-      <CardText>Don't have an account? 
+      <CardText>
+          {localStorage.getItem('currentLanguage') == 'Eng' ? "Don't have an account? ":"没有已注册账户? "} 
+          {/* Don't have an account?  */}
           <Link to={'/signup'}>
-            Create one
+            {localStorage.getItem('currentLanguage') == 'Eng' ? "Create one":"新用户注册"} 
           </Link>
       </CardText>
 

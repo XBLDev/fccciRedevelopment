@@ -16,18 +16,18 @@ class RightSideMenuItem extends React.Component {
     }
 
     componentDidMount() {
-        console.log('RightSideMenuItem DID MOUNT!')
+        // console.log('RightSideMenuItem DID MOUNT!')
         
     }
     
 
     componentWillReceiveProps(nextProps)
     {
-        console.log('RightSideMenuItem WILL RECEIVE PROPS!')
+        // console.log('RightSideMenuItem WILL RECEIVE PROPS!')
     }    
 
     componentWillUnmount() {
-        console.log('RightSideMenuItem WILL UNMOUNT!')
+        // console.log('RightSideMenuItem WILL UNMOUNT!')
     }
 
     onLinkClicked(){

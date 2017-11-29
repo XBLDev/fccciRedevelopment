@@ -32,6 +32,12 @@ class Main extends React.Component {
 
   }
   
+  componentDidMount()
+  {
+    
+  }
+
+
   render() {
     // var title = localStorage.getItem('currentLanguage') == 'Eng' ? 'Website title':'网站标题';
     // var subtitle = localStorage.getItem('currentLanguage') == 'Eng' ? 

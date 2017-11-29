@@ -37,7 +37,7 @@ class RightSideEventPhotos extends React.Component {
                 var photos = [];
                 for(var i = 0; i < xhr.response.URLS.length; i++)
                 {
-                    console.log(xhr.response.URLS[i]['URL']);
+                    // console.log(xhr.response.URLS[i]['URL']);
                     photos.push(xhr.response.URLS[i]['URL']);
                 }
 

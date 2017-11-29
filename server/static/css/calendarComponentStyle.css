@@ -27,8 +27,10 @@ body {
 
 .Calendar-header {
   height: 50px;
-  background: gold;/*#333*/
-  color: #fff;/*#fff*/
+  /* background: gold; */
+  /*#333*/
+  color: #000000;
+  /*#fff*/
   text-align: center;
   line-height: 50px;
   display: flex;
@@ -41,7 +43,8 @@ body {
   font-size: 20px;
   border: 0;
   background: transparent;
-  color: #ddd;
+  /* color: #ddd; */
+  color: #000000;
   cursor: pointer;
 }
 

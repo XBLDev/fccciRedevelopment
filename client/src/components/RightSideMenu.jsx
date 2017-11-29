@@ -42,7 +42,7 @@ class RightSideMenu extends React.Component {
 
 
     var currentLanguage = localStorage.getItem('currentLanguage').toString();
-    console.log('RightSideMenu will mountm, currentLanguage: ',currentLanguage);
+    // console.log('RightSideMenu will mountm, currentLanguage: ',currentLanguage);
 
     const xhr = new XMLHttpRequest();
     xhr.open('get', '/news/news?language='+encodeURIComponent(currentLanguage));
@@ -67,37 +67,13 @@ class RightSideMenu extends React.Component {
   }
 
   componentWillUnmount() {
-    console.log('RightSideMenu WILL UNMOUNT!');
+    // console.log('RightSideMenu WILL UNMOUNT!');
   }
 
   componentDidMount() {
 
 
-    console.log('RightSideMenu: mounted, props: ',this.props);
-
-    // var currentLanguage = localStorage.getItem('currentLanguage').toString();
-    // console.log('RightSideMenu: currentLanguage: ',currentLanguage);
-
-    // const xhr = new XMLHttpRequest();
-    // xhr.open('get', '/news/news?language='+encodeURIComponent(currentLanguage));
-    // // xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-    // // set the authorization HTTP header
-    // // xhr.setRequestHeader('Authorization', `bearer ${Auth.getToken()}`);
-    // xhr.responseType = 'json';
-    // xhr.addEventListener('load', () => {
-    // if (xhr.status === 200) {
-    //     // console.log('Right Side Menu Got GET /NEWS');
-    //     this.setState({
-    //     numberOfNews: xhr.response.message
-    //     });
-    //     this.setState({
-    //       listOfLatestNews: xhr.response.listOfTitles
-    //     });
-    //     // console.log('RightSideMenu, recieved list of news upon Mounting:')
-    //     // console.log(this.state.listOfLatestNews)
-    // }
-    // });
-    // xhr.send();    
+    // console.log('RightSideMenu: mounted, props: ',this.props);
 
   }    
 
@@ -109,8 +85,8 @@ class RightSideMenu extends React.Component {
     // if (typeof myVar != 'undefined')
     
     var nextPropsLength = nextProps.length;
-    console.log('nextProps length: ', nextPropsLength, ', current props: ', this.state.listOfLatestNews);
-    console.log('RightSideMenu will receive props: ',nextProps);
+    // console.log('nextProps length: ', nextPropsLength, ', current props: ', this.state.listOfLatestNews);
+    // console.log('RightSideMenu will receive props: ',nextProps);
     
     // var prevListOfLatestNews = this.state.listOfLatestNews;
 
@@ -157,12 +133,13 @@ class RightSideMenu extends React.Component {
       // indents.push(<span className='indent' key={i}></span>);
       Events.push
       (
+        <div key={i}>
         <RightSideMenuItem
           key={i}
           newsTitle={this.state.listOfLatestNews[i][title]}
           newsNumber={i}
           /* currentPath={this.props.menupath} */
-        />
+        /><br/></div>
       );
     }
 
@@ -179,10 +156,9 @@ class RightSideMenu extends React.Component {
                     'LATEST NEWS'          
                   )
                   }
-              </div>
-
-
+              </div><br/>
               {Events}
+                  
 
               <div className="centerAreaRightSectionName">
                   {this.state.currentLanguage == 'Ch'?
@@ -193,11 +169,12 @@ class RightSideMenu extends React.Component {
                     'FCCCI EVENTS CALENDAR'          
                   )
                   }
-              </div>
+              </div><br/>
               {<RightSideCalendar />}
 
               {/* <div className="centerAreaRightSectionName">EVENT PHOTOS</div> */}
 
+              <br/>
               <div className="centerAreaRightSectionName">
                   {this.state.currentLanguage == 'Ch'?
                   ( 
@@ -207,13 +184,12 @@ class RightSideMenu extends React.Component {
                     'EVENT PHOTOS'          
                   )
                   }
-              </div>
-
+              </div><br/>
               <Provider store={store}>
                   <RightSideEventPhotos/>
               </Provider>
               
-
+              <br/>
               <div className="centerAreaRightSectionName">
                   {this.state.currentLanguage == 'Ch'?
                   ( 
@@ -223,12 +199,9 @@ class RightSideMenu extends React.Component {
                     'EVENT SEARCH'          
                   )
                   }
-              </div>
-              {/* <div className="centerAreaRightSectionName">EVENT SEARCH</div> */}
+              </div><br/>
               <RightSideSearch />
               
-
-
               <div className="centerAreaRightSectionName">
                   {this.state.currentLanguage == 'Ch'?
                   ( 
@@ -238,9 +211,9 @@ class RightSideMenu extends React.Component {
                     'FCCCI ARCHIVES'          
                   )
                   }
-              </div>
-              {/* <div className="centerAreaRightSectionName">FCCCI ARCHIVES</div> */}
+              </div><br/>
               <RightSideArchive/>
+
               {/* {this.state.listOfLatestNews.length == 0?(
                 <RightSideMenuItem newsTitle={'loading...'} newsNumber={-1}/>
               ):

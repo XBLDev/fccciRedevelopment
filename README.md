@@ -2,6 +2,30 @@
 Code for the coming updated fccci: http://fccci.org.au/au/, code base for user auth and routing: 
 https://github.com/XBLDev/ReactJSNodejsAuthRouterv4
 
+Comment 29/11/2017, 8:38 pm:
+
+Redesigning the entire page with Bootstrap styling, mainly using the collapsble menu and grid system
+for responsive page layout. Changes include:
+
+Now the top menu will shrink into a top right corner button when they view the page on mobile phone,
+and user can select any previous links in the top menu by clicking on the button;
+
+The right side menu now will go below the main section of the page when the width of the page is below
+certain value, and the user can still use the links originally in the right side menu by scrolling down
+to where the the menu is. Personally I don't think this design is good since the main page, depending on 
+its length, might cause the user to scroll a long distance before a certain link is reached. A better
+design maybe somehow also include the links in the shrinked menu.
+
+Some fixed previously undesirable designs include:
+
+Upon clicking on links now the page will scroll back to top, with window.scrollTo();
+The month names are in English instead Norwegian;
+More page text elements now change according to language settings;
+Menu items are now highlighted when the main page is showing theirs according link content;
+The right edge of the main area and the left edge of the right side menu now has a bit of space so the 
+text from the main area won't hit the right side menu items;
+Log in and User Profiles now each has an icon;
+
 Comment 22/11/2017, 3:14 pm:
 
 Try linking this repo with Jira, commit with issus ID to link commits with issue, generally the 

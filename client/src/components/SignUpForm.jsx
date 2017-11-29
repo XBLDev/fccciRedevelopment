@@ -13,13 +13,16 @@ import TextField from 'material-ui/TextField';
 const SignUpForm = ({onSubmit,onChange,errors,user}) => (
   // <Card className="container">
     <form action="/" onSubmit={onSubmit}>
-      <h2 className="card-heading">Sign Up</h2>
+      <h2 className="card-heading">
+        {localStorage.getItem('currentLanguage') == 'Eng' ? "Sign Up":"注册"}
+        {/* Sign Up */}
+      </h2>
 
       {errors.summary && <p className="error-message">{errors.summary}</p>}
 
       <div className="field-line">
         <TextField
-          floatingLabelText="Name"
+          floatingLabelText={localStorage.getItem('currentLanguage') == 'Eng' ? "Name":"用户名"}
           name="name"
           errorText={errors.name}
           onChange={onChange}
@@ -29,7 +32,7 @@ const SignUpForm = ({onSubmit,onChange,errors,user}) => (
 
       <div className="field-line">
         <TextField
-          floatingLabelText="Email"
+          floatingLabelText={localStorage.getItem('currentLanguage') == 'Eng' ? "Email":"用户邮箱"}
           name="email"
           errorText={errors.email}
           onChange={onChange}
@@ -39,7 +42,7 @@ const SignUpForm = ({onSubmit,onChange,errors,user}) => (
 
       <div className="field-line">
         <TextField
-          floatingLabelText="Password"
+          floatingLabelText={localStorage.getItem('currentLanguage') == 'Eng' ? "Password":"用户密码"}
           type="password"
           name="password"
           onChange={onChange}
@@ -48,11 +51,24 @@ const SignUpForm = ({onSubmit,onChange,errors,user}) => (
         />
       </div>
 
+      <br/>
+
       <div className="button-line">
-        <RaisedButton type="submit" label="Create New Account" primary />
+        <RaisedButton 
+          type="submit" 
+          label={localStorage.getItem('currentLanguage') == 'Eng' ? "Create New Account":"创建新用户"}
+          primary 
+        />
       </div>
 
-      <CardText>Already have an account? <Link to={'/login'}>Log in</Link></CardText>
+      <CardText>
+        {localStorage.getItem('currentLanguage') == 'Eng' ? "Already have an account? ":"已经有账户了? "}
+        {/* Already have an account?  */}
+        <Link to={'/login'}>
+        {localStorage.getItem('currentLanguage') == 'Eng' ? "Log in":"登录"}
+          {/* Log in */}
+        </Link>
+        </CardText>
     </form>
   // </Card>
 );

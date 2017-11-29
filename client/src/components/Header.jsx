@@ -39,7 +39,7 @@ class Header extends React.Component {
   {
     if(Auth.isUserAuthenticated() == true)
     {
-      console.log('Current User is: ', localStorage.getItem('usrname'),', logging out');
+      // console.log('Current User is: ', localStorage.getItem('usrname'),', logging out');
       Auth.deauthenticateUser();
     }
   }

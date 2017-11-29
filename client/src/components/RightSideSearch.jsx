@@ -30,7 +30,7 @@ class RightSideSearch extends React.Component {
     }
 
     HiItems(items) {
-        console.log(items)
+        // console.log(items)
     }
 
     render() {

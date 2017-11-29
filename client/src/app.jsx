@@ -7,6 +7,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 // import routes from './routes.js';
 import { BrowserRouter } from 'react-router-dom'
 import App from './components/start.jsx';
+import ResponsiveMainPage from './components/responsiveMainPage.jsx';
 
 
 // remove tap delay, essential for MaterialUI to work properly
@@ -22,13 +23,17 @@ import App from './components/start.jsx';
 //     <Router history={browserHistory} routes={routes} />
 //   </MuiThemeProvider>), document.getElementById('react-app'));
 
+// ReactDom.render((
+//     <BrowserRouter>
+//         <App />
+//     </BrowserRouter>
+// ), document.getElementById('react-app'));
+
 ReactDom.render((
-    <BrowserRouter>
-        <App />
-    </BrowserRouter>
+        <BrowserRouter>
+                <ResponsiveMainPage />
+        </BrowserRouter>
 ), document.getElementById('react-app'));
-
-
 
 
 

@@ -26,9 +26,9 @@ class Newsboard extends React.Component {
         // console.log('currentLanguage: ', localStorage.getItem('currentLanguage'));
 
         document.title= this.props.location['pathname'].substring(this.props.location['pathname'].lastIndexOf('/')+1, this.props.location['pathname'].length);
-        console.log('Newsboard Did Mount');
+        // console.log('Newsboard Did Mount');
         // console.log('newsNum: ',this.props.newsNum)
-        console.log(this.props.location['pathname'])
+        // console.log(this.props.location['pathname'])
 
 
 
@@ -42,7 +42,7 @@ class Newsboard extends React.Component {
         const xhr = new XMLHttpRequest();
 
         var currentLanguage = localStorage.getItem('currentLanguage').toString();
-        console.log(currentLanguage);
+        // console.log(currentLanguage);
 
         xhr.open('get', '/news/requestNews?news='+encodeURI(this.state.currentURL)+'&language='+encodeURIComponent(currentLanguage), true);
         xhr.setRequestHeader('Content-Type', 'application/json')
@@ -75,16 +75,16 @@ class Newsboard extends React.Component {
     }
 
    componentWillUnmount() {
-      console.log('Newsboard WILL UNMOUNT!')
+    //   console.log('Newsboard WILL UNMOUNT!')
    }
 
    componentWillReceiveProps(nextProps)
    {
      document.title= nextProps.location['pathname'].substring(nextProps.location['pathname'].lastIndexOf('/')+1, nextProps.location['pathname'].length);
     
-      console.log('Newsboard receive props!')
+    //   console.log('Newsboard receive props!')
     //   console.log(this.props.location['pathname'])
-      console.log(nextProps.location['pathname'])
+    //   console.log(nextProps.location['pathname'])
 
       this.setState({listOfParagraphs: []});
       this.setState({

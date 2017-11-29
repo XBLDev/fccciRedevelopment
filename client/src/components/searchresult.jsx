@@ -33,19 +33,19 @@ class SearchResult extends React.Component {
     }
 
     HiItems(items) {
-        console.log(items)
+        // console.log(items)
     }
 
     componentWillMount() {
-        console.log('SearchResult WILL MOUNT!');
+        // console.log('SearchResult WILL MOUNT!');
     }
 
     componentDidMount() {
 
         document.title= 'SearchResult';
         
-        console.log('SearchResult Did Mount');
-        console.log('SearchResult location prop: ',this.props.location['pathname']);
+        // console.log('SearchResult Did Mount');
+        // console.log('SearchResult location prop: ',this.props.location['pathname']);
 
         var currentLanguageSetting = localStorage.getItem('currentLanguage').toString();
         const xhr = new XMLHttpRequest();
@@ -83,11 +83,11 @@ class SearchResult extends React.Component {
     } 
 
     componentWillUnmount() {
-        console.log('SearchResult will unmount!');
+        // console.log('SearchResult will unmount!');
     }
 
     componentWillReceiveProps(newProps) {    
-        console.log('SearchResult will receive props: ', newProps.location['pathname']);
+        // console.log('SearchResult will receive props: ', newProps.location['pathname']);
 
         var currentLanguageSetting = localStorage.getItem('currentLanguage').toString();
         const xhr = new XMLHttpRequest();

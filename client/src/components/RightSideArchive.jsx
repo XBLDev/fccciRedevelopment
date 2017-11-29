@@ -28,7 +28,7 @@ class RightSideArchive extends React.Component {
                 numberOfEventsEachMonth: xhr.response.Events
             });
 
-            console.log('RightSideArchive: numberOfEvents: ', this.state.numberOfEventsEachMonth);
+            // console.log('RightSideArchive: numberOfEvents: ', this.state.numberOfEventsEachMonth);
         }
         });
         xhr.send();   

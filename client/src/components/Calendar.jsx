@@ -7,6 +7,9 @@ import PropTypes from 'prop-types';
 import { Calendar } from 'react-calendar-component';
 import BigCalendar from 'react-big-calendar';
 import moment from 'moment';
+import 'moment/locale/es'  // without this line it didn't work
+moment.locale('en')
+
 import { Link } from 'react-router-dom'
 import 'moment/locale/nb';
 // import Dayz from 'dayz';
@@ -143,9 +146,9 @@ class RightSideCalendar extends React.Component {
 
     componentWillMount()
     {
-      console.log('RightSideCalendar will mount');
+      // console.log('RightSideCalendar will mount');
 
-      console.log('RightSideCalendar: on mounting, load data from backend');
+      // console.log('RightSideCalendar: on mounting, load data from backend');
       // var prevMonthFirstDay = moment().subtract(1, 'months').startOf('month')
       // var nextMonthFirstDay = moment().add(1, 'months').startOf('month');
       // console.log('Next month first day: year: ', this.state.date.year(), ', month: ', (this.state.date.month()+1));
@@ -158,8 +161,8 @@ class RightSideCalendar extends React.Component {
           // this.setState({
           //   numberOfNews: xhr.response.message
           //   });
-          console.log('RightSideCalendar: GOT RESPONSE FROM SERVER: ', xhr.response.message);
-          console.log('RightSideCalendar: GOT ARRAY OF EVENTS FOR CURRENT MONTH: '.concat(this.state.date.month()+1).concat(': ').concat(xhr.response.Events));
+          // console.log('RightSideCalendar: GOT RESPONSE FROM SERVER: ', xhr.response.message);
+          // console.log('RightSideCalendar: GOT ARRAY OF EVENTS FOR CURRENT MONTH: '.concat(this.state.date.month()+1).concat(': ').concat(xhr.response.Events));
           // console.log('RightSideCalendar: GOT ARRAY OF EVENTS: CH: '.concat(xhr.response.CH_Str).concat(', EN: ').concat(xhr.response.EN_Str).concat(', DATE: ').concat(xhr.response.DATE_Str));
           
           this.setState({loading: false, calendarEvents: xhr.response.Events});
@@ -172,28 +175,28 @@ class RightSideCalendar extends React.Component {
 
     componentWillUnmount() 
     {
-        console.log('RightSideCalendar WILL UNMOUNT!');
+        // console.log('RightSideCalendar WILL UNMOUNT!');
     }
 
     componentDidMount() {
-        console.log('RightSideCalendar DID UNMOUNT!');
+        // console.log('RightSideCalendar DID UNMOUNT!');
     }        
 
     componentWillUpdate(nextProps, nextState)
     {
-      console.log('RightSideCalendar will update, nextProps: ', nextProps, ', nextState: ', nextState);
+      // console.log('RightSideCalendar will update, nextProps: ', nextProps, ', nextState: ', nextState);
 
     }
 
     componentDidUpdate(prevProps, prevState){
-      console.log('RightSideCalendar did updated, prevProps: ', prevProps, ', prevState: ', prevState);
+      // console.log('RightSideCalendar did updated, prevProps: ', prevProps, ', prevState: ', prevState);
 
       if(this.state.loading == true)
       {
-        console.log('RightSideCalendar: month changed, should load the event from backend');
+        // console.log('RightSideCalendar: month changed, should load the event from backend');
         // var prevMonthFirstDay = moment().subtract(1, 'months').startOf('month')
         // var nextMonthFirstDay = moment().add(1, 'months').startOf('month');
-        console.log('Next month first day: year: ', this.state.date.year(), ', month: ', (this.state.date.month()+1));
+        // console.log('Next month first day: year: ', this.state.date.year(), ', month: ', (this.state.date.month()+1));
         //moment("25/04/2012","DD/MM/YYYY").year()
         const xhr = new XMLHttpRequest();
         xhr.open('get', '/Events/calendarEvents?year='+encodeURIComponent(this.state.date.year())+'&month='+encodeURIComponent(this.state.date.month()+1));
@@ -203,8 +206,8 @@ class RightSideCalendar extends React.Component {
             // this.setState({
             //   numberOfNews: xhr.response.message
             //   });
-            console.log('RightSideCalendar: GOT RESPONSE FROM SERVER: ', xhr.response.message);
-            console.log('RightSideCalendar: GOT ARRAY OF EVENTS FOR CURRENT MONTH: '.concat(this.state.date.month()+1).concat(': ').concat(xhr.response.Events));
+            // console.log('RightSideCalendar: GOT RESPONSE FROM SERVER: ', xhr.response.message);
+            // console.log('RightSideCalendar: GOT ARRAY OF EVENTS FOR CURRENT MONTH: '.concat(this.state.date.month()+1).concat(': ').concat(xhr.response.Events));
             // console.log('RightSideCalendar: GOT ARRAY OF EVENTS: CH: '.concat(xhr.response.CH_Str).concat(', EN: ').concat(xhr.response.EN_Str).concat(', DATE: ').concat(xhr.response.DATE_Str));
             this.setState({loading: false, calendarEvents: xhr.response.Events});
             
@@ -221,7 +224,7 @@ class RightSideCalendar extends React.Component {
 
     componentWillReceiveProps(nextProps)
     {
-        console.log('RightSideCalendar will receive props, nextProps: ',nextProps);
+        // console.log('RightSideCalenbdar will receive props, nextProps: ',nextProps);
     }   
 
     onNextMonth()
